@@ -520,6 +520,11 @@ def verify(
         kernel_before["sha256"] is not None
         and kernel_after["sha256"] != kernel_before["sha256"]
     )
+    bend_sha256_after = file_identity_sha256(bend)
+    bend_changed = (
+        bend_sha256 is not None
+        and bend_sha256_after != bend_sha256
+    )
     source_changed, proof_changed, source_recheck_error = _source_state(project, proof, captured)
     raw_exact_pass = (
         not timed_out
@@ -535,7 +540,11 @@ def verify(
     else:
         execution_verdict = "fail"
 
-    verdict = "unstable" if source_changed or kernel_changed else execution_verdict
+    verdict = (
+        "unstable"
+        if source_changed or kernel_changed or bend_changed
+        else execution_verdict
+    )
     result_payload = {
         "success": verdict == "pass",
         "verdict": verdict,
@@ -561,6 +570,8 @@ def verify(
         "bend_version": version_string,
         "bend_path": bend,
         "bend_sha256": bend_sha256,
+        "bend_sha256_after": bend_sha256_after,
+        "bend_changed_during_verify": bend_changed,
         "stdout": stdout,
         "stderr": stderr,
     }
