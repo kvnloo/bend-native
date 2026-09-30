@@ -29,6 +29,7 @@ class _KernelSession:
 
 
 _lock = threading.RLock()
+_verify_slots = threading.BoundedSemaphore(4)
 _state: _KernelSession | None = None
 
 
@@ -80,16 +81,18 @@ def verify_with_session_kernel(project_dir: str, proof_file: str = "PROOF.bend")
     with _lock:
         state = _trusted_state(bend, bend_sha256)
     if state is not None:
-        result = verify(
-            project_dir,
-            proof_file,
-            which=lambda _name: state.bend_path,
-            kernel_override=state.kernel_path,
-            kernel_expected_sha256=state.kernel_sha256,
-        )
+        with _verify_slots:
+            result = verify(
+                project_dir,
+                proof_file,
+                which=lambda _name: state.bend_path,
+                kernel_override=state.kernel_path,
+                kernel_expected_sha256=state.kernel_sha256,
+            )
         result["kernel_strategy"] = "session-pinned"
         result["session_kernel_sha256"] = state.kernel_sha256
         result["session_kernel_source_sha256"] = state.kernel_source_sha256
+        result["scheduler_limit"] = 4
         return result
 
     # Only one caller may pay the cold Lean/BendTT compile.
@@ -125,22 +128,25 @@ def verify_with_session_kernel(project_dir: str, proof_file: str = "PROOF.bend")
                 result["kernel_strategy"] = "session-bootstrap"
                 result["session_kernel_sha256"] = _state.kernel_sha256
                 result["session_kernel_source_sha256"] = _state.kernel_source_sha256
+                result["scheduler_limit"] = 4
                 return result
             except Exception:
                 tempdir.cleanup()
                 raise
 
     # Another caller completed bootstrap while this caller waited.
-    result = verify(
-        project_dir,
-        proof_file,
-        which=lambda _name: bend,
-        kernel_override=kernel_path,
-        kernel_expected_sha256=kernel_sha,
-    )
+    with _verify_slots:
+        result = verify(
+            project_dir,
+            proof_file,
+            which=lambda _name: bend,
+            kernel_override=kernel_path,
+            kernel_expected_sha256=kernel_sha,
+        )
     result["kernel_strategy"] = "session-pinned"
     result["session_kernel_sha256"] = kernel_sha
     result["session_kernel_source_sha256"] = kernel_source_sha
+    result["scheduler_limit"] = 4
     return result
 
 
