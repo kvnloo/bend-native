@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 _TIMEOUT_SECONDS = 30
+_KERNEL_BOOTSTRAP_TIMEOUT_SECONDS = 120
 _VERSION_TIMEOUT_SECONDS = 5
 _OUTPUT_LIMIT = 8_000
 _MAX_INPUT_FILES = 2_048
@@ -179,6 +180,29 @@ def file_identity_sha256(path: str) -> str | None:
         return None
 
 
+def kernel_cache_identity(bend: str, env: dict[str, str]) -> dict[str, Any]:
+    """Describe Bend's expected cached BendTT kernel without executing it."""
+    try:
+        bend_real = Path(bend).resolve()
+        source = bend_real.parent.parent / "bend2" / "bendtt.lean"
+        if not source.is_file():
+            return {"state": "unknown", "path": None, "source_sha256": None, "sha256": None}
+        source_bytes = source.read_bytes()
+        source_sha256 = sha256_bytes(source_bytes)
+        source_key = source_sha256[:16]
+        home = Path(env.get("HOME") or str(Path.home())).expanduser()
+        kernel = home / ".bend" / "bendtt" / source_key / "bendtt"
+        kernel_sha256 = file_identity_sha256(str(kernel))
+        return {
+            "state": "warm" if kernel_sha256 is not None else "cold",
+            "path": str(kernel),
+            "source_sha256": source_sha256,
+            "sha256": kernel_sha256,
+        }
+    except OSError:
+        return {"state": "unknown", "path": None, "source_sha256": None, "sha256": None}
+
+
 def _read_stable(path: Path) -> bytes:
     """Read one local input only if metadata stays stable across the read."""
     for _ in range(3):
@@ -343,6 +367,12 @@ def verify(
     version = query_version(bend, env, runner=runner)
     version_string = version_text(version)
     bend_sha256 = file_identity_sha256(bend)
+    kernel_before = kernel_cache_identity(bend, env)
+    verdict_timeout = (
+        _KERNEL_BOOTSTRAP_TIMEOUT_SECONDS
+        if kernel_before["state"] == "cold"
+        else _TIMEOUT_SECONDS
+    )
     started = time.monotonic()
 
     timed_out = False
@@ -370,7 +400,7 @@ def verify(
                 env=child_env,
                 capture_output=True,
                 text=True,
-                timeout=_TIMEOUT_SECONDS,
+                timeout=verdict_timeout,
                 check=False,
             )
             exit_code = result.returncode
@@ -387,6 +417,12 @@ def verify(
         finally:
             bend_lib_manifest, bend_lib_file_count = _directory_manifest(bend_lib)
 
+    kernel_after = kernel_cache_identity(bend, env)
+    kernel_changed = (
+        kernel_before["state"] == "warm"
+        and kernel_before["sha256"] is not None
+        and kernel_after["sha256"] != kernel_before["sha256"]
+    )
     source_changed, proof_changed, source_recheck_error = _source_state(project, proof, captured)
     raw_exact_pass = (
         not timed_out
@@ -402,7 +438,7 @@ def verify(
     else:
         execution_verdict = "fail"
 
-    verdict = "unstable" if source_changed else execution_verdict
+    verdict = "unstable" if source_changed or kernel_changed else execution_verdict
     result_payload = {
         "success": verdict == "pass",
         "verdict": verdict,
@@ -417,6 +453,12 @@ def verify(
         "input_file_count": captured["file_count"],
         "input_byte_count": captured["byte_count"],
         "cache_mode": "isolated",
+        "kernel_cache_state": kernel_before["state"],
+        "kernel_source_sha256": kernel_before["source_sha256"],
+        "kernel_sha256_before": kernel_before["sha256"],
+        "kernel_sha256_after": kernel_after["sha256"],
+        "kernel_changed_during_verify": kernel_changed,
+        "verdict_timeout_seconds": verdict_timeout,
         "bend_lib_manifest_sha256": bend_lib_manifest,
         "bend_lib_file_count": bend_lib_file_count,
         "bend_version": version_string,
@@ -426,7 +468,7 @@ def verify(
         "stderr": stderr,
     }
     if timed_out:
-        result_payload["timeout_seconds"] = _TIMEOUT_SECONDS
+        result_payload["timeout_seconds"] = verdict_timeout
     if source_recheck_error is not None:
         result_payload["source_recheck_error"] = source_recheck_error
     return result_payload
