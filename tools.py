@@ -5,7 +5,8 @@ import shutil
 from typing import Any
 
 from tools.registry import tool_error, tool_result
-from .verify_core import BendVerifyError, verify
+from .session_kernel import verify_with_session_kernel
+from .verify_core import BendVerifyError
 
 BEND_VERIFY_SCHEMA = {
     "name": "bend_verify",
@@ -39,7 +40,7 @@ def check_bend_available() -> bool:
 
 def handle_bend_verify(args: dict[str, Any]) -> str:
     try:
-        result = verify(
+        result = verify_with_session_kernel(
             project_dir=str(args.get("project_dir") or ""),
             proof_file=str(args.get("proof_file") or "PROOF.bend"),
         )
