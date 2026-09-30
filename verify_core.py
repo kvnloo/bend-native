@@ -416,6 +416,8 @@ def verify(
     which: Which = shutil.which,
     runner: Runner = run_process,
     source_env: dict[str, str] | None = None,
+    kernel_override: str | None = None,
+    kernel_expected_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Verify an immutable local-input snapshot with an isolated Bend package cache."""
     project, proof, relative = resolve_proof(project_dir, proof_file)
@@ -429,7 +431,33 @@ def verify(
     version = query_version(bend, env, runner=runner)
     version_string = version_text(version)
     bend_sha256 = file_identity_sha256(bend)
-    kernel_before = kernel_cache_identity(bend, env)
+
+    default_kernel = kernel_cache_identity(bend, env)
+    if kernel_override is None:
+        kernel_before = default_kernel
+    else:
+        pinned = Path(kernel_override).expanduser().resolve()
+        pinned_sha256 = file_identity_sha256(str(pinned))
+        if pinned_sha256 is None:
+            raise BendVerifyError(
+                "kernel_integrity", f"pinned BendTT kernel is not a regular file: {pinned}"
+            )
+        if (
+            kernel_expected_sha256 is not None
+            and pinned_sha256 != kernel_expected_sha256
+        ):
+            raise BendVerifyError(
+                "kernel_integrity",
+                "pinned BendTT kernel hash does not match the expected session identity",
+            )
+        env["BENDTT"] = str(pinned)
+        kernel_before = {
+            "state": "pinned",
+            "path": str(pinned),
+            "source_sha256": default_kernel["source_sha256"],
+            "sha256": pinned_sha256,
+        }
+
     verdict_timeout = (
         _KERNEL_BOOTSTRAP_TIMEOUT_SECONDS
         if kernel_before["state"] == "cold"
@@ -479,10 +507,17 @@ def verify(
         finally:
             bend_lib_manifest, bend_lib_file_count = _directory_manifest(bend_lib)
 
-    kernel_after = kernel_cache_identity(bend, env)
+    if kernel_override is None:
+        kernel_after = kernel_cache_identity(bend, env)
+    else:
+        pinned_after = file_identity_sha256(kernel_before["path"])
+        kernel_after = {
+            **kernel_before,
+            "sha256": pinned_after,
+            "state": "pinned" if pinned_after is not None else "missing",
+        }
     kernel_changed = (
-        kernel_before["state"] == "warm"
-        and kernel_before["sha256"] is not None
+        kernel_before["sha256"] is not None
         and kernel_after["sha256"] != kernel_before["sha256"]
     )
     source_changed, proof_changed, source_recheck_error = _source_state(project, proof, captured)
