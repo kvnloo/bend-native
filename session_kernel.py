@@ -83,6 +83,7 @@ def verify_with_session_kernel(project_dir: str, proof_file: str = "PROOF.bend")
         result = verify(
             project_dir,
             proof_file,
+            which=lambda _name: state.bend_path,
             kernel_override=state.kernel_path,
             kernel_expected_sha256=state.kernel_sha256,
         )
@@ -102,7 +103,12 @@ def verify_with_session_kernel(project_dir: str, proof_file: str = "PROOF.bend")
             tempdir = tempfile.TemporaryDirectory(prefix="hermes-bend-kernel-")
             env = _bootstrap_env(tempdir.name)
             try:
-                result = verify(project_dir, proof_file, source_env=env)
+                result = verify(
+                    project_dir,
+                    proof_file,
+                    which=lambda _name: bend,
+                    source_env=env,
+                )
                 identity = kernel_cache_identity(bend, clean_env(env))
                 if result.get("execution_verdict") == "timeout" or identity.get("sha256") is None:
                     tempdir.cleanup()
@@ -128,6 +134,7 @@ def verify_with_session_kernel(project_dir: str, proof_file: str = "PROOF.bend")
     result = verify(
         project_dir,
         proof_file,
+        which=lambda _name: bend,
         kernel_override=kernel_path,
         kernel_expected_sha256=kernel_sha,
     )
