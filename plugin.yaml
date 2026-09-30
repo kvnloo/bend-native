@@ -1,0 +1,10 @@
+name: bend
+version: 0.1.0
+description: "Downstream experiment: verify Bend proofs from Hermes with the proven BendTT kernel."
+author: kvnloo
+kind: standalone
+platforms:
+  - linux
+  - macos
+provides_tools:
+  - bend_verify
