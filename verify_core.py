@@ -6,6 +6,7 @@ import hashlib
 import os
 import re
 import shutil
+import signal
 import subprocess
 import tempfile
 import time
@@ -40,6 +41,67 @@ class BendVerifyError(RuntimeError):
     def __init__(self, code: str, message: str):
         super().__init__(message)
         self.code = code
+
+
+def run_process(
+    command: list[str],
+    *,
+    cwd: str | None = None,
+    env: dict[str, str] | None = None,
+    capture_output: bool = True,
+    text: bool = True,
+    timeout: float | None = None,
+    check: bool = False,
+) -> subprocess.CompletedProcess:
+    """Run a child with bounded lifetime, reaping its process tree on POSIX."""
+    if os.name != "posix":
+        return subprocess.run(
+            command,
+            cwd=cwd,
+            env=env,
+            capture_output=capture_output,
+            text=text,
+            timeout=timeout,
+            check=check,
+        )
+
+    process = subprocess.Popen(
+        command,
+        cwd=cwd,
+        env=env,
+        stdout=subprocess.PIPE if capture_output else None,
+        stderr=subprocess.PIPE if capture_output else None,
+        text=text,
+        start_new_session=True,
+    )
+    try:
+        stdout, stderr = process.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired as exc:
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            stdout, stderr = process.communicate(timeout=1)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            stdout, stderr = process.communicate()
+        raise subprocess.TimeoutExpired(
+            command,
+            timeout,
+            output=stdout if stdout is not None else exc.output,
+            stderr=stderr if stderr is not None else exc.stderr,
+        ) from exc
+
+    result = subprocess.CompletedProcess(command, process.returncode, stdout, stderr)
+    if check and process.returncode != 0:
+        raise subprocess.CalledProcessError(
+            process.returncode, command, output=stdout, stderr=stderr
+        )
+    return result
 
 
 def bounded(value: str | bytes | None) -> str:
@@ -121,7 +183,7 @@ def version_text(version: tuple[int, int, int]) -> str:
     return ".".join(str(value) for value in version)
 
 
-def query_version(bend: str, env: dict[str, str], *, runner: Runner = subprocess.run) -> tuple[int, int, int]:
+def query_version(bend: str, env: dict[str, str], *, runner: Runner = run_process) -> tuple[int, int, int]:
     try:
         result = runner(
             [bend, "version"],
@@ -352,7 +414,7 @@ def verify(
     proof_file: str = "PROOF.bend",
     *,
     which: Which = shutil.which,
-    runner: Runner = subprocess.run,
+    runner: Runner = run_process,
     source_env: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Verify an immutable local-input snapshot with an isolated Bend package cache."""
