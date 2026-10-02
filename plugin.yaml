@@ -1,5 +1,5 @@
 name: bend
-version: 0.2.0
+version: 0.3.0
 description: "Native Bend proof verification with captured inputs and explicit evidence scope."
 author: kvnloo
 kind: standalone
@@ -16,3 +16,8 @@ config_schema:
     default: bend
     label: Bend executable
     description: Installed Bend command or absolute binary path on the Hermes host.
+  dependency_cache:
+    type: str
+    default: ""
+    label: Bend dependency cache
+    description: Existing Bend Hub cache directory. Empty uses the host user's .bend/lib. No downloads are performed.

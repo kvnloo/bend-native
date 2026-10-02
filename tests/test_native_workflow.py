@@ -57,6 +57,8 @@ def test_native_tool_cli_skill_and_profile_config(installed, tmp_path, capsys):
                 command['handler_fn'](parser.parse_args(['doctor']))
             assert stopped.value.code == 2
             assert json.loads(capsys.readouterr().out)['code'] == 'bend_not_found'
+            service.save_receipt({'receipt_id': profile.name})
+            assert service.ctx.state.get('last_receipt')['receipt_id'] == profile.name
         finally:
             reset_hermes_home_override(token)
     manager.unload('bend')
@@ -100,3 +102,38 @@ def test_snapshot_verdict_and_subprocess_contract(installed, tmp_path):
         verifier.run_process([sys.executable, '-c', 'import time; time.sleep(20)'], timeout=0.1)
     with pytest.raises(verifier.BendVerifyError, match='output exceeded'):
         verifier.run_process([sys.executable, '-c', 'print("x" * (2 * 1024 * 1024))'], timeout=5)
+
+
+def test_cached_hub_closure_is_content_addressed_and_replay_invalidates(installed, tmp_path):
+    _, module, _ = installed
+    import importlib
+    verifier = importlib.import_module(module.__name__ + '.verify_core')
+    receipts = importlib.import_module(module.__name__ + '.receipts')
+    cache = tmp_path / 'cache'
+    helper = b'import Base\n\ndef zero() -> Nat:\n  0n\n'
+    digest = verifier.sha256_bytes((verifier.sha256_bytes(helper) + ' Main.bend\n').encode())
+    package = '0x' + digest[:32]
+    (cache / package).mkdir(parents=True)
+    (cache / package / 'Main.bend').write_bytes(helper)
+    (cache / 'names').mkdir()
+    (cache / 'names' / 'sample@1.0.0.0').write_text(package + '\n')
+    project = tmp_path / 'project'
+    project.mkdir()
+    proof = project / 'PROOF.bend'
+    proof.write_text('import sample@1.0.0.0/Main.bend as S\n')
+    captured = verifier.capture_local_inputs(project, proof, str(cache))
+    assert captured['dependencies']['packages'] == {package: digest}
+    assert captured['dependencies']['names'] == {'sample@1.0.0.0': package}
+    assert captured['dependencies']['files'][package + '/Main.bend'] == helper
+    old = {'proof_file': 'PROOF.bend', 'input_manifest_sha256': captured['manifest_sha256']}
+    service = registry.get_entry('bend_verify').handler.__self__
+    service.ctx.set_config('dependency_cache', str(cache))
+    proof.write_text('import Base\n')
+    with pytest.raises(verifier.BendVerifyError) as exc:
+        receipts.replay(service, old, str(project))
+    assert exc.value.code == 'receipt_stale'
+    proof.write_text('import sample@1.0.0.0/Main.bend as S\n')
+    (cache / package / 'Main.bend').write_text('import Base\n# edited cache\n')
+    with pytest.raises(verifier.BendVerifyError) as exc:
+        verifier.capture_local_inputs(project, proof, str(cache))
+    assert exc.value.code == 'dependency_integrity'

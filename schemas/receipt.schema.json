@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hermes Bend verification receipt",
+  "type": "object",
+  "required": ["schema_version", "receipt_id", "verified_at", "success", "verdict", "verification_scope", "source_semantics_attested", "input_manifest_sha256", "runtime_identity", "proof_file"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {"type": "string", "pattern": "^[0-9a-f]{32}$"},
+    "verified_at": {"type": "string", "format": "date-time"},
+    "success": {"type": "boolean"},
+    "verdict": {"enum": ["pass", "fail", "timeout", "unstable", "indeterminate", "replay_mismatch"]},
+    "verification_scope": {"const": "bend-emitted-book"},
+    "source_semantics_attested": {"const": false},
+    "input_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "proof_file": {"type": "string"},
+    "runtime_identity": {
+      "type": "object", "required": ["bend", "base.bend", "bendtt.lean"],
+      "additionalProperties": {"$ref": "#/$defs/sha256"}
+    },
+    "dependency_packages": {"type": "object", "additionalProperties": {"$ref": "#/$defs/sha256"}},
+    "dependency_names": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^0x[0-9a-f]{32}$"}},
+    "kernel_sha256_after": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+    "replay_match": {"type": "boolean"},
+    "receipt_saved": {"type": "boolean"}
+  },
+  "allOf": [{"if": {"properties": {"success": {"const": true}}}, "then": {"properties": {"verdict": {"const": "pass"}, "kernel_sha256_after": {"$ref": "#/$defs/sha256"}}, "required": ["kernel_sha256_after"]}}],
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+  "additionalProperties": true
+}

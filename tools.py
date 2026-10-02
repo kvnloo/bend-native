@@ -9,6 +9,7 @@ from hermes_constants import get_hermes_home
 from tools.registry import tool_error, tool_result
 
 from .session_kernel import KernelSession
+from .receipts import stamp
 from .verify_core import BendVerifyError, clean_env, query_version, runtime_identity, version_text
 
 BEND_VERIFY_SCHEMA = {
@@ -46,6 +47,12 @@ class BendService:
             raise BendVerifyError("bend_not_found", "Bend CLI not found; install Bend and run hermes bend doctor")
         return str(Path(path).resolve())
 
+    def dependency_cache(self):
+        configured = self.ctx.get_config("dependency_cache", "")
+        if not isinstance(configured, str):
+            raise BendVerifyError("invalid_config", "dependency_cache must be a directory path")
+        return str(Path(configured).expanduser().resolve()) if configured else str(Path.home() / ".bend/lib")
+
     def doctor(self):
         bend = self.executable()
         version = query_version(bend, clean_env())
@@ -64,7 +71,17 @@ class BendService:
         scope = str(get_hermes_home())
         with self._lock:
             session = self._sessions.setdefault(scope, KernelSession())
-        return session.verify(bend, project, proof)
+        result = stamp(session.verify(bend, project, proof, dependency_cache=self.dependency_cache()))
+        self.save_receipt(result)
+        return result
+
+    def save_receipt(self, result):
+        try:
+            result["receipt_saved"] = True
+            self.ctx.state.set("last_receipt", result)
+        except (OSError, RuntimeError, ValueError) as exc:
+            result["receipt_saved"] = False
+            result["receipt_storage_error"] = str(exc)
 
     def handle(self, args, **kwargs):
         try:

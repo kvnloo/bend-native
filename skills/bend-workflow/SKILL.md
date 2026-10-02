@@ -20,9 +20,12 @@ Use this when editing a Bend project or checking its proof evidence.
    nested, its relative PROOF.bend path. Terminal backends may use another machine
    or filesystem; do not assume those paths are available to the plugin.
 5. Fix proof errors and rerun after edits. Treat timeout, unstable, indeterminate,
-   and adapter errors as no passing evidence. Hub imports require local vendoring
-   until dependency snapshot/replay is supported.
-6. Report the receipt's verdict, input manifest and limitations. A PASS covers
+   and adapter errors as no passing evidence. Hub imports must already be cached;
+   the plugin captures and hash-checks their transitive package closure offline.
+6. Save durable JSON with `hermes bend verify PROJECT --receipt receipt.json`.
+   Use `hermes bend replay receipt.json --project PROJECT` to recheck identical
+   inputs and verifier identities; edits require a fresh verification.
+7. Report the receipt's verdict, input manifest and limitations. A PASS covers
    Bend's emitted book, not source/compiler equivalence or whole-task success.
    `source_semantics_attested` is false, including on released Bend 2.0.34.
 

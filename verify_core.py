@@ -297,8 +297,8 @@ def _read_stable(path: Path) -> bytes:
     raise BendVerifyError("input_unstable", f"Bend input changed while being captured: {path}")
 
 
-def _local_imports(text: str) -> list[str]:
-    """Return local .bend imports from Bend's import prefix; hub imports stay external."""
+def _local_imports(text: str, *, allow_hub: bool = False) -> list[str]:
+    """Read Bend's import prefix; include Hub targets only for a dependency capture."""
     imports: list[str] = []
     for raw in text.splitlines():
         line = raw.strip()
@@ -313,11 +313,10 @@ def _local_imports(text: str) -> list[str]:
         if target == "Base" and alias is None:
             continue
         if _HASH_IMPORT_RE.match(target) or _NAMED_IMPORT_RE.match(target):
-            raise BendVerifyError(
-                "unsupported_import",
-                "Bend Hub dependencies need a captured dependency closure; "
-                "vendor them as local .bend imports before verification",
-            )
+            if allow_hub and target.endswith(".bend") and alias is not None:
+                imports.append(target)
+                continue
+            raise BendVerifyError("unsupported_import", "Bend Hub imports require a captured dependency cache")
         if target.endswith(".bend") and alias is not None:
             imports.append(target)
         else:
@@ -349,12 +348,15 @@ def _local_candidate(project: Path, parent: Path, raw: str) -> Path:
     return candidate
 
 
-def capture_local_inputs(project: Path, proof: Path) -> dict[str, Any]:
+def capture_local_inputs(project: Path, proof: Path, dependency_cache=None) -> dict[str, Any]:
     """Capture the local Bend import closure plus adjacent LAWS.bend.
 
     The adjacent law file is included even when PROOF.bend forgot to import it,
     preserving Bend's own special missing-import invariant inside the snapshot.
     """
+    from .dependencies import Dependencies
+
+    dependencies = Dependencies(dependency_cache)
     files: dict[str, bytes] = {}
     queued = [proof]
     adjacent_laws = proof.parent / "LAWS.bend"
@@ -384,13 +386,23 @@ def capture_local_inputs(project: Path, proof: Path) -> dict[str, Any]:
             text = data.decode("utf-8")
         except UnicodeDecodeError as exc:
             raise BendVerifyError("invalid_input", f"Bend input is not UTF-8: {relative}") from exc
-        for raw_import in _local_imports(text):
-            queued.append(_local_candidate(project, path.parent, raw_import))
+        for raw_import in _local_imports(text, allow_hub=dependency_cache is not None):
+            first = raw_import.split("/")[0]
+            if first.startswith("0x") or "@" in first:
+                dependencies.include(raw_import)
+            else:
+                queued.append(_local_candidate(project, path.parent, raw_import))
 
     proof_relative = _relative_inside(project, proof, what="proof_file").as_posix()
+    dependency_data = dependencies.identity()
+    combined = {**{"project/" + key: value for key, value in files.items()},
+                **{"dependencies/" + key: value for key, value in dependencies.files.items()}}
+    if len(combined) > _MAX_INPUT_FILES or sum(map(len, combined.values())) > _MAX_INPUT_BYTES:
+        raise BendVerifyError("input_too_large", "Combined input closure exceeds the capture budget")
     return {
         "files": files,
-        "manifest_sha256": _manifest(files),
+        "dependencies": dependency_data,
+        "manifest_sha256": _manifest(combined) if dependencies.files else _manifest(files),
         "file_count": len(files),
         "byte_count": total_bytes,
         "proof_sha256": sha256_bytes(files[proof_relative]),
@@ -413,9 +425,9 @@ def _directory_manifest(root: Path) -> tuple[str, int]:
     return _manifest(files), len(files)
 
 
-def _source_state(project: Path, proof: Path, initial: dict[str, Any]) -> tuple[bool, bool | None, str | None]:
+def _source_state(project: Path, proof: Path, initial: dict[str, Any], dependency_cache=None) -> tuple[bool, bool | None, str | None]:
     try:
-        current = capture_local_inputs(project, proof)
+        current = capture_local_inputs(project, proof, dependency_cache)
     except BendVerifyError as exc:
         return True, None, f"{exc.code}: {exc}"
     proof_relative = _relative_inside(project, proof, what="proof_file").as_posix()
@@ -435,10 +447,11 @@ def verify(
     kernel_override: str | None = None,
     kernel_expected_sha256: str | None = None,
     runtime_expected: dict[str, str] | None = None,
+    dependency_cache: str | None = None,
 ) -> dict[str, Any]:
     """Verify an immutable local-input snapshot with an isolated Bend package cache."""
     project, proof, relative = resolve_proof(project_dir, proof_file)
-    captured = capture_local_inputs(project, proof)
+    captured = capture_local_inputs(project, proof, dependency_cache)
 
     bend = which("bend")
     if bend is None:
@@ -499,9 +512,11 @@ def verify(
         snapshot.mkdir()
         bend_lib.mkdir()
         _materialize(captured["files"], snapshot)
+        _materialize(captured["dependencies"]["files"], bend_lib)
 
         child_env = dict(env)
         child_env["BEND_LIB"] = str(bend_lib)
+        child_env["BEND_HUB"] = "http://127.0.0.1:0"  # No fallback dependency download.
         command = [bend, "./" + relative.as_posix(), "--verdict"]
         try:
             result = runner(
@@ -545,7 +560,7 @@ def verify(
         bend_sha256 is not None
         and bend_sha256_after != bend_sha256
     )
-    source_changed, proof_changed, source_recheck_error = _source_state(project, proof, captured)
+    source_changed, proof_changed, source_recheck_error = _source_state(project, proof, captured, dependency_cache)
     raw_exact_pass = (
         not timed_out
         and exit_code == 0
@@ -561,15 +576,17 @@ def verify(
         execution_verdict = "fail"
 
     runtime_after = runtime_identity(bend)
+    dependency_snapshot_changed = bend_lib_manifest != captured["dependencies"]["manifest_sha256"]
     verdict = (
         "unstable"
-        if source_changed or kernel_changed or bend_changed or runtime_after != runtime_before
+        if source_changed or kernel_changed or bend_changed or runtime_after != runtime_before or dependency_snapshot_changed
         else execution_verdict
     )
     result_payload = {
         "schema_version": 1,
         "runtime_identity": runtime_before,
         "runtime_changed_during_verify": runtime_after != runtime_before,
+        "dependency_snapshot_changed": dependency_snapshot_changed,
         "verification_scope": "bend-emitted-book",
         "source_semantics_attested": False,
         "limitations": [
@@ -589,6 +606,10 @@ def verify(
         "source_changed_during_verify": source_changed,
         "input_manifest_sha256": captured["manifest_sha256"],
         "input_file_count": captured["file_count"],
+        "dependency_manifest_sha256": captured["dependencies"]["manifest_sha256"],
+        "dependency_packages": captured["dependencies"]["packages"],
+        "dependency_names": captured["dependencies"]["names"],
+        "dependency_file_count": len(captured["dependencies"]["files"]),
         "input_byte_count": captured["byte_count"],
         "cache_mode": "isolated",
         "kernel_cache_state": kernel_before["state"],

@@ -17,7 +17,7 @@ an identifiable verifier installation.
 hermes plugins install kvnloo/hermes-agent --ref <reviewed-40-character-SHA>
 hermes plugins enable bend
 hermes bend doctor
-hermes bend verify /absolute/path/to/project
+hermes bend verify /absolute/path/to/project --receipt receipt.json
 ```
 
 The independent plugin tree is published on
@@ -46,6 +46,7 @@ plugins:
     bend:
       settings:
         executable: /absolute/path/to/bend/bin/bend
+        dependency_cache: /absolute/path/to/.bend/lib  # optional; host default when empty
 ```
 
 `doctor` checks version and installation identity. `verify` builds a private
@@ -83,10 +84,35 @@ tests and review the actual laws alongside proof evidence.
 CLI exit codes: 0 for PASS/doctor success, 1 for a non-passing verdict, 2 for an
 adapter/setup error. The plugin never edits project files or repairs proofs.
 Local import closures are snapshotted before execution; symlink imports and paths
-outside the project are rejected. Hub imports are currently rejected rather than
-accepted without reproducible dependency evidence. Vendor them locally first.
+outside the project are rejected. Named and content-hash Hub imports are supported
+from an existing Bend cache. The plugin recomputes each complete package's sorted
+publication manifest, checks its content address, captures transitive imports and
+name bindings, and records all identities. Missing or altered packages fail
+closed. Fetch packages with Bend first; verification itself never downloads them.
+The captured package cache is private and rechecked after the verdict.
 Ambient Bend kernel/Hub/cache overrides and unrelated credentials are not passed
 to the verifier; telemetry is disabled.
+
+## Receipts and offline replay
+
+Every verdict saves the most recent metadata receipt in the active profile's
+native plugin state. No project source is stored there. A storage failure is
+reported explicitly via `receipt_saved: false`; it never masquerades as saved
+evidence. Use `--receipt` to retain multiple JSON receipts; export refuses to
+overwrite an existing file.
+
+```sh
+hermes bend last-receipt
+hermes bend replay receipt.json --project /absolute/path/to/project --receipt replay.json
+```
+
+Replay requires the original local inputs, the captured Hub packages/name
+bindings in the configured cache, and exactly matching Bend installation and
+kernel identities. It runs verification again without fetching dependencies.
+Changed inputs/installations return `receipt_stale`; a different rebuilt kernel
+or verdict returns `replay_mismatch`. A JSON receipt is metadata, not an archive
+of project sources or a signed attestation. Copy the project and cache separately
+when moving machines. It carries no execution grant.
 
 ## Zer0 boundary and provenance
 
@@ -116,3 +142,14 @@ HERMES_PYTHON=/path/to/hermes/test-env/bin/python \
 Tests load the plugin through Hermes's real discovery path. Real-kernel smoke:
 install this checkout into a disposable `HERMES_HOME`, put Bend and Lean on PATH,
 then run `hermes bend verify examples/basic` and check the returned scope and hashes.
+The repeatable `scripts/smoke.py` exercises real plugin discovery/dispatch,
+valid and invalid proofs, named Hub snapshots, replay, per-profile kernels and
+A→B→A receipt isolation:
+
+```sh
+python scripts/smoke.py --hermes-root /path/to/hermes --bend /path/to/bend/bin/bend \
+  --lean-bin /path/to/lean/bin --output /tmp/bend-smoke.json
+```
+
+Add `--aodl-project /path/to/z0intelligence/bend/aodl_gate` to also verify the
+existing downstream gate's proof project. The smoke creates disposable profiles.

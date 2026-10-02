@@ -1,0 +1,64 @@
+name: Native Bend integration
+on:
+  push:
+    branches: [plugins/bend-native]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          path: plugin
+      - name: Native Hermes admission and contract tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$RUNNER_TEMP/hermes"
+          cd "$RUNNER_TEMP/hermes"
+          git fetch --depth=1 https://github.com/NousResearch/hermes-agent.git 50a6abca7cff83afb0ebfe930a77c67311aa1044
+          git checkout --detach FETCH_HEAD
+          export HERMES_HOME="$RUNNER_TEMP/hermes-home"
+          export HERMES_RUNTIME_DIR="$RUNNER_TEMP/hermes-runtime"
+          set +euo pipefail
+          source ./activate
+          activated=$?
+          set -euo pipefail
+          test "$activated" = 0
+          hermes plugins validate "$GITHUB_WORKSPACE/plugin"
+          scripts/run_tests.sh "$GITHUB_WORKSPACE/plugin/tests" --import-mode=importlib
+          echo "TEST_PYTHON=$__HERMES_TEST_PYTHON" >> "$GITHUB_ENV"
+      - name: Install pinned Linux Bend and Lean for live smoke
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl -fsSL --retry 3 https://github.com/bendlang/bend/releases/download/v2.0.34/bend-2.0.34-linux-x64.tar.gz -o bend.tar.gz
+          echo '78106a97af242429dcc057258eb8d10f69cddebcd5e263022185a52d003e09bf  bend.tar.gz' | sha256sum -c -
+          tar -xzf bend.tar.gz
+          curl -fsSL --retry 3 https://github.com/leanprover/lean4/releases/download/v4.34.0/lean-4.34.0-linux.tar.zst -o lean.tar.zst
+          echo 'caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b  lean.tar.zst' | sha256sum -c -
+          tar --zstd -xf lean.tar.zst
+      - name: Real kernel, Hub cache, replay and profile isolation
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          "$TEST_PYTHON" "$GITHUB_WORKSPACE/plugin/scripts/smoke.py" \
+            --hermes-root "$RUNNER_TEMP/hermes" \
+            --bend "$RUNNER_TEMP/bend/bin/bend" \
+            --lean-bin "$RUNNER_TEMP/lean-4.34.0-linux/bin" \
+            --output "$RUNNER_TEMP/bend-smoke.json"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always() && runner.os == 'Linux'
+        with:
+          name: bend-native-receipts
+          path: ${{ runner.temp }}/bend-smoke.json
+          if-no-files-found: warn
