@@ -1,7 +1,7 @@
 name: Native Bend integration
 on:
   push:
-    branches: [plugins/bend-native]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read

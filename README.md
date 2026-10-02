@@ -14,17 +14,16 @@ release layout including its adjacent `bend2` directory; a shell wrapper is not
 an identifiable verifier installation.
 
 ```sh
-hermes plugins install kvnloo/hermes-agent --ref <reviewed-40-character-SHA>
+hermes plugins install kvnloo/bend-native
 hermes plugins enable bend
 hermes bend doctor
 hermes bend verify /absolute/path/to/project --receipt receipt.json
 ```
 
-The independent plugin tree is published on
-[`kvnloo/hermes-agent:plugins/bend-native`](https://github.com/kvnloo/hermes-agent/tree/plugins/bend-native).
-Use the exact SHA from the catalog PR; after catalog admission, `hermes plugins install bend`
-selects that reviewed revision. This distribution branch contains the plugin at its root,
-not a modified Hermes installation. It can move to a dedicated repository without code changes.
+The standalone plugin lives in [`kvnloo/bend-native`](https://github.com/kvnloo/bend-native).
+For a reproducible installation, append `--ref <reviewed-40-character-SHA>`.
+The pending Hermes catalog entry pins an exact revision; after catalog admission,
+`hermes plugins install bend` selects that reviewed revision.
 
 Start a new Hermes conversation after enabling the plugin, then ask:
 
@@ -156,7 +155,7 @@ Use an existing Hermes checkout and its test interpreter:
 
 ```sh
 HERMES_PYTHON=/path/to/hermes/test-env/bin/python \
-  /path/to/hermes/scripts/run_tests.sh /path/to/hermes-bend/tests --import-mode=importlib
+  /path/to/hermes/scripts/run_tests.sh /path/to/bend-native/tests --import-mode=importlib
 ```
 
 Tests load the plugin through Hermes's real discovery path. Real-kernel smoke:
@@ -173,3 +172,8 @@ python scripts/smoke.py --hermes-root /path/to/hermes --bend /path/to/bend/bin/b
 
 Add `--aodl-project /path/to/z0intelligence/bend/aodl_gate` to also verify the
 existing downstream gate's proof project. The smoke creates disposable profiles.
+
+## License
+
+This repository uses [AGPL-3.0](LICENSE). The inherited Hermes material retains
+its original [MIT copyright and permission notice](LICENSES/hermes-MIT.txt).
