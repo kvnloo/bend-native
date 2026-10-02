@@ -1,17 +1,24 @@
-"""Downstream Bend proof-verification plugin."""
+"""Native Bend integration, distributed independently of Hermes core."""
 
 from __future__ import annotations
 
-from .tools import BEND_VERIFY_SCHEMA, check_bend_available, handle_bend_verify
+from pathlib import Path
+
+from .tools import BEND_VERIFY_SCHEMA, BendService
+from .cli import run, setup_parser
 
 
 def register(ctx) -> None:
-    """Register the minimal Bend verification surface."""
+    service = BendService(ctx)
     ctx.register_tool(
         name="bend_verify",
         toolset="bend",
         schema=BEND_VERIFY_SCHEMA,
-        handler=handle_bend_verify,
-        check_fn=check_bend_available,
+        handler=service.handle,
         emoji="✓",
     )
+    ctx.register_cli_command(name="bend", help="Bend proof verification",
+                             setup_fn=setup_parser, handler_fn=lambda args: run(service, args))
+    ctx.register_skill("workflow", Path(__file__).parent / "skills/bend-workflow/SKILL.md",
+                       description="Write Bend laws and proofs, verify edits, and interpret scoped receipts.")
+    ctx.on_unload(service.close)

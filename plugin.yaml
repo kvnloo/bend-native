@@ -1,6 +1,6 @@
 name: bend
-version: 0.1.0
-description: "Downstream experiment: verify Bend proofs from Hermes with the proven BendTT kernel."
+version: 0.2.0
+description: "Native Bend proof verification with captured inputs and explicit evidence scope."
 author: kvnloo
 kind: standalone
 platforms:
@@ -8,3 +8,11 @@ platforms:
   - macos
 provides_tools:
   - bend_verify
+provides_commands:
+  - bend
+config_schema:
+  executable:
+    type: str
+    default: bend
+    label: Bend executable
+    description: Installed Bend command or absolute binary path on the Hermes host.

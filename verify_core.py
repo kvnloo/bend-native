@@ -1,4 +1,4 @@
-"""Pure-stdlib Bend proof verification core used by the Hermes plugin and evals."""
+"""Bend verdicts over a captured local import closure."""
 from __future__ import annotations
 
 from functools import lru_cache
@@ -44,63 +44,53 @@ class BendVerifyError(RuntimeError):
 
 
 def run_process(
-    command: list[str],
-    *,
-    cwd: str | None = None,
-    env: dict[str, str] | None = None,
-    capture_output: bool = True,
-    text: bool = True,
-    timeout: float | None = None,
-    check: bool = False,
+    command: list[str], *, cwd=None, env=None, capture_output=True, text=True,
+    timeout=None, check=False,
 ) -> subprocess.CompletedProcess:
-    """Run a child with bounded lifetime, reaping its process tree on POSIX."""
-    if os.name != "posix":
-        return subprocess.run(
-            command,
-            cwd=cwd,
-            env=env,
-            capture_output=capture_output,
-            text=text,
-            timeout=timeout,
-            check=check,
-        )
+    """Drain both pipes with finite memory and reap the process group on any abort."""
+    import selectors
 
-    process = subprocess.Popen(
-        command,
-        cwd=cwd,
-        env=env,
-        stdout=subprocess.PIPE if capture_output else None,
-        stderr=subprocess.PIPE if capture_output else None,
-        text=text,
-        start_new_session=True,
-    )
+    if os.name != "posix":
+        raise BendVerifyError("unsupported_platform", "Bend verification supports Linux and macOS")
+    deadline = time.monotonic() + (timeout or _TIMEOUT_SECONDS)
+    output = {"stdout": bytearray(), "stderr": bytearray()}
+    process = subprocess.Popen(command, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
+                               stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                               start_new_session=True)
     try:
-        stdout, stderr = process.communicate(timeout=timeout)
-    except subprocess.TimeoutExpired as exc:
+        with selectors.DefaultSelector() as selector:
+            for name in output:
+                stream = getattr(process, name)
+                os.set_blocking(stream.fileno(), False)
+                selector.register(stream, selectors.EVENT_READ, name)
+            while selector.get_map():
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise subprocess.TimeoutExpired(command, timeout,
+                        output=bytes(output["stdout"]), stderr=bytes(output["stderr"]))
+                for key, _ in selector.select(min(remaining, 0.1)):
+                    chunk = os.read(key.fd, 65536)
+                    if not chunk:
+                        selector.unregister(key.fileobj)
+                        continue
+                    output[key.data].extend(chunk)
+                    if len(output[key.data]) > 1024 * 1024:
+                        raise BendVerifyError("output_limit", "Bend output exceeded 1 MiB per stream")
+            process.wait(timeout=max(0.001, deadline - time.monotonic()))
+    finally:
+        # The leader may already have exited while descendants still hold pipes.
         try:
-            os.killpg(process.pid, signal.SIGTERM)
+            os.killpg(process.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
-        try:
-            stdout, stderr = process.communicate(timeout=1)
-        except subprocess.TimeoutExpired:
-            try:
-                os.killpg(process.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
-            stdout, stderr = process.communicate()
-        raise subprocess.TimeoutExpired(
-            command,
-            timeout,
-            output=stdout if stdout is not None else exc.output,
-            stderr=stderr if stderr is not None else exc.stderr,
-        ) from exc
-
+        process.wait()
+        process.stdout.close()
+        process.stderr.close()
+    stdout = bytes(output["stdout"]).decode("utf-8", errors="replace")
+    stderr = bytes(output["stderr"]).decode("utf-8", errors="replace")
     result = subprocess.CompletedProcess(command, process.returncode, stdout, stderr)
-    if check and process.returncode != 0:
-        raise subprocess.CalledProcessError(
-            process.returncode, command, output=stdout, stderr=stderr
-        )
+    if check and result.returncode:
+        raise subprocess.CalledProcessError(result.returncode, command, stdout, stderr)
     return result
 
 
@@ -118,7 +108,13 @@ def bounded(value: str | bytes | None) -> str:
 
 def clean_env(source: dict[str, str] | None = None) -> dict[str, str]:
     """Remove project-selectable Bend trust roots from a verification child."""
-    env = dict(os.environ if source is None else source)
+    source = os.environ if source is None else source
+    env = {key: value for key, value in source.items() if key in {
+        "PATH", "HOME", "ELAN_HOME", "TMPDIR", "TMP", "TEMP", "LANG", "LC_ALL",
+        "SYSTEMROOT", "SystemRoot", "WINDIR", "PATHEXT",
+        "HTTP_PROXY", "HTTPS_PROXY", "NO_PROXY", "http_proxy", "https_proxy", "no_proxy",
+        "SSL_CERT_FILE", "SSL_CERT_DIR",
+    }}
     for key in _BEND_ENV_DENY:
         env.pop(key, None)
     env["BEND_NO_TELEMETRY"] = "1"
@@ -242,6 +238,17 @@ def file_identity_sha256(path: str) -> str | None:
         return None
 
 
+def runtime_identity(bend: str) -> dict[str, str]:
+    """The compiled CLI and its adjacent data files are one verifier installation."""
+    root = Path(bend).resolve().parent.parent
+    paths = {"bend": Path(bend), "base.bend": root / "bend2/base.bend",
+             "bendtt.lean": root / "bend2/bendtt.lean"}
+    identity = {name: file_identity_sha256(str(path)) for name, path in paths.items()}
+    if not all(identity.values()):
+        raise BendVerifyError("invalid_installation", "Use an installed Bend binary with adjacent bend2/base.bend and bend2/bendtt.lean")
+    return identity
+
+
 def kernel_cache_identity(bend: str, env: dict[str, str]) -> dict[str, Any]:
     """Describe Bend's expected cached BendTT kernel without executing it."""
     try:
@@ -270,7 +277,10 @@ def _read_stable(path: Path) -> bytes:
     for _ in range(3):
         try:
             before = path.stat()
-            data = path.read_bytes()
+            if before.st_size > _MAX_INPUT_BYTES:
+                raise BendVerifyError("input_too_large", "Bend input exceeds the capture budget")
+            with path.open("rb") as handle:
+                data = handle.read(_MAX_INPUT_BYTES + 1)
             after = path.stat()
         except OSError as exc:
             raise BendVerifyError(
@@ -298,14 +308,20 @@ def _local_imports(text: str) -> list[str]:
             break
         match = _IMPORT_RE.fullmatch(line)
         if match is None:
-            continue  # Bend itself will reject the malformed line in the snapshot.
+            raise BendVerifyError("unsupported_import", "Cannot snapshot this Bend import syntax")
         target, alias = match.groups()
-        if alias is None:
-            continue  # only valid alias-free import is Base; Bend validates that.
-        if _HASH_IMPORT_RE.match(target) or _NAMED_IMPORT_RE.match(target):
+        if target == "Base" and alias is None:
             continue
-        if target.endswith(".bend"):
+        if _HASH_IMPORT_RE.match(target) or _NAMED_IMPORT_RE.match(target):
+            raise BendVerifyError(
+                "unsupported_import",
+                "Bend Hub dependencies need a captured dependency closure; "
+                "vendor them as local .bend imports before verification",
+            )
+        if target.endswith(".bend") and alias is not None:
             imports.append(target)
+        else:
+            raise BendVerifyError("unsupported_import", f"Cannot snapshot import: {target}")
     return imports
 
 
@@ -418,6 +434,7 @@ def verify(
     source_env: dict[str, str] | None = None,
     kernel_override: str | None = None,
     kernel_expected_sha256: str | None = None,
+    runtime_expected: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """Verify an immutable local-input snapshot with an isolated Bend package cache."""
     project, proof, relative = resolve_proof(project_dir, proof_file)
@@ -428,6 +445,9 @@ def verify(
         raise BendVerifyError("bend_not_found", "Bend CLI not found on PATH")
 
     env = clean_env(source_env)
+    runtime_before = runtime_identity(bend)
+    if runtime_expected is not None and runtime_before != runtime_expected:
+        raise BendVerifyError("bend_integrity", "Bend installation changed; restart Hermes before using it")
     version = query_version(bend, env, runner=runner)
     version_string = version_text(version)
     bend_sha256 = file_identity_sha256(bend)
@@ -482,7 +502,7 @@ def verify(
 
         child_env = dict(env)
         child_env["BEND_LIB"] = str(bend_lib)
-        command = [bend, relative.as_posix(), "--verdict"]
+        command = [bend, "./" + relative.as_posix(), "--verdict"]
         try:
             result = runner(
                 command,
@@ -540,12 +560,24 @@ def verify(
     else:
         execution_verdict = "fail"
 
+    runtime_after = runtime_identity(bend)
     verdict = (
         "unstable"
-        if source_changed or kernel_changed or bend_changed
+        if source_changed or kernel_changed or bend_changed or runtime_after != runtime_before
         else execution_verdict
     )
     result_payload = {
+        "schema_version": 1,
+        "runtime_identity": runtime_before,
+        "runtime_changed_during_verify": runtime_after != runtime_before,
+        "verification_scope": "bend-emitted-book",
+        "source_semantics_attested": False,
+        "limitations": [
+            "A kernel verdict checks Bend's emitted book, not source/compiler equivalence "
+            "or whether the laws capture the user's intended behavior.",
+            "Bend 2.0.32–2.0.34 have a documented translation limitation: "
+            "https://github.com/bendlang/bend/issues/1212",
+        ],
         "success": verdict == "pass",
         "verdict": verdict,
         "execution_verdict": execution_verdict,
