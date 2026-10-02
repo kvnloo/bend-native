@@ -3,7 +3,9 @@
 A native Hermes plugin for the edit → prove → verify loop in Bend projects.
 Hermes orchestrates; Bend checks the proof. This plugin adds one model tool,
 `bend_verify`, the `hermes bend` CLI, and the `bend:workflow` skill without changing
-Hermes core or adding dependencies to every user's installation.
+Hermes core or adding dependencies to every user's installation. Version 0.4 also
+adds `hermes z0`, the `bend:z0-stack` skill, and optional downstream z0 observation
+and State Packet composition; observation defaults to off.
 
 ## Install
 
@@ -177,3 +179,97 @@ existing downstream gate's proof project. The smoke creates disposable profiles.
 
 This repository uses [AGPL-3.0](LICENSE). The inherited Hermes material retains
 its original [MIT copyright and permission notice](LICENSES/hermes-MIT.txt).
+
+## Bundled z0intelligence stack (0.4)
+
+This package now composes the existing downstream Hermes observer, API-attempt
+shadow scorer/evaluator, z0 State Packet reducer and DecisionOpportunity builder.
+Their source files are copied **unchanged**, with commit pins and SHA-256 hashes
+in [stack/sources.json](stack/sources.json). The native bridge owns configuration,
+profile isolation, bounded delivery and subprocess lifetime; z0 owns semantics.
+The original z0 MIT notice is retained in [LICENSES](LICENSES/z0intelligence-MIT.txt).
+
+```sh
+hermes z0 status
+hermes z0 state /absolute/path/to/repository
+hermes z0 opportunity /absolute/path/to/repository 'What is the current branch?'
+```
+
+State and opportunity commands use the bundled standard-library reducers in an
+isolated child, with a 30-second deadline and 1 MiB output limit. They read Git and
+repository documents, preserve source revisions and invalidate changed packets.
+Personal transcript and resource adapters, GitHub/network retrieval and models
+are excluded from this default projection. The deterministic gate is a shadow
+baseline, not a permission to execute or a learned policy.
+
+Enable optional observation in the active Hermes profile's `config.yaml`:
+
+```yaml
+plugins:
+  enabled: [bend]
+  entries:
+    bend:
+      settings:
+        stack_mode: shadow
+        stack_opportunities: true
+        stack_service_port: 11501
+```
+
+`stack_mode` defaults to `off`. Shadow hooks always return `None`; they do not
+change prompts, tools, provider choices or the active context engine. Metadata
+is buffered in a bounded queue and written under that profile's
+`plugin-data/bend/z0/`. Ambient lab raw-capture flags cannot enable raw request,
+response or tool-content persistence here. `stack_opportunities` is separately
+opt-in: it stores user requests up to 8,192 characters in opportunity records and
+runs the existing reducer in the background. System/cron/subagent messages are
+excluded. Queue exhaustion drops observations; report exposes delivery errors.
+Unload waits at most two seconds; accepted background projections can finish
+within their existing 30-second subprocess deadline.
+
+API-attempt examples preserve the existing `session_id`/`turn_id` trace and
+physical request identity. `post_llm_call` records observed behavior, not an
+optimal-action label. Bend tool events attach scoped receipt references on the
+same trace; proof PASS never becomes whole-task success or an authority grant.
+
+```sh
+hermes z0 report --examples-output examples.jsonl
+hermes z0 score examples.jsonl --backend laya_421m \
+  --z0-root /path/to/z0intelligence --z0-home /path/to/.z0int --python /path/to/z0-venv/bin/python > scored.jsonl
+hermes z0 evaluate scored.jsonl
+```
+
+Example exports refuse overwrite. Scoring explicitly invokes the existing z0
+DecisionBackend in its own Python environment; install/configure its dependencies
+and models using that repository's onboarding instructions. Enabling the plugin never downloads models. Explicit scoring follows the chosen
+backend's model loading behavior and uses the explicitly selected `--z0-home`. Scores are JSONL, have a 120-second child
+deadline and a 1 MiB output limit; split large datasets into bounded batches.
+Evaluation uses the existing Brier/log-loss/calibration implementation and always
+reports `promotion_ready: false`. API failure evidence is scoped to API failure.
+
+The larger execution stack remains a **single canonical z0 runtime** rather than
+another copy of its authority, model services, quota accounting or receipt ledger:
+
+```sh
+# Start/configure the existing z0 service according to its repository docs.
+hermes z0 runtime providers
+hermes z0 runtime route --request-file canonical-request.json
+hermes z0 runtime worker --request-file explicit-worker-request.json
+```
+
+The bridge calls the existing loopback `/v1/providers`, `/v1/intelligence`,
+`/v1/worker`, `/v1/automatic` and `/v1/automatic/consumed` API contracts unchanged.
+**`route` can execute an admitted function or worker**, as in z0's existing
+`route_worker`; it is not a dry run. Submit explicit stable trace identity and
+remote consent using the service's documented JSON schema. Execution mutations
+require a request file. HTTP errors do not trigger retries, fallback providers or
+synthetic success. A timed-out execution has an unknown outcome until reconciled
+against z0's canonical receipt using the same identity.
+
+The tested service revision is pinned in the source inventory. A live downstream
+service smoke verified provider discovery, `PARENT_ONLY` admission and replay of
+the same request without execution. Configured model inference requires that
+separate runtime; this release does not claim model/task-quality qualification.
+OptMem/global belief writing, EvolutionLab promotion, alternate context engines,
+SoL-Pi private engine wrappers and scheduler replacement are not enabled by this
+composition. They have distinct ownership and qualification requirements in the
+RFCs and can remain companion components without core monkeypatches.

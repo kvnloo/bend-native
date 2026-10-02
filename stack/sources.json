@@ -1,0 +1,81 @@
+{
+  "schema": "bend.z0_stack_sources.v1",
+  "files": [
+    {
+      "repository": "https://github.com/kvnloo/hermes-agent",
+      "revision": "0d60437a3329448bb9d2992e34cec81b0afd36df",
+      "source": "lab/z0_hermes_observer/__init__.py",
+      "bundled": "stack/observer/__init__.py",
+      "sha256": "23746e292e673af16f8cd86bbe196de06f09015fe9eb6b4dd0ae5be0cea4e4de"
+    },
+    {
+      "repository": "https://github.com/kvnloo/hermes-agent",
+      "revision": "0d60437a3329448bb9d2992e34cec81b0afd36df",
+      "source": "lab/z0_hermes_observer/shadow_api_failure.py",
+      "bundled": "stack/observer/shadow_api_failure.py",
+      "sha256": "32acbfe3be090cb5884606b00e5cc83124e97b4499602018c7bf2d144babc4f7"
+    },
+    {
+      "repository": "https://github.com/kvnloo/hermes-agent",
+      "revision": "0d60437a3329448bb9d2992e34cec81b0afd36df",
+      "source": "lab/z0_hermes_observer/evaluate_shadow.py",
+      "bundled": "stack/observer/evaluate_shadow.py",
+      "sha256": "c86234ecb55df2daf10d554bb8ba3eab6835efb4a1a94ae98b4e3be0057e33a6"
+    },
+    {
+      "repository": "https://github.com/kvnloo/z0intelligence",
+      "revision": "f80da33700f1db2472571845c782928bd931e834",
+      "source": "src/z0int/__init__.py",
+      "bundled": "stack/vendor/z0int/__init__.py",
+      "sha256": "3fc24a862af53f48283e26b4fa4a885142c9ebc4d8007aa050b15701c0942ca4"
+    },
+    {
+      "repository": "https://github.com/kvnloo/z0intelligence",
+      "revision": "f80da33700f1db2472571845c782928bd931e834",
+      "source": "src/z0int/paths.py",
+      "bundled": "stack/vendor/z0int/paths.py",
+      "sha256": "fe2cca470385cf4ecb6e8d6909f87f8f8d9901fd8473e325024648eccc10bf16"
+    },
+    {
+      "repository": "https://github.com/kvnloo/z0intelligence",
+      "revision": "f80da33700f1db2472571845c782928bd931e834",
+      "source": "src/z0int/context_resolve.py",
+      "bundled": "stack/vendor/z0int/context_resolve.py",
+      "sha256": "04d3da59e850c6488613a5b23ee2e8312cb19d00c49a9d0fcde7696e04ac7c1c"
+    },
+    {
+      "repository": "https://github.com/kvnloo/z0intelligence",
+      "revision": "f80da33700f1db2472571845c782928bd931e834",
+      "source": "src/z0int/state_packet.py",
+      "bundled": "stack/vendor/z0int/state_packet.py",
+      "sha256": "1aef6c696a29003c630509f6e2a498060beee6b6c7a3bb0d64871badc7295c6f"
+    },
+    {
+      "repository": "https://github.com/kvnloo/z0intelligence",
+      "revision": "f80da33700f1db2472571845c782928bd931e834",
+      "source": "src/z0int/decision_opportunity.py",
+      "bundled": "stack/vendor/z0int/decision_opportunity.py",
+      "sha256": "6dc904d6089abe5ffb061c240296974718d4cd53fb992adbd2d245ac6d27ae8f"
+    },
+    {
+      "repository": "https://github.com/kvnloo/z0intelligence",
+      "revision": "f80da33700f1db2472571845c782928bd931e834",
+      "source": "harness-adapters/hermes-z0int-decisions/__init__.py",
+      "bundled": "stack/observer/decision_hooks.py",
+      "sha256": "77a5527f2ba30f5ae17191f9841a30c0e76d0680d4597ac62f8240c98d545d3a"
+    }
+  ],
+  "runtime": {
+    "repository": "https://github.com/kvnloo/z0intelligence",
+    "tested_revision": "0563ed7a52071cca63ccc91b8c9040207ad23e5d",
+    "transport": "existing intelligence_service HTTP v1; loopback only",
+    "ownership": [
+      "automatic admission",
+      "worker routing and execution",
+      "dispatch authority",
+      "canonical receipts",
+      "quota and provider economics"
+    ],
+    "bundled": false
+  }
+}

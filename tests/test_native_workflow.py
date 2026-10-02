@@ -137,3 +137,122 @@ def test_cached_hub_closure_is_content_addressed_and_replay_invalidates(installe
     with pytest.raises(verifier.BendVerifyError) as exc:
         verifier.capture_local_inputs(project, proof, str(cache))
     assert exc.value.code == 'dependency_integrity'
+
+
+def test_z0_stack_installed_hooks_state_and_profiles(installed, tmp_path, monkeypatch, capsys):
+    import subprocess
+    import time
+    manager, module, home = installed
+    command = manager._cli_commands['z0']
+    stack = command['handler_fn'].__closure__[0].cell_contents
+    assert 'bend:z0-stack' in manager._plugin_skills
+    assert manager.invoke_hook('pre_api_request', session_id='s', turn_id='t', api_request_id='a') == []
+    assert not stack.home().exists()  # default off
+    repo = tmp_path / 'project'
+    repo.mkdir()
+    subprocess.run(['git', 'init', str(repo)], check=True, capture_output=True)
+    (repo / 'README.md').write_text('# Current work\n\n- [ ] Integrate the stack\n')
+    monkeypatch.chdir(repo)
+    (home / 'config.yaml').write_text(yaml.safe_dump({'plugins': {'enabled': ['bend'], 'entries': {
+        'bend': {'settings': {'stack_mode': 'shadow', 'stack_opportunities': True}}}}}))
+    monkeypatch.setenv('Z0INT_HERMES_CAPTURE_SANITIZED_CONTENT', '1')
+    payload = dict(session_id='s', turn_id='t', api_request_id='a', api_call_count=1, platform='cli')
+    assert manager.invoke_hook('pre_llm_call', **payload, user_message='What is the current branch?') == []
+    assert manager.invoke_hook('pre_api_request', **payload, request={'secret': 'private-canary'}) == []
+    assert manager.invoke_hook('api_request_error', **payload, reason='timeout') == []
+    assert manager.invoke_hook('post_llm_call', **payload, conversation_history=[
+        {'role': 'user', 'content': 'private-canary'}, {'role': 'assistant', 'content': 'Done'}]) == []
+    assert manager.invoke_hook('post_tool_call', **payload, tool_name='bend_verify', result=json.dumps({
+        'receipt_id': 'proof-artifact', 'success': True, 'verification_scope': 'bend-emitted-book',
+        'source_semantics_attested': False, 'input_manifest_sha256': 'abc'})) == []
+    deadline = time.monotonic() + 15
+    while stack.pending.unfinished_tasks and time.monotonic() < deadline:
+        time.sleep(0.02)
+    assert stack.pending.unfinished_tasks == 0 and stack.error is None
+    report = stack.report()
+    assert report['events'] == 5
+    assert len(report['examples']) == 1 and report['examples'][0]['verified_outcome'] is True
+    assert report['verified_task_success'] is None
+    text = (stack.home() / 'events.jsonl').read_text()
+    assert 'private-canary' not in text
+    proof_row = json.loads(text.splitlines()[-1])
+    assert proof_row['bend_evidence']['receipt_id'] == 'proof-artifact'
+    assert proof_row['label_kind'] == 'scoped_proof_evidence_not_task_success'
+    record = json.loads((stack.home() / 'opportunities.jsonl').read_text())
+    assert record['opportunity']['trace']['trace_id'] == report['examples'][0]['identity']['trace_id']
+    assert record['opportunity']['authority']['grants'] == ['read']
+    assert record['opportunity']['expected_outcome']['verifier'] is None
+    first = stack.project(repo)['packet']
+    (repo / 'README.md').write_text('# Changed current work\n')
+    second = stack.project(repo)['packet']
+    assert first['packet_id'] != second['packet_id']
+    alternate = tmp_path / 'profile-b'
+    alternate.mkdir()
+    (alternate / 'config.yaml').write_text(yaml.safe_dump({'plugins': {'enabled': ['bend'], 'entries': {
+        'bend': {'settings': {'stack_mode': 'shadow'}}}}}))
+    token = set_hermes_home_override(alternate)
+    try:
+        assert manager.invoke_hook('on_session_start', session_id='other') == []
+        stack.project(repo)
+    finally:
+        reset_hermes_home_override(token)
+    stack.close()
+    assert (alternate / 'plugin-data/bend/z0/events.jsonl').exists()
+    assert stack.home() == home / 'plugin-data/bend/z0'
+    assert 'other' not in (stack.home() / 'events.jsonl').read_text()
+    parser = argparse.ArgumentParser()
+    command['setup_fn'](parser)
+    with pytest.raises(SystemExit) as stopped:
+        command['handler_fn'](parser.parse_args(['status']))
+    assert stopped.value.code == 0
+    assert json.loads(capsys.readouterr().out)['model_runtime_loaded'] is False
+
+
+def test_z0_bundled_source_integrity_and_evaluation(installed):
+    import hashlib
+    import importlib
+    _, module, _ = installed
+    root = Path(module.__file__).parent
+    sources = json.loads((root / 'stack/sources.json').read_text())
+    for source in sources['files']:
+        assert hashlib.sha256((root / source['bundled']).read_bytes()).hexdigest() == source['sha256']
+    evaluate = importlib.import_module(module.__name__ + '.stack.observer.evaluate_shadow').evaluate
+    result = evaluate([{'verified_outcome': True, 'decision': {'answers': [
+        {'question_id': 'api.attempt_will_fail', 'probabilities': {'true': 0.8}}]}}])
+    assert result['n'] == 1 and result['promotion_ready'] is False
+    assert result['brier'] == pytest.approx(0.04)
+
+
+def test_z0_runtime_uses_exact_contract_without_retries(installed):
+    import threading
+    from http.server import BaseHTTPRequestHandler, HTTPServer
+    from urllib.error import HTTPError
+    _, module, _ = installed
+    import importlib
+    Stack = importlib.import_module(module.__name__ + '.stack.bridge').Stack
+    requests = []
+
+    class Handler(BaseHTTPRequestHandler):
+        def log_message(self, *args):
+            pass
+
+        def do_POST(self):
+            requests.append((self.path, json.loads(self.rfile.read(int(self.headers['Content-Length'])))))
+            self.send_response(503)
+            self.end_headers()
+            self.wfile.write(b'{"error":"busy"}')
+
+    server = HTTPServer(('127.0.0.1', 0), Handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    ctx = type('Context', (), {'get_config': lambda self, key, default: server.server_port})()
+    stack = Stack(ctx)
+    request = {'harness': 'hermes', 'trace_id': 'stable-identity', 'allow_remote': False}
+    try:
+        with pytest.raises(HTTPError):
+            stack.runtime('worker', request)
+        assert requests == [('/v1/worker', request)]
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(2)

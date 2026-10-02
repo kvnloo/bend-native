@@ -1,5 +1,5 @@
 name: bend
-version: 0.3.2
+version: 0.4.0
 description: "Native Bend proof verification with captured inputs and explicit evidence scope."
 author: kvnloo
 kind: standalone
@@ -10,7 +10,37 @@ provides_tools:
   - bend_verify
 provides_commands:
   - bend
+  - z0
+provides_hooks:
+  - on_session_start
+  - pre_llm_call
+  - post_llm_call
+  - pre_api_request
+  - post_api_request
+  - api_request_error
+  - pre_auxiliary_call
+  - post_auxiliary_call
+  - pre_tool_call
+  - post_tool_call
+  - subagent_stop
+  - on_session_end
 config_schema:
+  stack_mode:
+    type: str
+    default: "off"
+    label: z0 stack mode
+    description: off or shadow. Shadow records metadata without changing prompts or actions.
+  stack_opportunities:
+    type: bool
+    default: false
+    label: Shadow DecisionOpportunities
+    description: Build source-backed opportunities for user turns in the background. Stores the bounded user request in private state.
+  stack_service_port:
+    type: int
+    default: 11501
+    label: Local z0 service port
+    description: Existing z0int intelligence service on 127.0.0.1. Used only by explicit runtime commands.
+
   executable:
     type: str
     default: bend
