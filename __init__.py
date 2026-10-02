@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .tools import BEND_VERIFY_SCHEMA, BendService
-from .cli import run, setup_parser
+from .service import BEND_VERIFY_SCHEMA, BendService
+from .commands import run, setup_parser
 
 
 def register(ctx) -> None:

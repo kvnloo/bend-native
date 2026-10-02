@@ -129,6 +129,26 @@ outcome decisions; Hermes executes tools; Bend checks proof evidence; z0 owns
 the repository map. No hook in this plugin grants execution authority, blocks
 unrelated work, changes the conversation's cached prompt, or mints task success.
 
+The [verified learning control loop](https://github.com/kvnloo/z0/issues/15)
+consumes this as a **verifier artifact**, not a second decision/outcome protocol.
+Existing Hermes observers and z0 adapters retain their session/trace/turn,
+opportunity and attempt identities. A consumer can attach the receipt file's
+content hash and location to its existing evidence references; it must validate
+the receipt's input/runtime identity and narrow evidence scope before crediting
+any particular outcome. This plugin does not automatically join or promote
+outcomes, write the lifelong event ledger, or update beliefs.
+
+Relevant contracts are [DecisionOpportunity](https://github.com/kvnloo/z0intelligence/issues/53),
+[independent outcome credit](https://github.com/kvnloo/z0intelligence/issues/54),
+[cross-harness identity](https://github.com/kvnloo/z0intelligence/issues/62), and
+[memory provenance](https://github.com/kvnloo/z0intelligence/issues/66).
+The original [adapter RFC](https://github.com/kvnloo/hermes-agent/issues/324)
+and its [kernel](https://github.com/kvnloo/hermes-agent/issues/388),
+[compiler qualification](https://github.com/kvnloo/hermes-agent/issues/389), and
+[dependency replay](https://github.com/kvnloo/hermes-agent/issues/390) follow-ups
+define the verification boundary. Automated edit gates or task-success claims
+need their own qualified evidence; enabling this plugin does not establish them.
+
 ## Development
 
 The runtime is Python's standard library plus Hermes's documented plugin APIs.

@@ -1,5 +1,5 @@
 name: bend
-version: 0.3.0
+version: 0.3.1
 description: "Native Bend proof verification with captured inputs and explicit evidence scope."
 author: kvnloo
 kind: standalone
