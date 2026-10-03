@@ -1,0 +1,7 @@
+ronics
+{"name": "computer_use", "arguments": {"action": "capture", "mode": "ax", "app": "Main.py"}}
+ronics
+{"name": "computer_use", "arguments": {"action": "click", "element": 1, "app": "Main.py"}}
+ronics
+{"name": "computer_use", "arguments": {"action": "capture", "mode": "ax", "app": "Main.py"}}
+DONE

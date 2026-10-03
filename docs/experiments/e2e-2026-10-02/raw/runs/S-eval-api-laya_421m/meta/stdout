@@ -1,0 +1,24 @@
+{
+  "schema": "z0int.hermes_shadow_eval.v1",
+  "question_id": "api.attempt_will_fail",
+  "backend": "laya",
+  "n": 178,
+  "positive_rate": 0.0,
+  "brier": 0.33097911876404496,
+  "base_rate_brier": 0.0,
+  "brier_improvement": -0.33097911876404496,
+  "log_loss": 0.8564451596250292,
+  "accuracy_at_0_5": 0.0,
+  "mean_latency_ms": 327.32555264635846,
+  "calibration_bins": [
+    {
+      "lo": 0.4,
+      "hi": 0.6000000000000001,
+      "n": 178,
+      "mean_probability": 0.5752426966292136,
+      "observed_rate": 0.0
+    }
+  ],
+  "promotion_ready": false,
+  "note": "Shadow evidence only; no runtime authority or promotion implied."
+}

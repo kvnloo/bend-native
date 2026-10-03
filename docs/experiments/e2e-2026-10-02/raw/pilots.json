@@ -1,0 +1,89 @@
+{
+  "note": "Pilots ran before PREREG commit ce1e2d85 to validate the harness; excluded from all denominators. pilot-bfix-01..03 iterated the Bend prompt (frozen before PREREG); P-cua_gtk3-01 exposed F-PM (computer_use backend unavailable on the PM generation); pilot-probe-mcp-01/02 diagnosed it; pilot-report-01 and pilot-score-laya-01 validated the scoring glue; pilot-bridge-01/02 validated the private service probe on 11523; pilot-kernel-01 validated the latency script (not timed, not reported).",
+  "runs": [
+    {
+      "run_id": "P-bend_contra-01",
+      "rc": 0
+    },
+    {
+      "run_id": "P-bend_contra-01-replay",
+      "rc": 2
+    },
+    {
+      "run_id": "P-bend_fix-04",
+      "rc": 0
+    },
+    {
+      "run_id": "P-bend_fix-04-replay",
+      "rc": 2
+    },
+    {
+      "run_id": "P-cua_browser-02",
+      "rc": 0
+    },
+    {
+      "run_id": "P-cua_gtk3-01",
+      "rc": 0
+    },
+    {
+      "run_id": "P-cua_gtk3-02",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-bfix-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-bfix-02",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-bfix-03",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-bridge-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-bridge-02",
+      "rc": 2
+    },
+    {
+      "run_id": "pilot-kernel-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-probe-mcp-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-probe-mcp-02",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-report-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-score-laya-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-z0opp-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-z0state-01",
+      "rc": 0
+    },
+    {
+      "run_id": "pilot-z0status-01",
+      "rc": 0
+    },
+    {
+      "run_id": "P-z0_opp-01",
+      "rc": 0
+    }
+  ]
+}

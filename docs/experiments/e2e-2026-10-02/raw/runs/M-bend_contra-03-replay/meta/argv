@@ -1,0 +1,9 @@
+-m
+hermes_cli.main
+bend
+replay
+$E2E/work/M-bend_contra-03.last_receipt.json
+--project
+$E2E/runs/M-bend_contra-03/cwd
+--receipt
+$E2E/runs/M-bend_contra-03-replay/cwd/replay.json

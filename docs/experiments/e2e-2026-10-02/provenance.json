@@ -1,0 +1,16 @@
+{
+ "schema": "bend_e2e.provenance.v1",
+ "packet_branch": "kvnloo/bend-native exp/e2e-20261002 (based on e85e65e5)",
+ "prereg_commit": "ce1e2d85f4de2e97449cee98294ceefb33f07bbd",
+ "prereg_amendment_commit": "9ca6e78",
+ "plugin": {"repo": "kvnloo/bend-native", "sha": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad", "changed_on_branch": false},
+ "hermes": {"branch": "exp/bend-stack-integration-20261002", "sha": "ad31bbf079f0ee559ce1b61c5f85178c4c3d9396", "base": "50a6abca7cff83afb0ebfe930a77c67311aa1044", "pushed_by_this_lane": false},
+ "bend_official": {"version": "2.0.34", "release_tarball_sha256": "78106a97af242429dcc057258eb8d10f69cddebcd5e263022185a52d003e09bf", "bin_bend": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934", "base_bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt_lean": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292", "compiled_kernel": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"},
+ "lean": {"version": "4.34.0", "release_tarball_sha256": "caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b", "lean": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550", "leanc": "68a45f8329e2d79133cdcc7b1fa494e37844282d7b5f8908ce1deda7cfdf161a"},
+ "model": {"name": "qwen2.5:7b-instruct", "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e", "server": "Ollama 0.35.0 user-local, 127.0.0.1:11500"},
+ "driver": {"version": "0.32.0", "sha256": "8b03796185055cc40c1a9ef0b2b4bbe9595a3eefa4f9a3aa64f34e5ce1974cd3"},
+ "z0intelligence": {"scoring": "6764ae784f66b902bd6c07e4f7f76848a409423a", "private_service": "6764ae784f66b902bd6c07e4f7f76848a409423a", "adapters_hermes_z0int": "6764ae78 (read-only import)"},
+ "scoring_models": {"laya_421m": "convaiinnovations/laya@7c76b622dfc5cac71b2dc1c29873efe2ce509a05", "julia_1": "SupersonicLabs/Julia-1@a85b1273", "nanojev_best_safetensors_sha256": "fff62d1412685c1714eaa386acb603f9690371fb3cc8ad03dc41319302597c28"},
+ "harness_sources": {"cua_oracle": "kvnloo/cua exp/stack-addr-20261002 2013aa36 docs/experiments/stack2-addr-2026-10-02/harness/oracle.py (sha256 70e8e49a50c9bdf66ab77a6be0d3cf2c87d6c5300b3c21d5d684ed85de229bd5), verbatim", "gtk3_fixture": "kvnloo/cua 2013aa36 libs/cua-driver/tests/fixtures/apps/linux/gtk3/main.py sha256 547b7bcab3e0a6098902c8ccc7d3f58e0dcb74616d31e4d03c8704e6445d4059 (not copied)", "jev_use_fixture": "kvnloo/cua 2013aa36 libs/cua-driver/examples/jev-use/fixture_server.py sha256 0ba2978f0c9a0d9877e1639650625203ab0158baf095e5da72c310b93081eadf (not copied)", "verification_needed_builder": "kvnloo/cua exp/stack-confirm-20261002 build_turn_examples.py (adapted, diff in harness header)", "question_id_evaluator": "kvnloo/hermes-agent b51c7a222e lab/z0_hermes_observer/evaluate_shadow.py blob c5f10f896a4eef23dad4adb928faaca31312399f"},
+ "counts": {"measured_runs": 60, "failopen_supplement_runs": 3, "latency_processes": 10, "pilots_excluded": 21}
+}

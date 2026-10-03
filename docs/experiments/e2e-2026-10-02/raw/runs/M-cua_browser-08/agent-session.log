@@ -1,0 +1,15 @@
+2026-10-03 03:59:27,941 INFO [20261003_035919_63babf] agent.turn_context: conversation turn: session=20261003_035919_63babf model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A Chrome window is open on this desktop; its app name for computer_use is 'Googl..."
+2026-10-03 03:59:32,312 INFO [20261003_035919_63babf] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3610 out=40 total=3650 latency=3.3s cache=1591/3610 (44%) id=chatcmpl-182
+2026-10-03 03:59:37,123 INFO [20261003_035919_63babf] agent.tool_executor: tool computer_use completed (4.64s, 1618 chars)
+2026-10-03 03:59:38,221 INFO [20261003_035919_63babf] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4384 out=33 total=4417 latency=1.1s cache=3624/4384 (83%) id=chatcmpl-388
+2026-10-03 03:59:41,892 INFO [20261003_035919_63babf] agent.tool_executor: tool computer_use completed (3.64s, 1082 chars)
+2026-10-03 03:59:43,176 INFO [20261003_035919_63babf] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4707 out=40 total=4747 latency=1.3s cache=4398/4707 (93%) id=chatcmpl-423
+2026-10-03 03:59:44,008 INFO [20261003_035919_63babf] agent.tool_executor: tool computer_use completed (0.81s, 3985 chars)
+2026-10-03 03:59:45,076 INFO [20261003_035919_63babf] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=6518 out=39 total=6557 latency=1.1s cache=4721/6518 (72%) id=chatcmpl-782
+2026-10-03 03:59:46,056 INFO [20261003_035919_63babf] agent.tool_executor: tool computer_use completed (0.97s, 705 chars)
+2026-10-03 03:59:46,565 INFO [20261003_035919_63babf] agent.conversation_loop: API call #5: model=qwen2.5:7b-instruct provider=custom in=6757 out=29 total=6786 latency=0.5s cache=6556/6757 (97%) id=chatcmpl-827
+2026-10-03 03:59:47,490 INFO [20261003_035919_63babf] agent.tool_executor: tool computer_use completed (0.90s, 841 chars)
+2026-10-03 03:59:47,700 INFO [20261003_035919_63babf] agent.conversation_loop: API call #6: model=qwen2.5:7b-instruct provider=custom in=7058 out=2 total=7060 latency=0.2s cache=6785/7058 (96%) id=chatcmpl-217
+2026-10-03 03:59:47,733 INFO [20261003_035919_63babf] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=6/12 budget=6/12 tool_turns=5 last_msg_role=assistant response_len=4 session=20261003_035919_63babf
+2026-10-03 03:59:47,811 INFO [20261003_035919_63babf] cli: CLI cleanup calling memory shutdown for session 20261003_035919_63babf with 12 message(s)
+2026-10-03 03:59:47,891 INFO [20261003_035919_63babf] cli: CLI cleanup calling memory shutdown for session 20261003_035919_63babf with 12 message(s)

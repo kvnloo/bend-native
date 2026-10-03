@@ -1,0 +1,6 @@
+bash
+-c
+mkdir -p "$HERMES_HOME/plugin-data/bend/z0" && cp "$1" "$HERMES_HOME/plugin-data/bend/z0/events.jsonl" && exec python -m hermes_cli.main z0 report --examples-output "$2"
+_
+$E2E/work/score/events.jsonl
+$E2E/work/score/api/examples.jsonl

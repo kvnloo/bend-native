@@ -1,0 +1,13 @@
+2026-10-03 03:57:28,786 INFO [20261003_035725_63beb0] agent.turn_context: conversation turn: session=20261003_035725_63beb0 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A Chrome window is open on this desktop; its app name for computer_use is 'Googl..."
+2026-10-03 03:57:31,293 INFO [20261003_035725_63beb0] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3604 out=40 total=3644 latency=2.0s cache=2003/3604 (56%) id=chatcmpl-242
+2026-10-03 03:57:32,887 INFO [20261003_035725_63beb0] agent.tool_executor: tool computer_use completed (1.52s, 3435 chars)
+2026-10-03 03:57:33,778 INFO [20261003_035725_63beb0] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=5224 out=42 total=5266 latency=0.9s cache=3618/5224 (69%) id=chatcmpl-165
+2026-10-03 03:57:34,668 INFO [20261003_035725_63beb0] agent.tool_executor: tool computer_use completed (0.88s, 841 chars)
+2026-10-03 03:57:35,379 INFO [20261003_035725_63beb0] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=5531 out=56 total=5587 latency=0.7s cache=5238/5531 (95%) id=chatcmpl-446
+2026-10-03 03:57:36,375 INFO [20261003_035725_63beb0] agent.tool_executor: tool computer_use completed (0.98s, 705 chars)
+2026-10-03 03:57:37,135 INFO [20261003_035725_63beb0] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5778 out=35 total=5813 latency=0.7s cache=5545/5778 (96%) id=chatcmpl-27
+2026-10-03 03:57:38,046 INFO [20261003_035725_63beb0] agent.tool_executor: tool computer_use completed (0.89s, 841 chars)
+2026-10-03 03:57:38,193 INFO [20261003_035725_63beb0] agent.conversation_loop: API call #5: model=qwen2.5:7b-instruct provider=custom in=6085 out=2 total=6087 latency=0.1s cache=5812/6085 (96%) id=chatcmpl-119
+2026-10-03 03:57:38,205 INFO [20261003_035725_63beb0] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=5/12 budget=5/12 tool_turns=4 last_msg_role=assistant response_len=4 session=20261003_035725_63beb0
+2026-10-03 03:57:38,256 INFO [20261003_035725_63beb0] cli: CLI cleanup calling memory shutdown for session 20261003_035725_63beb0 with 10 message(s)
+2026-10-03 03:57:38,288 INFO [20261003_035725_63beb0] cli: CLI cleanup calling memory shutdown for session 20261003_035725_63beb0 with 10 message(s)

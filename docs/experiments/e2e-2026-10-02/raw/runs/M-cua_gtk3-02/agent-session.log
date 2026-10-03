@@ -1,0 +1,11 @@
+2026-10-03 03:44:59,337 INFO [20261003_034448_d1dc0c] agent.turn_context: conversation turn: session=20261003_034448_d1dc0c model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 03:45:03,828 INFO [20261003_034448_d1dc0c] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=3.5s cache=1591/3523 (45%) id=chatcmpl-339
+2026-10-03 03:45:09,714 INFO [20261003_034448_d1dc0c] agent.tool_executor: tool computer_use completed (5.59s, 1813 chars)
+2026-10-03 03:45:11,178 INFO [20261003_034448_d1dc0c] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=1.4s cache=3537/4403 (80%) id=chatcmpl-147
+2026-10-03 03:45:11,596 INFO [20261003_034448_d1dc0c] agent.tool_executor: tool computer_use completed (0.38s, 469 chars)
+2026-10-03 03:45:12,335 INFO [20261003_034448_d1dc0c] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=28 total=4616 latency=0.6s cache=4417/4588 (96%) id=chatcmpl-48
+2026-10-03 03:45:12,883 INFO [20261003_034448_d1dc0c] agent.tool_executor: tool computer_use completed (0.49s, 1813 chars)
+2026-10-03 03:45:13,335 INFO [20261003_034448_d1dc0c] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=3 total=5471 latency=0.4s cache=4615/5468 (84%) id=chatcmpl-921
+2026-10-03 03:45:13,397 INFO [20261003_034448_d1dc0c] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=4/12 budget=4/12 tool_turns=3 last_msg_role=assistant response_len=5 session=20261003_034448_d1dc0c
+2026-10-03 03:45:13,508 INFO [20261003_034448_d1dc0c] cli: CLI cleanup calling memory shutdown for session 20261003_034448_d1dc0c with 8 message(s)
+2026-10-03 03:45:13,610 INFO [20261003_034448_d1dc0c] cli: CLI cleanup calling memory shutdown for session 20261003_034448_d1dc0c with 8 message(s)

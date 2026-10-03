@@ -1,0 +1,10 @@
+-m
+hermes_cli.main
+chat
+-Q
+-t
+bend,file
+--max-turns
+16
+-q
+The Bend project at $E2E/runs/M-bend_contra-01/cwd has an agreed specification in LAWS.bend, proofs in PROOF.bend and an implementation in impl.bend. The proofs currently fail because impl.bend has a bug. Only edit impl.bend; LAWS.bend and PROOF.bend must not change. Check your work with the bend_verify tool (project_dir=$E2E/runs/M-bend_contra-01/cwd). If bend_verify does not return verdict pass, read its error output, fix impl.bend and call bend_verify again. When you are done, reply with exactly one word: VERIFIED if your last bend_verify call returned verdict pass, otherwise NOT_VERIFIED.

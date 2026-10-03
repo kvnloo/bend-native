@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "Command '['$E2E/bin/z0-python.sh', '$BEND_LANE/template/home/.hermes/plugins/bend/stack/score_worker.py', '$E2E/runs/S2-api-julia_1-009/tmp/bend-z0-score-txhkdo0f/request.json']' returned non-zero exit status 1.",
+  "code": "stack_error"
+}

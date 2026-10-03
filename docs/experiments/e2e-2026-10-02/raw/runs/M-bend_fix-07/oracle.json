@@ -1,0 +1,19 @@
+{
+ "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+ "files": {
+  "LAWS.bend": "df83413f8113a8d641b7cae5667dd416f996c286f38297a6fea291cb8bbc0a72",
+  "PROOF.bend": "0375e42ee4176f4b0b544ffa2d25143c1d1a7e8c4141c90dce0fe40984f4ea11",
+  "impl.bend": "b3bd044fe3f9e2deb50ae90767454b1a20f53e049ef3c20f2488004561ad8bfb"
+ },
+ "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "kernel_sha256_before": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "laws_sha256": "df83413f8113a8d641b7cae5667dd416f996c286f38297a6fea291cb8bbc0a72",
+ "laws_unchanged": true,
+ "rc": 1,
+ "schema": "bend_e2e.oracle.v1",
+ "stderr": "SOME PROOFS FAIL\nError:\n- expected : 3n\n- observed : 6n\nLocation: Laws.double_three\n7 | def Laws.double_three():\n8>|   {==}\n  |   ^^^^\n9 | \n",
+ "stdout": "",
+ "timed_out": false,
+ "verdict": "fail",
+ "wall_s_incidental": 0.134
+}

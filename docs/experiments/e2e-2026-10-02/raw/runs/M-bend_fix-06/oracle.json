@@ -1,0 +1,19 @@
+{
+ "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+ "files": {
+  "LAWS.bend": "df83413f8113a8d641b7cae5667dd416f996c286f38297a6fea291cb8bbc0a72",
+  "PROOF.bend": "0375e42ee4176f4b0b544ffa2d25143c1d1a7e8c4141c90dce0fe40984f4ea11",
+  "impl.bend": "06a377317d80398fdaebb3ab2dde3d84d6a007986428c539c7933af7592af9a1"
+ },
+ "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "kernel_sha256_before": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "laws_sha256": "df83413f8113a8d641b7cae5667dd416f996c286f38297a6fea291cb8bbc0a72",
+ "laws_unchanged": true,
+ "rc": 0,
+ "schema": "bend_e2e.oracle.v1",
+ "stderr": "",
+ "stdout": "ALL PROOFS CHECK\n",
+ "timed_out": false,
+ "verdict": "pass",
+ "wall_s_incidental": 0.139
+}

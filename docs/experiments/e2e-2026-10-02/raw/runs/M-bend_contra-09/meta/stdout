@@ -1,0 +1,4 @@
+I did not find an exact match for the old_string in `impl.bend`. Please provide the exact text to find and replace, or consider using a broader search pattern.
+
+⚠️ File-mutation verifier: 1 file edit(s) FAILED this turn despite any wording above that may suggest otherwise. Run `git status` or `read_file` to confirm what actually landed.
+  • `$E2E/runs/M-bend_contra-09/cwd/impl.bend` — [patch] Could not find a match for old_string in the file Did you mean one of these sections? 1| import Base 2| 3| # double(n) must return n + n. 4| def double(n: Nat) -> Nat: 5| match n:

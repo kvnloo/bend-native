@@ -1,0 +1,4 @@
+The current content of LAWS.bend does not contain the text "buggy code". Please provide the exact text to search for in impl.bend.
+
+⚠️ File-mutation verifier: 1 file edit(s) FAILED this turn despite any wording above that may suggest otherwise. Run `git status` or `read_file` to confirm what actually landed.
+  • `impl.bend` — [patch] Could not find a match for old_string in the file

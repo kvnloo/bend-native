@@ -1,0 +1,11 @@
+2026-10-03 03:52:59,847 INFO [20261003_035255_13f6f2] agent.turn_context: conversation turn: session=20261003_035255_13f6f2 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 03:53:01,560 INFO [20261003_035255_13f6f2] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=1.3s cache=2005/3523 (57%) id=chatcmpl-0
+2026-10-03 03:53:03,244 INFO [20261003_035255_13f6f2] agent.tool_executor: tool computer_use completed (1.60s, 1813 chars)
+2026-10-03 03:53:03,833 INFO [20261003_035255_13f6f2] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=0.6s cache=3537/4403 (80%) id=chatcmpl-10
+2026-10-03 03:53:04,168 INFO [20261003_035255_13f6f2] agent.tool_executor: tool computer_use completed (0.32s, 469 chars)
+2026-10-03 03:53:04,560 INFO [20261003_035255_13f6f2] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=28 total=4616 latency=0.4s cache=4417/4588 (96%) id=chatcmpl-918
+2026-10-03 03:53:04,680 INFO [20261003_035255_13f6f2] agent.tool_executor: tool computer_use completed (0.11s, 1813 chars)
+2026-10-03 03:53:04,995 INFO [20261003_035255_13f6f2] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=2 total=5470 latency=0.3s cache=4615/5468 (84%) id=chatcmpl-250
+2026-10-03 03:53:05,021 INFO [20261003_035255_13f6f2] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=4/12 budget=4/12 tool_turns=3 last_msg_role=assistant response_len=5 session=20261003_035255_13f6f2
+2026-10-03 03:53:05,070 INFO [20261003_035255_13f6f2] cli: CLI cleanup calling memory shutdown for session 20261003_035255_13f6f2 with 8 message(s)
+2026-10-03 03:53:05,135 INFO [20261003_035255_13f6f2] cli: CLI cleanup calling memory shutdown for session 20261003_035255_13f6f2 with 8 message(s)

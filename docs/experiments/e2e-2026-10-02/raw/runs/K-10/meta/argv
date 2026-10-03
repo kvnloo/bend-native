@@ -1,0 +1,4 @@
+$E2E/bin/measure_kernel.py
+$E2E/runs/K-10/cwd
+10
+$E2E/runs/K-10/kernel.json

@@ -1,0 +1,19 @@
+{
+ "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+ "files": {
+  "LAWS.bend": "716d439d5b10e821b6c075166a58282bd6bfe4efde8046c308e7a7eba7eaed2c",
+  "PROOF.bend": "65e45a8a45b6d159623edbf88b4ebde033d362df634fe76ab9839d2ee5fc3e91",
+  "impl.bend": "2d92ea4e048c986a5007970c57d0cc0071fc7f1853c8075e77060de756645ece"
+ },
+ "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "kernel_sha256_before": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "laws_sha256": "716d439d5b10e821b6c075166a58282bd6bfe4efde8046c308e7a7eba7eaed2c",
+ "laws_unchanged": true,
+ "rc": 1,
+ "schema": "bend_e2e.oracle.v1",
+ "stderr": "SOME PROOFS FAIL\nError:\n- expected : a decreasing self-call (arguments are read left to right: each passed unchanged until one shrinks)\n- observed : double\nContext:\n- p : Nat\nLocation: double\n 8 |     case 1n+p:\n 9>|       1n+double(n)\n   |          ^^^^^^\n10 | \n",
+ "stdout": "",
+ "timed_out": false,
+ "verdict": "fail",
+ "wall_s_incidental": 0.133
+}

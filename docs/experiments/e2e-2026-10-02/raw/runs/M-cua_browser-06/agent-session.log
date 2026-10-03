@@ -1,0 +1,12 @@
+2026-10-03 03:54:13,970 INFO [20261003_035410_f1a130] agent.turn_context: conversation turn: session=20261003_035410_f1a130 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A Chrome window is open on this desktop; its app name for computer_use is 'Googl..."
+2026-10-03 03:54:15,982 INFO [20261003_035410_f1a130] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3606 out=40 total=3646 latency=1.7s cache=1591/3606 (44%) id=chatcmpl-362
+2026-10-03 03:54:19,308 INFO [20261003_035410_f1a130] agent.tool_executor: tool computer_use completed (3.19s, 3435 chars)
+2026-10-03 03:54:21,747 INFO [20261003_035410_f1a130] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=5226 out=144 total=5370 latency=2.4s cache=3620/5226 (69%) id=chatcmpl-556
+2026-10-03 03:54:22,721 INFO [20261003_035410_f1a130] agent.tool_executor: tool computer_use completed (0.94s, 841 chars)
+2026-10-03 03:54:23,747 INFO [20261003_035410_f1a130] agent.tool_executor: tool computer_use completed (1.01s, 705 chars)
+2026-10-03 03:54:24,668 INFO [20261003_035410_f1a130] agent.tool_executor: tool computer_use completed (0.90s, 841 chars)
+2026-10-03 03:54:25,182 INFO [20261003_035410_f1a130] agent.tool_executor: tool computer_use completed (0.49s, 2582 chars)
+2026-10-03 03:54:26,234 INFO [20261003_035410_f1a130] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=7246 out=2 total=7248 latency=1.0s cache=5240/7246 (72%) id=chatcmpl-363
+2026-10-03 03:54:26,293 INFO [20261003_035410_f1a130] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=3/12 budget=3/12 tool_turns=2 last_msg_role=assistant response_len=4 session=20261003_035410_f1a130
+2026-10-03 03:54:26,451 INFO [20261003_035410_f1a130] cli: CLI cleanup calling memory shutdown for session 20261003_035410_f1a130 with 9 message(s)
+2026-10-03 03:54:26,584 INFO [20261003_035410_f1a130] cli: CLI cleanup calling memory shutdown for session 20261003_035410_f1a130 with 9 message(s)

@@ -1,0 +1,11 @@
+2026-10-03 03:54:56,634 INFO [20261003_035448_a6653e] agent.turn_context: conversation turn: session=20261003_035448_a6653e model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 03:55:00,003 INFO [20261003_035448_a6653e] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=2.7s cache=1591/3523 (45%) id=chatcmpl-448
+2026-10-03 03:55:03,651 INFO [20261003_035448_a6653e] agent.tool_executor: tool computer_use completed (3.48s, 1813 chars)
+2026-10-03 03:55:04,864 INFO [20261003_035448_a6653e] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=1.2s cache=3537/4403 (80%) id=chatcmpl-64
+2026-10-03 03:55:05,221 INFO [20261003_035448_a6653e] agent.tool_executor: tool computer_use completed (0.34s, 469 chars)
+2026-10-03 03:55:05,920 INFO [20261003_035448_a6653e] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=33 total=4621 latency=0.7s cache=4417/4588 (96%) id=chatcmpl-861
+2026-10-03 03:55:06,294 INFO [20261003_035448_a6653e] agent.tool_executor: tool computer_use completed (0.34s, 1813 chars)
+2026-10-03 03:55:06,755 INFO [20261003_035448_a6653e] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=3 total=5471 latency=0.4s cache=4602/5468 (84%) id=chatcmpl-715
+2026-10-03 03:55:06,783 INFO [20261003_035448_a6653e] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=4/12 budget=4/12 tool_turns=3 last_msg_role=assistant response_len=5 session=20261003_035448_a6653e
+2026-10-03 03:55:06,875 INFO [20261003_035448_a6653e] cli: CLI cleanup calling memory shutdown for session 20261003_035448_a6653e with 8 message(s)
+2026-10-03 03:55:06,957 INFO [20261003_035448_a6653e] cli: CLI cleanup calling memory shutdown for session 20261003_035448_a6653e with 8 message(s)

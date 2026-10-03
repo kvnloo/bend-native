@@ -1,0 +1,19 @@
+{
+ "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+ "files": {
+  "LAWS.bend": "df83413f8113a8d641b7cae5667dd416f996c286f38297a6fea291cb8bbc0a72",
+  "PROOF.bend": "0375e42ee4176f4b0b544ffa2d25143c1d1a7e8c4141c90dce0fe40984f4ea11",
+  "impl.bend": "6df33002332bfeae92157c0ecd60a85bc4a346c2a468d4e86abc6be1d3685428"
+ },
+ "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "kernel_sha256_before": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "laws_sha256": "df83413f8113a8d641b7cae5667dd416f996c286f38297a6fea291cb8bbc0a72",
+ "laws_unchanged": true,
+ "rc": 1,
+ "schema": "bend_e2e.oracle.v1",
+ "stderr": "SOME PROOFS FAIL\nError:\n- expected : a term\n- observed : '='\nLocation:\n4 | def double(n: Nat) -> Nat: \n5>|     if n == 0n:\n  |           ^\n6 |         return 0n\n",
+ "stdout": "",
+ "timed_out": false,
+ "verdict": "fail",
+ "wall_s_incidental": 0.072
+}

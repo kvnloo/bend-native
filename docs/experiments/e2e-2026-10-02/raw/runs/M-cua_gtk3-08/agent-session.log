@@ -1,0 +1,11 @@
+2026-10-03 04:00:12,478 INFO [20261003_040005_a7e266] agent.turn_context: conversation turn: session=20261003_040005_a7e266 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 04:00:15,758 INFO [20261003_040005_a7e266] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=2.5s cache=1591/3523 (45%) id=chatcmpl-845
+2026-10-03 04:00:21,641 INFO [20261003_040005_a7e266] agent.tool_executor: tool computer_use completed (5.62s, 1813 chars)
+2026-10-03 04:00:22,828 INFO [20261003_040005_a7e266] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=1.0s cache=3537/4403 (80%) id=chatcmpl-818
+2026-10-03 04:00:23,187 INFO [20261003_040005_a7e266] agent.tool_executor: tool computer_use completed (0.34s, 469 chars)
+2026-10-03 04:00:23,831 INFO [20261003_040005_a7e266] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=33 total=4621 latency=0.6s cache=4417/4588 (96%) id=chatcmpl-826
+2026-10-03 04:00:24,250 INFO [20261003_040005_a7e266] agent.tool_executor: tool computer_use completed (0.38s, 1813 chars)
+2026-10-03 04:00:24,666 INFO [20261003_040005_a7e266] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=3 total=5471 latency=0.4s cache=4602/5468 (84%) id=chatcmpl-231
+2026-10-03 04:00:24,722 INFO [20261003_040005_a7e266] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=4/12 budget=4/12 tool_turns=3 last_msg_role=assistant response_len=5 session=20261003_040005_a7e266
+2026-10-03 04:00:24,806 INFO [20261003_040005_a7e266] cli: CLI cleanup calling memory shutdown for session 20261003_040005_a7e266 with 8 message(s)
+2026-10-03 04:00:24,927 INFO [20261003_040005_a7e266] cli: CLI cleanup calling memory shutdown for session 20261003_040005_a7e266 with 8 message(s)

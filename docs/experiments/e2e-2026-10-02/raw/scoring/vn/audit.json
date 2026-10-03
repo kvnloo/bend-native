@@ -1,0 +1,14 @@
+{
+  "n_examples": 40,
+  "n_label_known": 40,
+  "n_negative": 30,
+  "n_not_run": 0,
+  "n_positive": 10,
+  "n_run": 40,
+  "n_session_id_from_observer": 0,
+  "n_session_id_mismatch": 0,
+  "n_tasks": 60,
+  "n_unknown_label": 0,
+  "n_without_api_rows": 0,
+  "n_without_session_id": 0
+}

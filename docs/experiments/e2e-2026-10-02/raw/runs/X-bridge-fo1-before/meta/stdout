@@ -1,0 +1,122 @@
+{
+  "authority_protocol_version": 2,
+  "providers": {
+    "cerebras": {
+      "provider": "cerebras",
+      "cap": 32,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "deepseek": {
+      "provider": "deepseek",
+      "cap": 32,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "jev": {
+      "provider": "jev",
+      "cap": 32,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "groq": {
+      "provider": "groq",
+      "cap": 16,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "nvidia": {
+      "provider": "nvidia",
+      "cap": 12,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "local": {
+      "provider": "local",
+      "cap": 1,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "openrouter": {
+      "provider": "openrouter",
+      "cap": 1,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "vercel": {
+      "provider": "vercel",
+      "cap": 8,
+      "inflight": 0,
+      "available": true,
+      "reason": "eligible_unprobed",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "nous": {
+      "provider": "nous",
+      "cap": null,
+      "inflight": 0,
+      "available": false,
+      "reason": "unmeasured_cap",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    },
+    "grok": {
+      "provider": "grok",
+      "cap": null,
+      "inflight": 0,
+      "available": false,
+      "reason": "unmeasured_cap",
+      "unhealthy": false,
+      "cooldown_until": 0,
+      "last_http_status": null
+    }
+  },
+  "free_only": true,
+  "validated_free_models": {
+    "cerebras": [],
+    "deepseek": [],
+    "jev": [],
+    "groq": [
+      "openai/gpt-oss-20b"
+    ],
+    "nvidia": [],
+    "local": [],
+    "openrouter": [
+      "nvidia/nemotron-3-super-120b-a12b:free"
+    ],
+    "vercel": [],
+    "nous": [],
+    "grok": []
+  }
+}

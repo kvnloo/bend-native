@@ -1,0 +1,11 @@
+env
+-i
+PATH=/usr/bin:/bin
+HOME=/x
+TMPDIR=$E2E/z0score-tmp
+Z0INT_HOME=$E2E/z0home
+HTTP_PROXY=http://127.0.0.1:9
+HTTPS_PROXY=http://127.0.0.1:9
+$E2E/bin/z0-python.sh
+$BEND_LANE/template/home/.hermes/plugins/bend/stack/score_worker.py
+$E2E/work/diag/req.json

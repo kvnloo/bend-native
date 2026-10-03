@@ -1,0 +1,10 @@
+-m
+hermes_cli.main
+chat
+-Q
+-t
+computer_use
+--max-turns
+12
+-q
+A Chrome window is open on this desktop; its app name for computer_use is 'Google-chrome'. It shows a web form with a text field labeled 'verification value' and a Submit button. Task: enter the exact value e2e06-a78ec2 into that field and submit the form. Chrome only accepts input with delivery_mode='foreground'. Use the computer_use tool and never pass pid or window_id: 1) action='capture' with mode='ax' and app='Google-chrome'; in its 'elements' list find the element with role 'entry' and label 'verification value', and the element with role 'button' and label 'Submit'; 2) action='click' with element=<index of that entry> and delivery_mode='foreground'; 3) action='type' with text='e2e06-a78ec2' and delivery_mode='foreground'; 4) action='click' with element=<index of that Submit button> and delivery_mode='foreground'; 5) reply with the single word DONE.

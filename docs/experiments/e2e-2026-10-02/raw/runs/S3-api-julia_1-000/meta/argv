@@ -1,0 +1,13 @@
+-m
+hermes_cli.main
+z0
+score
+$E2E/work/score/api/batches/in-000
+--backend
+julia_1
+--z0-root
+$Z0_WT_ROOT/stack-z0
+--z0-home
+$E2E/z0home
+--python
+$E2E/bin/z0-python.sh

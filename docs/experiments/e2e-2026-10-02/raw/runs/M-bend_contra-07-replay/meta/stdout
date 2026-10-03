@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "Receipt is missing input/kernel identity",
+  "code": "invalid_receipt"
+}

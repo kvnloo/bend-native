@@ -1,0 +1,394 @@
+{
+  "packet": {
+    "schema": "z0int.state_packet.v0",
+    "packet_id": "5e1082082d6072186346",
+    "built_at": "2026-10-03T03:53:47Z",
+    "intent": {
+      "name": "status",
+      "required": [
+        "git.head",
+        "git.branch",
+        "git.dirty"
+      ]
+    },
+    "scope": {
+      "repo": "$E2E/pinned-repo",
+      "repo_name": "pinned-repo"
+    },
+    "decision": {
+      "mode": "ACT",
+      "missing": [],
+      "reason": "all required facts observed"
+    },
+    "current_claims": [
+      {
+        "id": "c:bb72cbfefd",
+        "key": "git.branch",
+        "value": "(detached)",
+        "status": "observed",
+        "evidence": [
+          "e:867811bf71"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      {
+        "id": "c:1bf09b2e56",
+        "key": "git.head",
+        "value": {
+          "sha": "e85e65e",
+          "date": "2026-10-02T19:41:22Z",
+          "subject": "feat: compose downstream z0 evidence and canonical runtime stack"
+        },
+        "status": "observed",
+        "evidence": [
+          "e:cc4723b42d"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      {
+        "id": "c:6be122b6ee",
+        "key": "git.recent_commits",
+        "value": [
+          {
+            "sha": "e85e65e",
+            "date": "2026-10-02T19:41:22Z",
+            "subject": "feat: compose downstream z0 evidence and canonical runtime stack"
+          },
+          {
+            "sha": "7b89101",
+            "date": "2026-10-02T19:03:36Z",
+            "subject": "chore: publish native Bend plugin in its dedicated repository"
+          },
+          {
+            "sha": "d926cbb",
+            "date": "2026-10-02T14:00:46-05:00",
+            "subject": "Initial commit"
+          },
+          {
+            "sha": "014d33c",
+            "date": "2026-10-02T18:10:30Z",
+            "subject": "fix: avoid Hermes module shadowing and document evidence ownership"
+          },
+          {
+            "sha": "1412c2a",
+            "date": "2026-10-02T18:02:02Z",
+            "subject": "feat: persist receipts and replay captured Hub dependency closures"
+          },
+          {
+            "sha": "77d1837",
+            "date": "2026-10-02T17:50:43Z",
+            "subject": "docs: publish through a pinned standalone distribution branch"
+          },
+          {
+            "sha": "f2b4a9e",
+            "date": "2026-10-02T17:50:02Z",
+            "subject": "feat: package native Bend verification for Hermes"
+          },
+          {
+            "sha": "01b5308",
+            "date": "2026-10-02T17:42:04Z",
+            "subject": "perf(bend): cap concurrent verdicts at measured saturation point"
+          }
+        ],
+        "status": "observed",
+        "evidence": [
+          "e:981927f631"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": false
+      },
+      {
+        "id": "c:8c9df6db2c",
+        "key": "git.default_branch",
+        "value": "origin/main",
+        "status": "observed",
+        "evidence": [
+          "e:0c503c75b5"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      {
+        "id": "c:fbcf5b7e9e",
+        "key": "git.dirty",
+        "value": {
+          "clean": true,
+          "modified": [],
+          "untracked": [],
+          "modified_count": 0,
+          "untracked_count": 0
+        },
+        "status": "observed",
+        "evidence": [
+          "e:26747b5c5c"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      {
+        "id": "c:9735615106",
+        "key": "git.branches_ahead",
+        "value": {
+          "vs": "origin/main",
+          "complete": true,
+          "local_branches": 1,
+          "ahead": []
+        },
+        "status": "observed",
+        "evidence": [
+          "e:aeb5709244"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      {
+        "id": "c:c797840470",
+        "key": "docs.last_commit[README.md]",
+        "value": {
+          "sha": "e85e65e",
+          "date": "2026-10-02T19:41:22Z"
+        },
+        "status": "observed",
+        "evidence": [
+          "e:68def649f0"
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": false
+      }
+    ],
+    "evidence": {
+      "e:867811bf71": {
+        "source_id": "git:pinned-repo",
+        "source_version": "e85e65e5d2e1",
+        "locator": "$E2E/pinned-repo:git branch --show-current",
+        "trust_class": "code",
+        "observed_at": "2026-10-03T03:53:47Z"
+      },
+      "e:cc4723b42d": {
+        "source_id": "git:pinned-repo",
+        "source_version": "e85e65e5d2e1",
+        "locator": "$E2E/pinned-repo:git log -1 e85e65e",
+        "trust_class": "code",
+        "observed_at": "2026-10-03T03:53:47Z"
+      },
+      "e:981927f631": {
+        "source_id": "git:pinned-repo",
+        "source_version": "e85e65e5d2e1",
+        "locator": "$E2E/pinned-repo:git log -n 8",
+        "trust_class": "code",
+        "observed_at": "2026-10-03T03:53:47Z"
+      },
+      "e:0c503c75b5": {
+        "source_id": "git:pinned-repo",
+        "source_version": "e85e65e5d2e1",
+        "locator": "$E2E/pinned-repo:refs/remotes/origin/HEAD",
+        "trust_class": "code",
+        "observed_at": "2026-10-03T03:53:47Z"
+      },
+      "e:26747b5c5c": {
+        "source_id": "git:pinned-repo",
+        "source_version": "e85e65e5d2e1+ste3b0c44298fc",
+        "locator": "$E2E/pinned-repo:git status --porcelain",
+        "trust_class": "code",
+        "observed_at": "2026-10-03T03:53:47Z"
+      },
+      "e:aeb5709244": {
+        "source_id": "git:pinned-repo",
+        "source_version": "e85e65e5d2e1",
+        "locator": "$E2E/pinned-repo:git for-each-ref refs/heads",
+        "trust_class": "code",
+        "observed_at": "2026-10-03T03:53:47Z"
+      },
+      "e:68def649f0": {
+        "source_id": "doc:pinned-repo/README.md",
+        "source_version": "sha256:242dd3c404c4",
+        "locator": "README.md:L1",
+        "trust_class": "project_constraint",
+        "observed_at": "2026-10-03T03:53:47Z"
+      }
+    },
+    "contradictions": [],
+    "blocking_unknowns": [],
+    "unknowns": [
+      {
+        "key": "docs.priority",
+        "reason": "no P0 heading found in ROADMAP/README/AGENTS"
+      }
+    ],
+    "open_work": [],
+    "superseded_claims": [],
+    "allowed_transitions": [
+      {
+        "kind": "OBSERVE",
+        "action": "refresh_packet",
+        "why": "always legal; re-reads changed sources only",
+        "authorizes": false
+      },
+      {
+        "kind": "ACT",
+        "action": "continue_on_branch",
+        "why": "(detached) has no modified tracked files",
+        "preconditions": [
+          "c:bb72cbfefd",
+          "c:fbcf5b7e9e"
+        ],
+        "authorizes": false
+      }
+    ],
+    "source_revisions": {
+      "git": {
+        "head": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad",
+        "status": "e3b0c44298fc",
+        "refs": "8c10b05d7fa3"
+      },
+      "docs": {
+        "README.md": "sha256:242dd3c404c4"
+      },
+      "claude_code": {}
+    },
+    "policy_revision": "sp-v0.2",
+    "coverage": {
+      "git": "full",
+      "docs": "full"
+    },
+    "freshness": {},
+    "claims_index": {
+      "git.branch": {
+        "id": "c:bb72cbfefd",
+        "value": "(detached)",
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      "git.head": {
+        "id": "c:1bf09b2e56",
+        "value": {
+          "sha": "e85e65e",
+          "date": "2026-10-02T19:41:22Z",
+          "subject": "feat: compose downstream z0 evidence and canonical runtime stack"
+        },
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      "git.recent_commits": {
+        "id": "c:6be122b6ee",
+        "value": [
+          {
+            "sha": "e85e65e",
+            "date": "2026-10-02T19:41:22Z",
+            "subject": "feat: compose downstream z0 evidence and canonical runtime stack"
+          },
+          {
+            "sha": "7b89101",
+            "date": "2026-10-02T19:03:36Z",
+            "subject": "chore: publish native Bend plugin in its dedicated repository"
+          },
+          {
+            "sha": "d926cbb",
+            "date": "2026-10-02T14:00:46-05:00",
+            "subject": "Initial commit"
+          },
+          {
+            "sha": "014d33c",
+            "date": "2026-10-02T18:10:30Z",
+            "subject": "fix: avoid Hermes module shadowing and document evidence ownership"
+          },
+          {
+            "sha": "1412c2a",
+            "date": "2026-10-02T18:02:02Z",
+            "subject": "feat: persist receipts and replay captured Hub dependency closures"
+          },
+          {
+            "sha": "77d1837",
+            "date": "2026-10-02T17:50:43Z",
+            "subject": "docs: publish through a pinned standalone distribution branch"
+          },
+          {
+            "sha": "f2b4a9e",
+            "date": "2026-10-02T17:50:02Z",
+            "subject": "feat: package native Bend verification for Hermes"
+          },
+          {
+            "sha": "01b5308",
+            "date": "2026-10-02T17:42:04Z",
+            "subject": "perf(bend): cap concurrent verdicts at measured saturation point"
+          }
+        ],
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": false
+      },
+      "git.default_branch": {
+        "id": "c:8c9df6db2c",
+        "value": "origin/main",
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      "git.dirty": {
+        "id": "c:fbcf5b7e9e",
+        "value": {
+          "clean": true,
+          "modified": [],
+          "untracked": [],
+          "modified_count": 0,
+          "untracked_count": 0
+        },
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      "git.branches_ahead": {
+        "id": "c:9735615106",
+        "value": {
+          "vs": "origin/main",
+          "complete": true,
+          "local_branches": 1,
+          "ahead": []
+        },
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": true
+      },
+      "docs.last_commit[README.md]": {
+        "id": "c:c797840470",
+        "value": {
+          "sha": "e85e65e",
+          "date": "2026-10-02T19:41:22Z"
+        },
+        "observed_at": "2026-10-03T03:53:47Z",
+        "material": false
+      }
+    },
+    "cache": {
+      "key": "5e1082082d6072186346",
+      "prior_packet_id": null
+    },
+    "privacy": {
+      "local_only": true,
+      "excerpt_max_chars": 160,
+      "note": "conversation content limited to redacted short excerpts/titles"
+    },
+    "measurements": {
+      "cache_hit": false,
+      "wall_ms": 14.26,
+      "adapters": {
+        "git": {
+          "wall_ms": 8.81,
+          "reads": 9,
+          "bytes_read": 1401,
+          "claims": 6
+        },
+        "docs": {
+          "wall_ms": 2.57,
+          "reads": 2,
+          "bytes_read": 14604,
+          "claims": 1
+        }
+      },
+      "raw_source_reads": 15,
+      "bytes_read": 31002,
+      "transcript_bytes_read": 0,
+      "packet_bytes": 7724,
+      "concurrent_adapters": 2,
+      "network_calls": 0
+    }
+  }
+}

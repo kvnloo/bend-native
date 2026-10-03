@@ -1,0 +1,13 @@
+Preparing the isolated Hermes runtime…
+  → Installing Python dependencies…
+  ✓ Installing Python dependencies
+2026-10-03T03:59:40.882893Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:45.107753Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:45.107839Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:45.107843Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:46.619302Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:46.619334Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:46.619338Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+2026-10-03T03:59:46.619340Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_e9ebcb1d88344f36a7a3c3b05f49dee4:hermes-6b740a9f7a63 sender_missing=true
+
+session_id: 20261003_035919_63babf

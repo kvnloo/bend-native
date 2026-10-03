@@ -1,0 +1,6 @@
+2026-10-03T03:53:57.432Z session start task=cua_browser id=M-cua_browser-06
+2026-10-03T03:54:05.549Z fixture ready
+2026-10-03T03:54:05.550Z hermes start
+2026-10-03T03:54:29.355Z hermes end rc=0
+2026-10-03T03:54:29.460Z oracle {"detail": {"before_submitted": null, "submitted_matches_token": true, "submitted_present": true}, "schema": "stack_smoke.oracle.v1", "source": "fixture_oracle:jev_use_form_state", "task": "browser", "verdict": "pass"}
+2026-10-03T03:54:29.551Z session end

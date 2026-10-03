@@ -1,0 +1,1 @@
+{"detail": {"before_submitted": null, "submitted_matches_token": false, "submitted_present": false}, "schema": "stack_smoke.oracle.v1", "source": "fixture_oracle:jev_use_form_state", "task": "browser", "verdict": "fail"}

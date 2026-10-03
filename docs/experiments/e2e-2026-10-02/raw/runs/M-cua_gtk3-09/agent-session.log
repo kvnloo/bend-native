@@ -1,0 +1,13 @@
+2026-10-03 04:03:59,228 INFO [20261003_040353_a34b8f] agent.turn_context: conversation turn: session=20261003_040353_a34b8f model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 04:04:01,228 INFO [20261003_040353_a34b8f] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=1.5s cache=2005/3523 (57%) id=chatcmpl-141
+2026-10-03 04:04:02,891 INFO [20261003_040353_a34b8f] agent.tool_executor: tool computer_use completed (1.58s, 1813 chars)
+2026-10-03 04:04:03,543 INFO [20261003_040353_a34b8f] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=0.6s cache=3537/4403 (80%) id=chatcmpl-35
+2026-10-03 04:04:03,860 INFO [20261003_040353_a34b8f] agent.tool_executor: tool computer_use completed (0.31s, 469 chars)
+2026-10-03 04:04:04,282 INFO [20261003_040353_a34b8f] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=33 total=4621 latency=0.4s cache=4417/4588 (96%) id=chatcmpl-831
+2026-10-03 04:04:04,414 INFO [20261003_040353_a34b8f] agent.tool_executor: tool computer_use completed (0.12s, 1813 chars)
+2026-10-03 04:04:04,977 INFO [20261003_040353_a34b8f] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=28 total=5496 latency=0.6s cache=4602/5468 (84%) id=chatcmpl-638
+2026-10-03 04:04:05,106 INFO [20261003_040353_a34b8f] agent.tool_executor: tool computer_use completed (0.12s, 1813 chars)
+2026-10-03 04:04:05,359 INFO [20261003_040353_a34b8f] agent.conversation_loop: API call #5: model=qwen2.5:7b-instruct provider=custom in=5572 out=17 total=5589 latency=0.2s cache=5495/5572 (99%) id=chatcmpl-454
+2026-10-03 04:04:05,372 INFO [20261003_040353_a34b8f] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=5/12 budget=5/12 tool_turns=4 last_msg_role=assistant response_len=68 session=20261003_040353_a34b8f
+2026-10-03 04:04:05,412 INFO [20261003_040353_a34b8f] cli: CLI cleanup calling memory shutdown for session 20261003_040353_a34b8f with 10 message(s)
+2026-10-03 04:04:05,460 INFO [20261003_040353_a34b8f] cli: CLI cleanup calling memory shutdown for session 20261003_040353_a34b8f with 10 message(s)

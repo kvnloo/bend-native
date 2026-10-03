@@ -1,0 +1,14 @@
+Fetching 46 files:   0%|          | 0/46 [00:00<?, ?it/s]Fetching 46 files: 100%|██████████| 46/46 [00:00<00:00, 5778.84it/s]
+Traceback (most recent call last):
+  File "$BEND_LANE/template/home/.hermes/plugins/bend/stack/score_worker.py", line 12, in <module>
+    print(json.dumps(scorer.score_examples(examples, request['backend'], Path(request['root']))))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$BEND_LANE/template/home/.hermes/plugins/bend/stack/observer/shadow_api_failure.py", line 111, in score_examples
+    result = backend.evaluate(request_from_mapping(example["request"]))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "$Z0_WT_ROOT/stack-z0/src/z0int/backends/julia.py", line 406, in evaluate
+    out = self._request({
+          ^^^^^^^^^^^^^^^
+  File "$Z0_WT_ROOT/stack-z0/src/z0int/backends/julia.py", line 370, in _request
+    raise ValueError(f"julia: {out['error']}")
+ValueError: julia: ModuleNotFoundError: No module named 'julia'

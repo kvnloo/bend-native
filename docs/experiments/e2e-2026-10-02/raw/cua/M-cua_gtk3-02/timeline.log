@@ -1,0 +1,6 @@
+2026-10-03T03:44:36.384Z session start task=cua_gtk3 id=M-cua_gtk3-02
+2026-10-03T03:44:37.005Z fixture ready
+2026-10-03T03:44:37.010Z hermes start
+2026-10-03T03:45:17.478Z hermes end rc=0
+2026-10-03T03:45:17.535Z oracle {"detail": {"agreed": true, "before_agreed": false, "collateral": {}, "seq": 2}, "schema": "stack_smoke.oracle.v1", "source": "fixture_oracle:gtk3_task_state_v1", "task": "gtk3", "verdict": "pass"}
+2026-10-03T03:45:17.548Z session end

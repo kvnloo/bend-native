@@ -1,0 +1,53 @@
+{
+  "runs": [
+    {
+      "run_id": "P-cua_gtk3-01",
+      "task": "cua_gtk3",
+      "rep": 91,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    },
+    {
+      "run_id": "P-cua_browser-01",
+      "task": "cua_browser",
+      "rep": 91,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    },
+    {
+      "run_id": "P-bend_contra-01",
+      "task": "bend_contra",
+      "rep": 91,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    },
+    {
+      "run_id": "P-z0_opp-01",
+      "task": "z0_opp",
+      "rep": 91,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    },
+    {
+      "run_id": "P-cua_gtk3-02",
+      "task": "cua_gtk3",
+      "rep": 92,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    },
+    {
+      "run_id": "P-cua_browser-02",
+      "task": "cua_browser",
+      "rep": 92,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    },
+    {
+      "run_id": "P-bend_fix-04",
+      "task": "bend_fix",
+      "rep": 92,
+      "set": "pilot",
+      "failopen_stop_after_s": null
+    }
+  ]
+}

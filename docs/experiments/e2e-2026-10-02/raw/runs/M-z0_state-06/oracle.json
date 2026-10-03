@@ -1,0 +1,25 @@
+{
+ "checks": {
+  "branch_claim_matches": true,
+  "dirty_claim_matches": true,
+  "head_claim_matches": true,
+  "head_matches": true,
+  "rc0": true,
+  "readme_matches": true,
+  "repo_unchanged": true
+ },
+ "repo_after": {
+  "branch": "",
+  "head": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad",
+  "readme_sha256": "242dd3c404c47031e8a27636110f2370bb4491bd38d3c2c3ce19326ec4651684",
+  "status": ""
+ },
+ "repo_before": {
+  "branch": "",
+  "head": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad",
+  "readme_sha256": "242dd3c404c47031e8a27636110f2370bb4491bd38d3c2c3ce19326ec4651684",
+  "status": ""
+ },
+ "schema": "bend_e2e.z0_oracle.v1",
+ "verdict": "pass"
+}

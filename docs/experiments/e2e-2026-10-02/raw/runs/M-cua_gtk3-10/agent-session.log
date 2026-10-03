@@ -1,0 +1,11 @@
+2026-10-03 04:05:28,315 INFO [20261003_040524_f6c10b] agent.turn_context: conversation turn: session=20261003_040524_f6c10b model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 04:05:29,950 INFO [20261003_040524_f6c10b] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=1.3s cache=2004/3523 (57%) id=chatcmpl-564
+2026-10-03 04:05:31,360 INFO [20261003_040524_f6c10b] agent.tool_executor: tool computer_use completed (1.33s, 1813 chars)
+2026-10-03 04:05:31,986 INFO [20261003_040524_f6c10b] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=0.6s cache=3537/4403 (80%) id=chatcmpl-478
+2026-10-03 04:05:32,319 INFO [20261003_040524_f6c10b] agent.tool_executor: tool computer_use completed (0.32s, 469 chars)
+2026-10-03 04:05:32,695 INFO [20261003_040524_f6c10b] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=28 total=4616 latency=0.4s cache=4417/4588 (96%) id=chatcmpl-530
+2026-10-03 04:05:32,806 INFO [20261003_040524_f6c10b] agent.tool_executor: tool computer_use completed (0.09s, 1813 chars)
+2026-10-03 04:05:33,155 INFO [20261003_040524_f6c10b] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=2 total=5470 latency=0.3s cache=4615/5468 (84%) id=chatcmpl-451
+2026-10-03 04:05:33,172 INFO [20261003_040524_f6c10b] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=4/12 budget=4/12 tool_turns=3 last_msg_role=assistant response_len=5 session=20261003_040524_f6c10b
+2026-10-03 04:05:33,236 INFO [20261003_040524_f6c10b] cli: CLI cleanup calling memory shutdown for session 20261003_040524_f6c10b with 8 message(s)
+2026-10-03 04:05:33,289 INFO [20261003_040524_f6c10b] cli: CLI cleanup calling memory shutdown for session 20261003_040524_f6c10b with 8 message(s)

@@ -1,0 +1,5 @@
+2026-10-03 03:47:50,952 INFO [20261003_034746_b03884] agent.turn_context: conversation turn: session=20261003_034746_b03884 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 03:47:54,216 INFO [20261003_034746_b03884] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=95 total=3618 latency=2.8s cache=2005/3523 (57%) id=chatcmpl-720
+2026-10-03 03:47:54,276 INFO [20261003_034746_b03884] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=1/12 budget=1/12 tool_turns=0 last_msg_role=assistant response_len=302 session=20261003_034746_b03884
+2026-10-03 03:47:54,319 INFO [20261003_034746_b03884] cli: CLI cleanup calling memory shutdown for session 20261003_034746_b03884 with 2 message(s)
+2026-10-03 03:47:54,375 INFO [20261003_034746_b03884] cli: CLI cleanup calling memory shutdown for session 20261003_034746_b03884 with 2 message(s)

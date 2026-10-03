@@ -1,0 +1,4 @@
+I could not locate the term "buggy_code" in any file. Please provide the exact code snippet or describe the bug in more detail so I can edit the `impl.bend` file appropriately.
+
+⚠️ File-mutation verifier: 1 file edit(s) FAILED this turn despite any wording above that may suggest otherwise. Run `git status` or `read_file` to confirm what actually landed.
+  • `$E2E/runs/M-bend_fix-09/cwd/impl.bend` — [patch] Could not find a match for old_string in the file

@@ -1,0 +1,11 @@
+2026-10-03 03:42:20,471 INFO [20261003_034214_7e218d] agent.turn_context: conversation turn: session=20261003_034214_7e218d model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg="A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; it..."
+2026-10-03 03:42:22,944 INFO [20261003_034214_7e218d] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3523 out=33 total=3556 latency=2.1s cache=1591/3523 (45%) id=chatcmpl-746
+2026-10-03 03:42:25,060 INFO [20261003_034214_7e218d] agent.tool_executor: tool computer_use completed (2.01s, 1813 chars)
+2026-10-03 03:42:25,997 INFO [20261003_034214_7e218d] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=4403 out=33 total=4436 latency=0.6s cache=3537/4403 (80%) id=chatcmpl-657
+2026-10-03 03:42:26,335 INFO [20261003_034214_7e218d] agent.tool_executor: tool computer_use completed (0.32s, 469 chars)
+2026-10-03 03:42:26,755 INFO [20261003_034214_7e218d] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=4588 out=33 total=4621 latency=0.4s cache=4417/4588 (96%) id=chatcmpl-181
+2026-10-03 03:42:27,019 INFO [20261003_034214_7e218d] agent.tool_executor: tool computer_use completed (0.24s, 1813 chars)
+2026-10-03 03:42:27,719 INFO [20261003_034214_7e218d] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=5468 out=35 total=5503 latency=0.6s cache=4602/5468 (84%) id=chatcmpl-198
+2026-10-03 03:42:27,819 INFO [20261003_034214_7e218d] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=4/12 budget=4/12 tool_turns=3 last_msg_role=assistant response_len=150 session=20261003_034214_7e218d
+2026-10-03 03:42:27,959 INFO [20261003_034214_7e218d] cli: CLI cleanup calling memory shutdown for session 20261003_034214_7e218d with 8 message(s)
+2026-10-03 03:42:28,030 INFO [20261003_034214_7e218d] cli: CLI cleanup calling memory shutdown for session 20261003_034214_7e218d with 8 message(s)

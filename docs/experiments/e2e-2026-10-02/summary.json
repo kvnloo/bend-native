@@ -1,0 +1,621 @@
+{
+ "failopen_runs": [
+  {
+   "hermes_rc": 0,
+   "oracle": "fail",
+   "run_id": "M-fo_bend_fix-01",
+   "session_end_completed": true
+  },
+  {
+   "hermes_rc": 0,
+   "oracle": "pass",
+   "run_id": "M-fo_cua_gtk3-01",
+   "session_end_completed": true
+  },
+  {
+   "hermes_rc": 0,
+   "oracle": "fail",
+   "run_id": "M-fo_bend_contra-01",
+   "session_end_completed": true
+  }
+ ],
+ "hard_gates": {
+  "bend_runs": 20,
+  "bend_runs_receipt_session_match": 20,
+  "bend_verify_calls": 17,
+  "bend_verify_calls_with_scoped_evidence": 17,
+  "false_success_claims": 0,
+  "forged_passes": 0,
+  "isolation_mask_ok_runs": 60,
+  "laws_unchanged_runs": 20,
+  "runs": 60
+ },
+ "latency": {
+  "cold_ms_max": 24654.314,
+  "cold_ms_median": 22627.218999999997,
+  "cold_ms_min": 21420.648,
+  "evidence": "BENCHMARK (quiet-timed blocks bend-e2e-kernel-a/-b)",
+  "kernel_sha256": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+  "processes": 10,
+  "warm_ms_max": 230.456,
+  "warm_ms_p50": 140.045,
+  "warm_ms_p90": 152.49429999999998,
+  "warm_n": 100
+ },
+ "metrics": {
+  "per_task": {
+   "bend_contra": {
+    "api_calls": 48,
+    "api_errors": 0,
+    "bend_verify_calls": 9,
+    "claims": {
+     "NOT_VERIFIED": 7,
+     "other": 3
+    },
+    "dropped_markers": 0,
+    "false_success_claims": 0,
+    "forged_passes": 0,
+    "harness_errors": [],
+    "hermes_rc0": 10,
+    "isolation_ok": 10,
+    "last_receipt_observed_runs": 8,
+    "laws_unchanged": 10,
+    "n_planned": 10,
+    "n_run": 10,
+    "observer_session_match": 10,
+    "opportunities_total": 10,
+    "opportunity_gates": {
+     "ACT": 10
+    },
+    "opportunity_session_match": 10,
+    "oracle_kernel_sha256": [
+     "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+    ],
+    "oracle_pass": 0,
+    "oracle_unknown": [],
+    "prompt_tokens_max": 7296,
+    "prompt_tokens_over_32768": 0,
+    "receipt_session_match_runs": 10,
+    "receipts_with_evidence": 9,
+    "replay": {
+     "None/rcNone": 2,
+     "invalid_receipt/rc2": 8
+    },
+    "replay_success_on_nonpass": 0,
+    "runs_with_opportunity": 10,
+    "success": 10,
+    "success_receipts": 0,
+    "tool_calls": 38,
+    "tool_errors": 4
+   },
+   "bend_fix": {
+    "api_calls": 40,
+    "api_errors": 0,
+    "bend_verify_calls": 8,
+    "claims": {
+     "NOT_VERIFIED": 6,
+     "VERIFIED": 2,
+     "other": 2
+    },
+    "dropped_markers": 0,
+    "false_success_claims": 0,
+    "forged_passes": 0,
+    "harness_errors": [],
+    "hermes_rc0": 10,
+    "isolation_ok": 10,
+    "last_receipt_observed_runs": 8,
+    "laws_unchanged": 10,
+    "n_planned": 10,
+    "n_run": 10,
+    "observer_session_match": 10,
+    "opportunities_total": 10,
+    "opportunity_gates": {
+     "ACT": 10
+    },
+    "opportunity_session_match": 10,
+    "oracle_kernel_sha256": [
+     "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+    ],
+    "oracle_pass": 2,
+    "oracle_unknown": [],
+    "prompt_tokens_max": 5493,
+    "prompt_tokens_over_32768": 0,
+    "receipt_session_match_runs": 10,
+    "receipts_with_evidence": 8,
+    "replay": {
+     "None/rcNone": 2,
+     "invalid_receipt/rc2": 6,
+     "pass/rc0": 2
+    },
+    "replay_success_on_nonpass": 0,
+    "runs_with_opportunity": 10,
+    "success": 2,
+    "success_receipts": 2,
+    "tool_calls": 30,
+    "tool_errors": 4
+   },
+   "cua_browser": {
+    "api_calls": 50,
+    "api_errors": 0,
+    "dropped_markers": 0,
+    "harness_errors": [],
+    "hermes_rc0": 10,
+    "isolation_ok": 9,
+    "n_planned": 10,
+    "n_run": 10,
+    "observer_session_match": 10,
+    "opportunities_total": 10,
+    "opportunity_gates": {
+     "ACT": 10
+    },
+    "opportunity_session_match": 10,
+    "oracle_unknown": [],
+    "prompt_tokens_max": 7635,
+    "prompt_tokens_over_32768": 0,
+    "runs_with_opportunity": 10,
+    "success": 9,
+    "tool_calls": 43,
+    "tool_errors": 0
+   },
+   "cua_gtk3": {
+    "api_calls": 40,
+    "api_errors": 0,
+    "dropped_markers": 0,
+    "harness_errors": [],
+    "hermes_rc0": 10,
+    "isolation_ok": 10,
+    "n_planned": 10,
+    "n_run": 10,
+    "observer_session_match": 10,
+    "opportunities_total": 10,
+    "opportunity_gates": {
+     "ACT": 10
+    },
+    "opportunity_session_match": 10,
+    "oracle_unknown": [],
+    "prompt_tokens_max": 5572,
+    "prompt_tokens_over_32768": 0,
+    "runs_with_opportunity": 10,
+    "success": 9,
+    "tool_calls": 30,
+    "tool_errors": 0
+   },
+   "z0_opp": {
+    "check_failures": {},
+    "gates": {
+     "ACT": 10
+    },
+    "harness_errors": [],
+    "hermes_rc0": 10,
+    "isolation_ok": 10,
+    "n_planned": 10,
+    "n_run": 10,
+    "oracle_unknown": [],
+    "packet_ids": [
+     "5e1082082d6072186346"
+    ],
+    "semantic_ids": [
+     "b34cfee83179a17ec10b"
+    ],
+    "success": 10
+   },
+   "z0_state": {
+    "check_failures": {},
+    "gates": {
+     "null": 10
+    },
+    "harness_errors": [],
+    "hermes_rc0": 10,
+    "isolation_ok": 10,
+    "n_planned": 10,
+    "n_run": 10,
+    "oracle_unknown": [],
+    "packet_ids": [
+     "5e1082082d6072186346"
+    ],
+    "semantic_ids": [],
+    "success": 10
+   }
+  },
+  "schema": "bend_e2e.metrics.v1"
+ },
+ "order": {
+  "prereg_commit_unix": 1790998866
+ },
+ "schema": "bend_e2e.summary.v1",
+ "scoring": {
+  "api": {
+   "julia_1": {
+    "batches_failed": [],
+    "eval_recomputed": {
+     "accuracy_at_0_5": 1.0,
+     "backend": "julia_1",
+     "base_rate_brier": 0.0,
+     "brier": 2.6465295140605733e-05,
+     "brier_improvement": -2.6465295140605733e-05,
+     "calibration_bins": [
+      {
+       "hi": 0.2,
+       "lo": 0.0,
+       "mean_probability": 0.0033527224955968602,
+       "n": 178,
+       "observed_rate": 0.0
+      }
+     ],
+     "denominators": {
+      "coverage": 1.0,
+      "n_backend_error": 0,
+      "n_labelled": 178,
+      "n_missing_probability": 0,
+      "n_rows": 178,
+      "n_scored": 178,
+      "n_unknown_label": 0
+     },
+     "log_loss": 0.0033660543533648546,
+     "mean_latency_ms": 1188.7664789244993,
+     "n": 178,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.0,
+     "promotion_ready": false,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "plugin_evaluate": {
+     "accuracy_at_0_5": 1.0,
+     "backend": "julia_1",
+     "base_rate_brier": 0.0,
+     "brier": 2.6465295140605733e-05,
+     "brier_improvement": -2.6465295140605733e-05,
+     "calibration_bins": [
+      {
+       "hi": 0.2,
+       "lo": 0.0,
+       "mean_probability": 0.0033527224955968602,
+       "n": 178,
+       "observed_rate": 0.0
+      }
+     ],
+     "log_loss": 0.0033660543533648546,
+     "mean_latency_ms": 1188.7664789244993,
+     "n": 178,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.0,
+     "promotion_ready": false,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "rows_in": 178,
+    "rows_scored": 178
+   },
+   "laya_421m": {
+    "batches_failed": [],
+    "eval_recomputed": {
+     "accuracy_at_0_5": 0.0,
+     "backend": "laya",
+     "base_rate_brier": 0.0,
+     "brier": 0.33097911876404496,
+     "brier_improvement": -0.33097911876404496,
+     "calibration_bins": [
+      {
+       "hi": 0.6000000000000001,
+       "lo": 0.4,
+       "mean_probability": 0.5752426966292136,
+       "n": 178,
+       "observed_rate": 0.0
+      }
+     ],
+     "denominators": {
+      "coverage": 1.0,
+      "n_backend_error": 0,
+      "n_labelled": 178,
+      "n_missing_probability": 0,
+      "n_rows": 178,
+      "n_scored": 178,
+      "n_unknown_label": 0
+     },
+     "log_loss": 0.8564451596250292,
+     "mean_latency_ms": 327.32555264635846,
+     "n": 178,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.0,
+     "promotion_ready": false,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "plugin_evaluate": {
+     "accuracy_at_0_5": 0.0,
+     "backend": "laya",
+     "base_rate_brier": 0.0,
+     "brier": 0.33097911876404496,
+     "brier_improvement": -0.33097911876404496,
+     "calibration_bins": [
+      {
+       "hi": 0.6000000000000001,
+       "lo": 0.4,
+       "mean_probability": 0.5752426966292136,
+       "n": 178,
+       "observed_rate": 0.0
+      }
+     ],
+     "log_loss": 0.8564451596250292,
+     "mean_latency_ms": 327.32555264635846,
+     "n": 178,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.0,
+     "promotion_ready": false,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "rows_in": 178,
+    "rows_scored": 178
+   },
+   "nanojev": {
+    "batches_failed": [],
+    "eval_recomputed": {
+     "accuracy_at_0_5": 1.0,
+     "backend": "nanojev",
+     "base_rate_brier": 0.0,
+     "brier": 0.09899985552328608,
+     "brier_improvement": -0.09899985552328608,
+     "calibration_bins": [
+      {
+       "hi": 0.4,
+       "lo": 0.2,
+       "mean_probability": 0.3135873810963684,
+       "n": 178,
+       "observed_rate": 0.0
+      }
+     ],
+     "denominators": {
+      "coverage": 1.0,
+      "n_backend_error": 0,
+      "n_labelled": 178,
+      "n_missing_probability": 0,
+      "n_rows": 178,
+      "n_scored": 178,
+      "n_unknown_label": 0
+     },
+     "log_loss": 0.376985535516918,
+     "mean_latency_ms": 131.15227258871465,
+     "n": 178,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.0,
+     "promotion_ready": false,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "plugin_evaluate": {
+     "accuracy_at_0_5": 1.0,
+     "backend": "nanojev",
+     "base_rate_brier": 0.0,
+     "brier": 0.09899985552328608,
+     "brier_improvement": -0.09899985552328608,
+     "calibration_bins": [
+      {
+       "hi": 0.4,
+       "lo": 0.2,
+       "mean_probability": 0.3135873810963684,
+       "n": 178,
+       "observed_rate": 0.0
+      }
+     ],
+     "log_loss": 0.376985535516918,
+     "mean_latency_ms": 131.15227258871465,
+     "n": 178,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.0,
+     "promotion_ready": false,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "rows_in": 178,
+    "rows_scored": 178
+   }
+  },
+  "vn": {
+   "julia_1": {
+    "batches_failed": [],
+    "eval_recomputed": {
+     "accuracy_at_0_5": 0.625,
+     "backend": "julia_1",
+     "base_rate_brier": 0.1875,
+     "brier": 0.2453243605381091,
+     "brier_improvement": -0.057824360538109104,
+     "calibration_bins": [
+      {
+       "hi": 0.2,
+       "lo": 0.0,
+       "mean_probability": 0.14073116098399666,
+       "n": 3,
+       "observed_rate": 0.0
+      },
+      {
+       "hi": 0.4,
+       "lo": 0.2,
+       "mean_probability": 0.2912449648078909,
+       "n": 15,
+       "observed_rate": 0.13333333333333333
+      },
+      {
+       "hi": 0.6000000000000001,
+       "lo": 0.4,
+       "mean_probability": 0.5275271689652143,
+       "n": 5,
+       "observed_rate": 0.2
+      },
+      {
+       "hi": 0.8,
+       "lo": 0.6,
+       "mean_probability": 0.6940861692117003,
+       "n": 13,
+       "observed_rate": 0.38461538461538464
+      },
+      {
+       "hi": 1.0,
+       "lo": 0.8,
+       "mean_probability": 0.9217990962493956,
+       "n": 4,
+       "observed_rate": 0.5
+      }
+     ],
+     "denominators": {
+      "coverage": 1.0,
+      "n_backend_error": 0,
+      "n_labelled": 40,
+      "n_missing_probability": 0,
+      "n_rows": 40,
+      "n_scored": 40,
+      "n_unknown_label": 0
+     },
+     "log_loss": 0.8121051104446865,
+     "mean_latency_ms": 853.106260651839,
+     "n": 40,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.25,
+     "promotion_ready": false,
+     "question_id": "verification_needed",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "plugin_evaluate": {
+     "n": 0,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "rows_in": 40,
+    "rows_scored": 40
+   },
+   "laya_421m": {
+    "batches_failed": [],
+    "eval_recomputed": {
+     "accuracy_at_0_5": 0.75,
+     "backend": "laya",
+     "base_rate_brier": 0.1875,
+     "brier": 0.20354120574999998,
+     "brier_improvement": -0.01604120574999998,
+     "calibration_bins": [
+      {
+       "hi": 0.4,
+       "lo": 0.2,
+       "mean_probability": 0.381885,
+       "n": 20,
+       "observed_rate": 0.05
+      },
+      {
+       "hi": 0.6000000000000001,
+       "lo": 0.4,
+       "mean_probability": 0.42488000000000004,
+       "n": 20,
+       "observed_rate": 0.45
+      }
+     ],
+     "denominators": {
+      "coverage": 1.0,
+      "n_backend_error": 0,
+      "n_labelled": 40,
+      "n_missing_probability": 0,
+      "n_rows": 40,
+      "n_scored": 40,
+      "n_unknown_label": 0
+     },
+     "log_loss": 0.5985987826074278,
+     "mean_latency_ms": 449.50532980292337,
+     "n": 40,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.25,
+     "promotion_ready": false,
+     "question_id": "verification_needed",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "plugin_evaluate": {
+     "n": 0,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "rows_in": 40,
+    "rows_scored": 40
+   },
+   "nanojev": {
+    "batches_failed": [],
+    "eval_recomputed": {
+     "accuracy_at_0_5": 0.75,
+     "backend": "nanojev",
+     "base_rate_brier": 0.1875,
+     "brier": 0.20599783646733333,
+     "brier_improvement": -0.01849783646733333,
+     "calibration_bins": [
+      {
+       "hi": 0.4,
+       "lo": 0.2,
+       "mean_probability": 0.35775351704973163,
+       "n": 33,
+       "observed_rate": 0.2727272727272727
+      },
+      {
+       "hi": 0.6000000000000001,
+       "lo": 0.4,
+       "mean_probability": 0.41263526678085327,
+       "n": 7,
+       "observed_rate": 0.14285714285714285
+      }
+     ],
+     "denominators": {
+      "coverage": 1.0,
+      "n_backend_error": 0,
+      "n_labelled": 40,
+      "n_missing_probability": 0,
+      "n_rows": 40,
+      "n_scored": 40,
+      "n_unknown_label": 0
+     },
+     "log_loss": 0.6034900522550746,
+     "mean_latency_ms": 212.42265122418758,
+     "n": 40,
+     "note": "Shadow evidence only; no runtime authority or promotion implied.",
+     "positive_rate": 0.25,
+     "promotion_ready": false,
+     "question_id": "verification_needed",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "plugin_evaluate": {
+     "n": 0,
+     "question_id": "api.attempt_will_fail",
+     "schema": "z0int.hermes_shadow_eval.v1"
+    },
+    "rows_in": 40,
+    "rows_scored": 40
+   }
+  }
+ },
+ "tasks": {
+  "bend_contra": {
+   "evidence": "REAL",
+   "n": 10,
+   "success": 10
+  },
+  "bend_fix": {
+   "evidence": "REAL",
+   "n": 10,
+   "success": 2
+  },
+  "cua_browser": {
+   "evidence": "REAL",
+   "n": 10,
+   "success": 9
+  },
+  "cua_gtk3": {
+   "evidence": "REAL",
+   "n": 10,
+   "success": 9
+  },
+  "z0_opp": {
+   "evidence": "REAL",
+   "n": 10,
+   "success": 10
+  },
+  "z0_state": {
+   "evidence": "REAL",
+   "n": 10,
+   "success": 10
+  }
+ }
+}

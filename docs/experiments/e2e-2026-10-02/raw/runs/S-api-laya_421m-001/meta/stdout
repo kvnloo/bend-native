@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "[Errno 2] No such file or directory: '$E2E/runs/S-api-laya_421m-001/cwd/work/score/api/batches/in-001'",
+  "code": "stack_error"
+}

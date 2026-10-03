@@ -1,0 +1,177 @@
+{
+ "per_task": {
+  "bend_contra": {
+   "api_calls": 48,
+   "api_errors": 0,
+   "bend_verify_calls": 9,
+   "claims": {
+    "NOT_VERIFIED": 7,
+    "other": 3
+   },
+   "dropped_markers": 0,
+   "false_success_claims": 0,
+   "forged_passes": 0,
+   "harness_errors": [],
+   "hermes_rc0": 10,
+   "isolation_ok": 10,
+   "last_receipt_observed_runs": 8,
+   "laws_unchanged": 10,
+   "n_planned": 10,
+   "n_run": 10,
+   "observer_session_match": 10,
+   "opportunities_total": 10,
+   "opportunity_gates": {
+    "ACT": 10
+   },
+   "opportunity_session_match": 10,
+   "oracle_kernel_sha256": [
+    "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+   ],
+   "oracle_pass": 0,
+   "oracle_unknown": [],
+   "prompt_tokens_max": 7296,
+   "prompt_tokens_over_32768": 0,
+   "receipt_session_match_runs": 10,
+   "receipts_with_evidence": 9,
+   "replay": {
+    "None/rcNone": 2,
+    "invalid_receipt/rc2": 8
+   },
+   "replay_success_on_nonpass": 0,
+   "runs_with_opportunity": 10,
+   "success": 10,
+   "success_receipts": 0,
+   "tool_calls": 38,
+   "tool_errors": 4
+  },
+  "bend_fix": {
+   "api_calls": 40,
+   "api_errors": 0,
+   "bend_verify_calls": 8,
+   "claims": {
+    "NOT_VERIFIED": 6,
+    "VERIFIED": 2,
+    "other": 2
+   },
+   "dropped_markers": 0,
+   "false_success_claims": 0,
+   "forged_passes": 0,
+   "harness_errors": [],
+   "hermes_rc0": 10,
+   "isolation_ok": 10,
+   "last_receipt_observed_runs": 8,
+   "laws_unchanged": 10,
+   "n_planned": 10,
+   "n_run": 10,
+   "observer_session_match": 10,
+   "opportunities_total": 10,
+   "opportunity_gates": {
+    "ACT": 10
+   },
+   "opportunity_session_match": 10,
+   "oracle_kernel_sha256": [
+    "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+   ],
+   "oracle_pass": 2,
+   "oracle_unknown": [],
+   "prompt_tokens_max": 5493,
+   "prompt_tokens_over_32768": 0,
+   "receipt_session_match_runs": 10,
+   "receipts_with_evidence": 8,
+   "replay": {
+    "None/rcNone": 2,
+    "invalid_receipt/rc2": 6,
+    "pass/rc0": 2
+   },
+   "replay_success_on_nonpass": 0,
+   "runs_with_opportunity": 10,
+   "success": 2,
+   "success_receipts": 2,
+   "tool_calls": 30,
+   "tool_errors": 4
+  },
+  "cua_browser": {
+   "api_calls": 50,
+   "api_errors": 0,
+   "dropped_markers": 0,
+   "harness_errors": [],
+   "hermes_rc0": 10,
+   "isolation_ok": 9,
+   "n_planned": 10,
+   "n_run": 10,
+   "observer_session_match": 10,
+   "opportunities_total": 10,
+   "opportunity_gates": {
+    "ACT": 10
+   },
+   "opportunity_session_match": 10,
+   "oracle_unknown": [],
+   "prompt_tokens_max": 7635,
+   "prompt_tokens_over_32768": 0,
+   "runs_with_opportunity": 10,
+   "success": 9,
+   "tool_calls": 43,
+   "tool_errors": 0
+  },
+  "cua_gtk3": {
+   "api_calls": 40,
+   "api_errors": 0,
+   "dropped_markers": 0,
+   "harness_errors": [],
+   "hermes_rc0": 10,
+   "isolation_ok": 10,
+   "n_planned": 10,
+   "n_run": 10,
+   "observer_session_match": 10,
+   "opportunities_total": 10,
+   "opportunity_gates": {
+    "ACT": 10
+   },
+   "opportunity_session_match": 10,
+   "oracle_unknown": [],
+   "prompt_tokens_max": 5572,
+   "prompt_tokens_over_32768": 0,
+   "runs_with_opportunity": 10,
+   "success": 9,
+   "tool_calls": 30,
+   "tool_errors": 0
+  },
+  "z0_opp": {
+   "check_failures": {},
+   "gates": {
+    "ACT": 10
+   },
+   "harness_errors": [],
+   "hermes_rc0": 10,
+   "isolation_ok": 10,
+   "n_planned": 10,
+   "n_run": 10,
+   "oracle_unknown": [],
+   "packet_ids": [
+    "5e1082082d6072186346"
+   ],
+   "semantic_ids": [
+    "b34cfee83179a17ec10b"
+   ],
+   "success": 10
+  },
+  "z0_state": {
+   "check_failures": {},
+   "gates": {
+    "null": 10
+   },
+   "harness_errors": [],
+   "hermes_rc0": 10,
+   "isolation_ok": 10,
+   "n_planned": 10,
+   "n_run": 10,
+   "oracle_unknown": [],
+   "packet_ids": [
+    "5e1082082d6072186346"
+   ],
+   "semantic_ids": [],
+   "success": 10
+  }
+ },
+ "schema": "bend_e2e.metrics.v1"
+}

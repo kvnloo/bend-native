@@ -1,0 +1,9 @@
+{
+ "failopen_stop_after_s": null,
+ "prompt_sha256": "b613663a3631a35595042254a922ceecb5e5e5fa83c2f601a11ff1ae4dadf950",
+ "rep": 1,
+ "run_id": "M-cua_browser-01",
+ "set": "measured",
+ "task": "cua_browser",
+ "token": "e2e01-4f8642"
+}
