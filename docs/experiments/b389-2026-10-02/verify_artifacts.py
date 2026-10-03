@@ -27,8 +27,11 @@ def check(name, cond, detail=""):
     ok = ok and bool(cond)
 
 
+TOP = Path(subprocess.run(["git", "-C", str(HERE), "rev-parse", "--show-toplevel"], capture_output=True, text=True).stdout.strip())
+
+
 def git(*args):
-    return subprocess.run(["git", "-C", str(HERE), *args], capture_output=True, text=True).stdout.strip()
+    return subprocess.run(["git", "-C", str(TOP), *args], capture_output=True, text=True).stdout.strip()
 
 
 tmp = HERE / "raw" / ".summary.recomputed.json"
@@ -38,13 +41,13 @@ recomputed = json.loads(tmp.read_text())
 tmp.unlink()
 check("summary.json == analyze.py(raw/)", committed == recomputed)
 
-rel = HERE.relative_to(Path(git("rev-parse", "--show-toplevel")))
+rel = HERE.relative_to(TOP)
 prereg_commit = git("log", "--diff-filter=A", "--format=%H", "--", f"{rel}/PREREG.json").splitlines()[-1:]
 raw_commit = git("log", "--diff-filter=A", "--format=%H", "--", f"{rel}/raw").splitlines()[-1:]
 check("PREREG.json committed", bool(prereg_commit))
 check("raw/ committed", bool(raw_commit))
 if prereg_commit and raw_commit:
-    anc = subprocess.run(["git", "-C", str(HERE), "merge-base", "--is-ancestor", prereg_commit[0], raw_commit[0]]).returncode == 0
+    anc = subprocess.run(["git", "-C", str(TOP), "merge-base", "--is-ancestor", prereg_commit[0], raw_commit[0]]).returncode == 0
     check("PREREG commit is an ancestor of the raw/ commit and differs from it", anc and prereg_commit[0] != raw_commit[0])
     changed = git("diff", "--name-only", prereg_commit[0], "HEAD", "--", f"{rel}/PREREG.json")
     check("PREREG.json unchanged since its commit", changed == "", changed)
