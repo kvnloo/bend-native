@@ -1,0 +1,48 @@
+2026-10-03 04:23:37,156 INFO hermes_cli.plugins: Plugin 'browser-browser-use' registered browser provider: browser-use
+2026-10-03 04:23:37,158 INFO hermes_cli.plugins: Plugin 'browser-browserbase' registered browser provider: browserbase
+2026-10-03 04:23:37,160 INFO hermes_cli.plugins: Plugin 'browser-firecrawl' registered browser provider: firecrawl
+2026-10-03 04:23:37,510 INFO hermes_cli.plugins: Plugin 'deepinfra' registered image_gen provider: deepinfra
+2026-10-03 04:23:37,512 INFO hermes_cli.plugins: Plugin 'fal' registered image_gen provider: fal
+2026-10-03 04:23:37,517 INFO hermes_cli.plugins: Plugin 'krea' registered image_gen provider: krea
+2026-10-03 04:23:37,519 INFO hermes_cli.plugins: Plugin 'meta-ai-image-gen' registered image_gen provider: meta-ai
+2026-10-03 04:23:37,521 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-10-03 04:23:37,525 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-10-03 04:23:37,533 INFO hermes_cli.plugins: Plugin 'openrouter' registered image_gen provider: openrouter
+2026-10-03 04:23:37,533 INFO hermes_cli.plugins: Plugin 'openrouter' registered image_gen provider: nous
+2026-10-03 04:23:37,538 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-10-03 04:23:37,893 INFO hermes_cli.plugins: Plugin 'deepinfra' registered video_gen provider: deepinfra
+2026-10-03 04:23:37,899 INFO hermes_cli.plugins: Plugin 'fal' registered video_gen provider: fal
+2026-10-03 04:23:37,906 INFO hermes_cli.plugins: Plugin 'openrouter' registered video_gen provider: openrouter
+2026-10-03 04:23:37,913 INFO hermes_cli.plugins: Plugin 'xai' registered video_gen provider: xai
+2026-10-03 04:23:37,921 INFO hermes_cli.plugins: Plugin 'web-brave-free' registered web provider: brave-free
+2026-10-03 04:23:37,926 INFO hermes_cli.plugins: Plugin 'web-ddgs' registered web provider: ddgs
+2026-10-03 04:23:37,930 INFO hermes_cli.plugins: Plugin 'web-exa' registered web provider: exa
+2026-10-03 04:23:37,947 INFO hermes_cli.plugins: Plugin 'web-firecrawl' registered web provider: firecrawl
+2026-10-03 04:23:37,950 INFO hermes_cli.plugins: Plugin 'web-keenable' registered web provider: keenable
+2026-10-03 04:23:37,952 INFO hermes_cli.plugins: Plugin 'web-openai-native' registered web provider: openai-native
+2026-10-03 04:23:37,956 INFO hermes_cli.plugins: Plugin 'web-parallel' registered web provider: parallel
+2026-10-03 04:23:37,964 INFO hermes_cli.plugins: Plugin 'web-perplexity' registered web provider: perplexity
+2026-10-03 04:23:37,968 INFO hermes_cli.plugins: Plugin 'web-searxng' registered web provider: searxng
+2026-10-03 04:23:38,006 INFO hermes_cli.plugins: Plugin 'web-tavily' registered web provider: tavily
+2026-10-03 04:23:38,015 INFO hermes_cli.plugins: Plugin 'web-xai' registered web provider: xai
+2026-10-03 04:23:38,027 INFO hermes_cli.plugins: Plugin discovery complete: 59 found, 53 enabled
+2026-10-03 04:23:39,625 INFO run_agent: No .env file found. Using system environment variables.
+2026-10-03 04:23:40,681 INFO cli: tirith not ready (downloading or lazy installs off); pattern matching only
+2026-10-03 04:23:40,758 WARNING cli: Background MCP discovery previously exited with no connected servers; retrying discovery thread
+2026-10-03 04:23:41,673 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=MainThread:139876931808192 provider=custom base_url=http://127.0.0.1:11541/v1 model=qwen2.5:7b-instruct
+2026-10-03 04:23:41,836 WARNING agent.context_pin: model.context_length pins qwen2.5:7b-instruct at 65,536 tokens but the provider advertises 131,072; the pin wins. Remove model.context_length from config.yaml to use the advertised window.
+2026-10-03 04:23:42,095 INFO [20261003_042339_d81f00] agent.turn_context: conversation turn: session=20261003_042339_d81f00 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg='Use the bend_verify tool with project_dir set to <LANETMP>/be...'
+2026-10-03 04:23:42,764 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-5 (<lambda>):139876320118464 provider=custom base_url=http://127.0.0.1:11541/v1 model=qwen2.5:7b-instruct
+2026-10-03 04:23:44,002 INFO [20261003_042339_d81f00] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3365 out=39 total=3404 latency=1.4s cache=2115/3365 (63%) id=chatcmpl-839
+2026-10-03 04:23:44,048 WARNING [20261003_042339_d81f00] agent.conversation_loop: Empty response (no content or reasoning) — retry 1/3 in 5.2s (model=qwen2.5:7b-instruct)
+2026-10-03 04:23:49,803 INFO [20261003_042339_d81f00] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=3365 out=39 total=3404 latency=0.6s cache=3364/3365 (100%) id=chatcmpl-404
+2026-10-03 04:23:49,805 WARNING [20261003_042339_d81f00] agent.conversation_loop: Empty response (no content or reasoning) — retry 2/3 in 14.9s (model=qwen2.5:7b-instruct)
+2026-10-03 04:24:05,301 INFO [20261003_042339_d81f00] agent.conversation_loop: API call #3: model=qwen2.5:7b-instruct provider=custom in=3365 out=39 total=3404 latency=0.5s cache=3364/3365 (100%) id=chatcmpl-792
+2026-10-03 04:24:05,302 WARNING [20261003_042339_d81f00] agent.conversation_loop: Empty response (no content or reasoning) — retry 3/3 in 25.0s (model=qwen2.5:7b-instruct)
+2026-10-03 04:24:31,042 INFO [20261003_042339_d81f00] agent.conversation_loop: API call #4: model=qwen2.5:7b-instruct provider=custom in=3365 out=39 total=3404 latency=0.5s cache=3364/3365 (100%) id=chatcmpl-896
+2026-10-03 04:24:31,045 WARNING [20261003_042339_d81f00] agent.conversation_loop: Empty response (no content or reasoning) after 3 retries. No fallback available. model=qwen2.5:7b-instruct provider=custom
+2026-10-03 04:24:31,056 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen2.5:7b-instruct)
+2026-10-03 04:24:31,056 INFO agent.auxiliary_client: Auxiliary title_generation: using custom (qwen2.5:7b-instruct) at http://127.0.0.1:11541/v1/
+2026-10-03 04:24:31,063 INFO [20261003_042339_d81f00] agent.conversation_loop: Turn ended: reason=empty_response_exhausted model=qwen2.5:7b-instruct api_calls=4/4 budget=4/4 tool_turns=0 last_msg_role=assistant response_len=7 session=20261003_042339_d81f00
+2026-10-03 04:24:31,104 INFO [20261003_042339_d81f00] cli: CLI cleanup calling memory shutdown for session 20261003_042339_d81f00 with 2 message(s)
+2026-10-03 04:24:31,150 INFO [20261003_042339_d81f00] cli: CLI cleanup calling memory shutdown for session 20261003_042339_d81f00 with 2 message(s)

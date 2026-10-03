@@ -1,0 +1,11 @@
+{
+ "arm": "off",
+ "max_turns": 6,
+ "pair": 7,
+ "prompt_sha256": "4dbacd9843fd4cba2488887ab0d2665ddd48cf0c5c886b955945d3e2529a4854",
+ "run_id": "m057-repo-off-p07",
+ "seed": 5007,
+ "set": "measured",
+ "task": "repo",
+ "toolsets": "file,bend"
+}

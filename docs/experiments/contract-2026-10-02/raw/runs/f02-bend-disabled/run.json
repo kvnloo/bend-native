@@ -1,0 +1,11 @@
+{
+ "arm": "disabled",
+ "max_turns": 4,
+ "pair": 102,
+ "prompt_sha256": "4d627116b7961269a25660b9b768c293c7ddca203510f4d770ed969b55abb467",
+ "run_id": "f02-bend-disabled",
+ "seed": 5102,
+ "set": "footprint",
+ "task": "bend",
+ "toolsets": "file"
+}

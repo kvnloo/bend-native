@@ -1,0 +1,10 @@
+-m
+hermes_cli.main
+chat
+-Q
+-t
+computer_use,bend
+--max-turns
+12
+-q
+A GTK test window titled 'CuaTestHarness GTK3 Tasks' is open on this desktop; its app name for computer_use is 'Main.py'. Task: check the checkbox labeled 'I agree' in that window and change nothing else. Use the computer_use tool and never pass pid or window_id: 1) action='capture' with mode='ax' and app='Main.py'; 2) action='click' with element=<index of the 'I agree' check box>; 3) action='capture' with mode='ax' and app='Main.py' to confirm it is checked; 4) reply with the single word DONE.

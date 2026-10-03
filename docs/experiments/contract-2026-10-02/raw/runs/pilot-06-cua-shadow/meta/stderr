@@ -1,0 +1,16 @@
+  → Installing Python dependencies…
+  ✗ Installing Python dependencies failed; last 12 lines of output:
+         Building hermes-agent @ file://<TEMPLATE>/.hermes/installs/e6e3a218156f87a4/environments/87d3dffa9c6d436ab044e2bc46673fe0/workspace
+        × Failed to download `attrs==26.1.0`
+        ├─▶ Request failed after 3 retries in 5.1s
+        ├─▶ Failed to fetch:
+        │   `https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl`
+        ├─▶ error sending request for url
+        │   (https://files.pythonhosted.org/packages/64/b4/17d4b0b2a2dc85a6df63d1157e028ed19f90d4cd97c36717afef2bc2f395/attrs-26.1.0-py3-none-any.whl)
+        ├─▶ client error (Connect)
+        ├─▶ tunnel error: failed to create underlying connection
+        ├─▶ tcp connect error
+        ╰─▶ Connection refused (os error 111)
+      hint: `attrs` (v26.1.0) was included because `hermes-agent[computer-use]` (v0.0.0) depends on `mcp` (v2.0.0) which depends on `jsonschema` (v4.26.0) which depends on `attrs`
+
+session_id: 20261003_032205_c432c5

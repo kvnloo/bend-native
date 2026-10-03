@@ -1,0 +1,10 @@
+-m
+hermes_cli.main
+chat
+-Q
+-t
+bend
+--max-turns
+4
+-q
+Use the bend_verify tool with project_dir set to <STABLE>/cwd, then reply with only the verdict field it returned. (ctr-canary-prompt-7f3a)

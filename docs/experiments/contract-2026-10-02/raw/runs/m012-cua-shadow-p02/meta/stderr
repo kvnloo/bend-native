@@ -1,0 +1,6 @@
+2026-10-03T03:38:01.273619Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_987e5fdf2beb45d79c3a26a100d25db0:hermes-28003699fbd3 sender_missing=true
+2026-10-03T03:38:01.273655Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_987e5fdf2beb45d79c3a26a100d25db0:hermes-28003699fbd3 sender_missing=true
+2026-10-03T03:38:01.273671Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_987e5fdf2beb45d79c3a26a100d25db0:hermes-28003699fbd3 sender_missing=true
+2026-10-03T03:38:01.273674Z  WARN platform_linux::overlay: overlay: X11 channel rejected command (no sender or queue full) key=__cua_runtime_987e5fdf2beb45d79c3a26a100d25db0:hermes-28003699fbd3 sender_missing=true
+
+session_id: 20261003_033753_dfca7b

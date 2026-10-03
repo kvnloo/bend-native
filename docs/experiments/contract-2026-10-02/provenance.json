@@ -1,0 +1,31 @@
+{
+  "schema": "bend_native.contract.provenance.v1",
+  "plugin": {"repo": "kvnloo/bend-native", "sha": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad", "version": "0.4.0",
+             "installed_as": "git checkout in the profile template's plugins/bend (Hermes 'plugins install --ref'), clean in every run (meta/plugin-head, meta/plugin-status)",
+             "changed_on_this_branch": "no plugin file; only docs/experiments/contract-2026-10-02/"},
+  "hermes": {"branch": "exp/bend-stack-integration-20261002", "sha": "ad31bbf079f0ee559ce1b61c5f85178c4c3d9396",
+             "base": "50a6abca7cff83afb0ebfe930a77c67311aa1044 (bend-native CI pin) + 3 element_token fix commits",
+             "uv_lock_sha256": "de17d70bc999fb0f8fe50dbf8590ac979f43b5a84cd8320caeac1c695ce63c01", "python": "CPython 3.14.7"},
+  "model": {"name": "qwen2.5:7b-instruct", "digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+            "server": "Ollama 0.35.0 user-local (binary sha256 0b0650a962dda61ec0598141ea11e3b688d225e926c9c00bc2c299d0ed34c4f8), loopback, GPU, 32768 tokens per request (2 slots)",
+            "sampling": "capture proxy forwards temperature 0 and seed 5000+pair (Hermes sends neither)",
+            "shared": "the server was shared with other workflows during the runs (ledger server_at_start + loadavg recorded per run)"},
+  "bend": {"official_bin_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+           "base_bend_sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+           "bendtt_lean_sha256": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292",
+           "kernel_sha256": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca (session-bootstrap build; see receipts in the bend runs' tool results)",
+           "lean": "4.34.0 (lean sha256 e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550)"},
+  "driver": {"version": "cua-driver 0.32.0", "sha256": "8b03796185055cc40c1a9ef0b2b4bbe9595a3eefa4f9a3aa64f34e5ce1974cd3"},
+  "fixtures": {"gtk3": "kvnloo/cua libs/cua-driver/tests/fixtures/apps/linux/gtk3/main.py blob fa4b5ad328acc7835b32cf57fbdfd61d11b5df62, sha256 547b7bcab3e0a6098902c8ccc7d3f58e0dcb74616d31e4d03c8704e6445d4059 (not committed here)",
+               "bend": "fixtures/bend (examples/basic + canary comment)", "repo": "fixtures/repo + make_repo_fixture.sh (commit f51ec026df752cbcb82055b57c5f06eabc493edb)"},
+  "isolation": {"hostless_sha256": "367388956f01a7327421dccd3cfbfddaec98730cb9a8790328f0ba60b878ed6b",
+                "x11_session_sha256": "de01a439efbf6af99a0ccd820e31ebcae4d696b67ba86c14f84c3c67dfef3a4b",
+                "quiet_timed_sha256": "65c8741b9f93486dd91a68bd6a7071086d8702ab50c4aab73be0f75113dd579b",
+                "launcher": "harness/launch.sh (paths from a local lane.env, never committed)"},
+  "computer_use_provisioning": {
+    "problem": "The setup profile template cannot run computer_use: at boot Hermes PM activates the profile's committed PM environment (pm.environments.activate_dependencies), which was built without the computer-use extra, and the venv's site-packages are removed from sys.path. The first computer_use call then lazily runs 'uv sync' with the extra, which the dead egress proxy refuses ('computer_use backend unavailable: venv: uv sync exited 1'). pilot-05/06 failed this way. The setup never ran a GUI turn, so it did not see this.",
+    "fix_lane_local": "A private copy of the template home, overlaid at the template's own absolute path (so PM's absolute paths stay valid). PM's own ensure_import('computer-use') ran once in that copy. An offline attempt seeded from the existing uv cache failed: PM's uv 0.12.3 did not reuse the 0.11.7 cache entries. The successful run used network for that single step, with 'uv sync --locked' verifying every wheel hash against uv.lock. The shared setup template was not changed.",
+    "result": "committed PM generation d06c9ad364664df3840b8709e1234cef containing mcp; used by every measured run (all tasks, all arms)"
+  },
+  "pilots": "pilot-01..04 ran on the shared setup template (before the private copy existed); pilot-05/06 on the shared template failed as above; pilot-07/08 on the private copy. All are excluded from every denominator."
+}

@@ -1,0 +1,11 @@
+{
+ "arm": "disabled",
+ "max_turns": 12,
+ "pair": 104,
+ "prompt_sha256": "efb1af5af77c9b39d9b6ae0f2ca458f6c99d903c145862ca428260db85f755ef",
+ "run_id": "f04-cua-disabled",
+ "seed": 5104,
+ "set": "footprint",
+ "task": "cua",
+ "toolsets": "computer_use"
+}

@@ -1,0 +1,1 @@
+{"hermes_rc": "0", "loadavg1_at_start": 18.61, "oracle": "pass", "run_id": "m059-bend-shadow-p07", "server_at_start": {"loaded": [{"context_length": 32768, "digest": "845dbda0ea48", "name": "qwen2.5:7b-instruct", "size_vram": 6564274502}]}, "session_rc": 0, "set": "measured", "started": 1791000254.4965043, "wall_s_untimed": 42.1}

@@ -1,0 +1,10 @@
+-m
+hermes_cli.main
+chat
+-Q
+-t
+file,bend
+--max-turns
+6
+-q
+In the git repository at <STABLE>/cwd, use the read_file tool to read data/release.txt and reply with only the release codename written in it. (ctr-canary-prompt-7f3a)

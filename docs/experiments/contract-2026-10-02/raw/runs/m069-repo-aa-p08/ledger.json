@@ -1,0 +1,1 @@
+{"hermes_rc": "0", "loadavg1_at_start": 8.28, "oracle": "pass", "run_id": "m069-repo-aa-p08", "server_at_start": {"loaded": [{"context_length": 32768, "digest": "845dbda0ea48", "name": "qwen2.5:7b-instruct", "size_vram": 6564274502}]}, "session_rc": 0, "set": "measured", "started": 1791000541.066457, "wall_s_untimed": 10.9}

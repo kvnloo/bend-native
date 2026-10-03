@@ -1,0 +1,49 @@
+2026-10-03 03:52:41,912 INFO hermes_cli.plugins: Plugin 'browser-browser-use' registered browser provider: browser-use
+2026-10-03 03:52:41,926 INFO hermes_cli.plugins: Plugin 'browser-browserbase' registered browser provider: browserbase
+2026-10-03 03:52:41,939 INFO hermes_cli.plugins: Plugin 'browser-firecrawl' registered browser provider: firecrawl
+2026-10-03 03:52:42,582 INFO hermes_cli.plugins: Plugin 'deepinfra' registered image_gen provider: deepinfra
+2026-10-03 03:52:42,587 INFO hermes_cli.plugins: Plugin 'fal' registered image_gen provider: fal
+2026-10-03 03:52:42,600 INFO hermes_cli.plugins: Plugin 'krea' registered image_gen provider: krea
+2026-10-03 03:52:42,606 INFO hermes_cli.plugins: Plugin 'meta-ai-image-gen' registered image_gen provider: meta-ai
+2026-10-03 03:52:42,611 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-10-03 03:52:42,621 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-10-03 03:52:42,634 INFO hermes_cli.plugins: Plugin 'openrouter' registered image_gen provider: openrouter
+2026-10-03 03:52:42,635 INFO hermes_cli.plugins: Plugin 'openrouter' registered image_gen provider: nous
+2026-10-03 03:52:42,647 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-10-03 03:52:43,308 INFO hermes_cli.plugins: Plugin 'deepinfra' registered video_gen provider: deepinfra
+2026-10-03 03:52:43,358 INFO hermes_cli.plugins: Plugin 'fal' registered video_gen provider: fal
+2026-10-03 03:52:43,373 INFO hermes_cli.plugins: Plugin 'openrouter' registered video_gen provider: openrouter
+2026-10-03 03:52:43,385 INFO hermes_cli.plugins: Plugin 'xai' registered video_gen provider: xai
+2026-10-03 03:52:43,440 INFO hermes_cli.plugins: Plugin 'web-brave-free' registered web provider: brave-free
+2026-10-03 03:52:43,467 INFO hermes_cli.plugins: Plugin 'web-ddgs' registered web provider: ddgs
+2026-10-03 03:52:43,471 INFO hermes_cli.plugins: Plugin 'web-exa' registered web provider: exa
+2026-10-03 03:52:43,511 INFO hermes_cli.plugins: Plugin 'web-firecrawl' registered web provider: firecrawl
+2026-10-03 03:52:43,522 INFO hermes_cli.plugins: Plugin 'web-keenable' registered web provider: keenable
+2026-10-03 03:52:43,535 INFO hermes_cli.plugins: Plugin 'web-openai-native' registered web provider: openai-native
+2026-10-03 03:52:43,541 INFO hermes_cli.plugins: Plugin 'web-parallel' registered web provider: parallel
+2026-10-03 03:52:43,552 INFO hermes_cli.plugins: Plugin 'web-perplexity' registered web provider: perplexity
+2026-10-03 03:52:43,556 INFO hermes_cli.plugins: Plugin 'web-searxng' registered web provider: searxng
+2026-10-03 03:52:43,561 INFO hermes_cli.plugins: Plugin 'web-tavily' registered web provider: tavily
+2026-10-03 03:52:43,569 INFO hermes_cli.plugins: Plugin 'web-xai' registered web provider: xai
+2026-10-03 03:52:43,640 INFO hermes_cli.plugin_capabilities: capability_check plugin=bend capability=tools.override decision=deny checked_by=plugin_capability_granted evidence=not granted
+2026-10-03 03:52:43,686 INFO hermes_cli.plugins: Plugin discovery complete: 59 found, 54 enabled
+2026-10-03 03:52:45,534 INFO run_agent: No .env file found. Using system environment variables.
+2026-10-03 03:52:47,255 INFO cli: tirith not ready (downloading or lazy installs off); pattern matching only
+2026-10-03 03:52:47,420 WARNING cli: Background MCP discovery previously exited with no connected servers; retrying discovery thread
+2026-10-03 03:52:49,135 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=MainThread:139965391588288 provider=custom base_url=http://127.0.0.1:11541/v1 model=qwen2.5:7b-instruct
+2026-10-03 03:52:49,350 WARNING agent.context_pin: model.context_length pins qwen2.5:7b-instruct at 65,536 tokens but the provider advertises 131,072; the pin wins. Remove model.context_length from config.yaml to use the advertised window.
+2026-10-03 03:52:49,730 INFO [20261003_035244_e99e9a] agent.turn_context: conversation turn: session=20261003_035244_e99e9a model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg='In the git repository at <STABLE>/cwd, use t...'
+2026-10-03 03:52:50,684 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-5 (<lambda>):139963899287232 provider=custom base_url=http://127.0.0.1:11541/v1 model=qwen2.5:7b-instruct
+2026-10-03 03:52:51,919 INFO [20261003_035244_e99e9a] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=3502 out=48 total=3550 latency=1.4s cache=3501/3502 (100%) id=chatcmpl-649
+2026-10-03 03:52:52,027 INFO tools.file_tools: Creating new local environment for task default...
+2026-10-03 03:52:52,202 INFO tools.environments.base: Session snapshot created (session=c7d52b361b03, cwd=<STABLE>/cwd)
+2026-10-03 03:52:52,202 INFO tools.file_tools: local environment ready for task default
+2026-10-03 03:52:52,205 INFO [20261003_035244_e99e9a] agent.tool_executor: tool read_file completed (0.19s, 169 chars)
+2026-10-03 03:52:52,567 INFO [20261003_035244_e99e9a] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=3623 out=26 total=3649 latency=0.3s cache=3515/3623 (97%) id=chatcmpl-468
+2026-10-03 03:52:52,583 INFO [20261003_035244_e99e9a] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=2/6 budget=2/6 tool_turns=1 last_msg_role=assistant response_len=86 session=20261003_035244_e99e9a
+2026-10-03 03:52:52,587 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen2.5:7b-instruct)
+2026-10-03 03:52:52,587 INFO agent.auxiliary_client: Auxiliary title_generation: using custom (qwen2.5:7b-instruct) at http://127.0.0.1:11541/v1/
+2026-10-03 03:52:52,640 INFO [20261003_035244_e99e9a] cli: CLI cleanup calling memory shutdown for session 20261003_035244_e99e9a with 4 message(s)
+2026-10-03 03:52:52,656 INFO [20261003_035244_e99e9a] tools.terminal_tool: Manually cleaned up environment for task: default
+2026-10-03 03:52:52,657 INFO [20261003_035244_e99e9a] tools.terminal_tool: Cleaned 1 environments
+2026-10-03 03:52:52,664 INFO [20261003_035244_e99e9a] cli: CLI cleanup calling memory shutdown for session 20261003_035244_e99e9a with 4 message(s)

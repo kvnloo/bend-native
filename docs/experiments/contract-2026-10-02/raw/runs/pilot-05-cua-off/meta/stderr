@@ -1,0 +1,16 @@
+  → Installing Python dependencies…
+  ✗ Installing Python dependencies failed; last 12 lines of output:
+         Building hermes-agent @ file://<TEMPLATE>/.hermes/installs/e6e3a218156f87a4/environments/5a02b812dade42888cb429e3a3cbd2b2/workspace
+        × Failed to download `importlib-metadata==8.7.1`
+        ├─▶ Request failed after 3 retries in 4.6s
+        ├─▶ Failed to fetch:
+        │   `https://files.pythonhosted.org/packages/fa/5e/f8e9a1d23b9c20a551a8a02ea3637b4642e22c2626e3a13a9a29cdea99eb/importlib_metadata-8.7.1-py3-none-any.whl`
+        ├─▶ error sending request for url
+        │   (https://files.pythonhosted.org/packages/fa/5e/f8e9a1d23b9c20a551a8a02ea3637b4642e22c2626e3a13a9a29cdea99eb/importlib_metadata-8.7.1-py3-none-any.whl)
+        ├─▶ client error (Connect)
+        ├─▶ tunnel error: failed to create underlying connection
+        ├─▶ tcp connect error
+        ╰─▶ Connection refused (os error 111)
+      hint: `importlib-metadata` (v8.7.1) was included because `hermes-agent[computer-use]` (v0.0.0) depends on `mcp` (v2.0.0) which depends on `opentelemetry-api` (v1.39.1) which depends on `importlib-metadata`
+
+session_id: 20261003_032135_b23555

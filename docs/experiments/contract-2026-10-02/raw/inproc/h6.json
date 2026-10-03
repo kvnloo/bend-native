@@ -1,0 +1,97 @@
+{
+ "ended_at": 1790998935.354798,
+ "ok": true,
+ "result": {
+  "disabled": {
+   "cli_commands": [],
+   "has_hook_any": false,
+   "hook_callbacks": {
+    "api_request_error": 0,
+    "on_session_end": 0,
+    "on_session_start": 0,
+    "post_api_request": 0,
+    "post_auxiliary_call": 0,
+    "post_llm_call": 0,
+    "post_tool_call": 0,
+    "pre_api_request": 0,
+    "pre_auxiliary_call": 0,
+    "pre_llm_call": 0,
+    "pre_tool_call": 0,
+    "subagent_stop": 0
+   },
+   "ledger_keys": [],
+   "loaded": {
+    "enabled": false,
+    "error": "disabled via config",
+    "module_loaded": false
+   },
+   "new_paths": [
+    "SOUL.md",
+    "audio_cache",
+    "backups",
+    "backups/config",
+    "backups/config/config.yaml.good.20261003-034213",
+    "cron",
+    "hooks",
+    "image_cache",
+    "logs",
+    "logs/curator",
+    "memories",
+    "pairing",
+    "sessions",
+    "skills"
+   ],
+   "tools": []
+  },
+  "enabled_off": {
+   "cli_commands": [
+    "bend",
+    "z0"
+   ],
+   "has_hook_any": true,
+   "hook_callbacks": {
+    "api_request_error": 1,
+    "on_session_end": 1,
+    "on_session_start": 1,
+    "post_api_request": 1,
+    "post_auxiliary_call": 1,
+    "post_llm_call": 1,
+    "post_tool_call": 1,
+    "pre_api_request": 1,
+    "pre_auxiliary_call": 1,
+    "pre_llm_call": 1,
+    "pre_tool_call": 1,
+    "subagent_stop": 1
+   },
+   "ledger_keys": [
+    "bend"
+   ],
+   "loaded": {
+    "enabled": true,
+    "error": null,
+    "module_loaded": true
+   },
+   "new_paths": [
+    "SOUL.md",
+    "audio_cache",
+    "backups",
+    "backups/config",
+    "backups/config/config.yaml.good.20261003-034214",
+    "cron",
+    "hooks",
+    "image_cache",
+    "logs",
+    "logs/curator",
+    "memories",
+    "pairing",
+    "sessions",
+    "skills"
+   ],
+   "tools": [
+    "bend_verify"
+   ]
+  }
+ },
+ "section": "h6",
+ "started_at": 1790998932.5737
+}

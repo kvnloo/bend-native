@@ -245,6 +245,20 @@ def main():
                   and all(len(d) == 1 for d in first_hashes.values())
                   and not any(p["class"] == "missing_run" for p in pairs["off_vs_shadow"]))
     summary["H1"] = h1
+    # ---- exploratory (DEVIATIONS D6): auxiliary title-generation request present before process exit ----
+    aux = {}
+    for (task, pair, arm), r in by.items():
+        a = aux.setdefault(arm, [0, 0])
+        a[0] += bool(r["aux"])
+        a[1] += 1
+    summary["exploratory_aux_title_request"] = {
+        "present_by_arm": {arm: f"{v[0]}/{v[1]}" for arm, v in sorted(aux.items())},
+        "fisher_shadow_vs_off": round(fisher_two_sided(aux["shadow"][0], aux["shadow"][1] - aux["shadow"][0],
+                                                       aux["off"][0], aux["off"][1] - aux["off"][0]), 4)
+        if "shadow" in aux and "off" in aux else None,
+        "fisher_aa_vs_off": round(fisher_two_sided(aux["aa"][0], aux["aa"][1] - aux["aa"][0],
+                                                   aux["off"][0], aux["off"][1] - aux["off"][0]), 4)
+        if "aa" in aux and "off" in aux else None}
     # ---- H2 (chat) ----
     summary["H2_chat"] = {"runs": len(runs), "tool_results_with_block_directive":
                           sum(r["blocked_tool_results"] for r in runs.values())}

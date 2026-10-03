@@ -1,0 +1,11 @@
+{
+ "arm": "shadow",
+ "max_turns": 6,
+ "pair": 4,
+ "prompt_sha256": "4dbacd9843fd4cba2488887ab0d2665ddd48cf0c5c886b955945d3e2529a4854",
+ "run_id": "m035-repo-shadow-p04",
+ "seed": 5004,
+ "set": "measured",
+ "task": "repo",
+ "toolsets": "file,bend"
+}

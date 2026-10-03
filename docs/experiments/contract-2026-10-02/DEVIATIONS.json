@@ -30,6 +30,12 @@
       "id": "D5",
       "what": "The in-process harness (inproc_contract.py), export_raw.py and analyze.py were written after the PREREG commit (the PREREG fixed the checks and pass rules). Debug runs ip-dbg-* were used only to make the code work; their numbers are not reported. All reported in-process records come from fresh ip-* runs after this commit; timed rows come only from quiet-timed blocks.",
       "change": "none (disclosure)"
+    },
+    {
+      "id": "D6",
+      "what": "Exploratory, found in the interim look at runs 1-24 and added to analyze.py after all measured runs: whether Hermes's auxiliary title-generation request reaches the model before the one-shot CLI process exits. It is a race between the title thread and CLI cleanup inside Hermes (agent.log: 'Auxiliary title_generation: transient transport error ... Connection error' after 'CLI cleanup').",
+      "change": "Reported per arm with a Fisher test as an EXPLORATORY row. It is not a main-loop payload and not part of H1.",
+      "recorded_after_measured_runs": true
     }
   ]
 }

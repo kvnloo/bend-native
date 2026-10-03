@@ -1,0 +1,203 @@
+{
+ "ended_at": 1790998838.9281,
+ "ok": true,
+ "result": {
+  "all_returned_empty": true,
+  "drained": true,
+  "invocations": [
+   {
+    "event": "on_session_start",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_llm_call",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "post_llm_call",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_api_request",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "post_api_request",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "api_request_error",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_auxiliary_call",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "post_auxiliary_call",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_tool_call",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "post_tool_call",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "subagent_stop",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "on_session_end",
+    "kind": "normal",
+    "returned": "[]"
+   },
+   {
+    "event": "post_tool_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "post_tool_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "post_tool_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "post_tool_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_llm_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_llm_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_llm_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_llm_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "post_llm_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_api_request",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_api_request",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "pre_tool_call",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "on_session_end",
+    "kind": "hostile",
+    "returned": "[]"
+   },
+   {
+    "event": "subagent_stop",
+    "kind": "hostile",
+    "returned": "[]"
+   }
+  ],
+  "ledger_inventory": [
+   "cli_command:bend",
+   "cli_command:z0",
+   "hook:api_request_error",
+   "hook:on_session_end",
+   "hook:on_session_start",
+   "hook:post_api_request",
+   "hook:post_auxiliary_call",
+   "hook:post_llm_call",
+   "hook:post_tool_call",
+   "hook:pre_api_request",
+   "hook:pre_auxiliary_call",
+   "hook:pre_llm_call",
+   "hook:pre_tool_call",
+   "hook:subagent_stop",
+   "on_unload:close",
+   "on_unload:close",
+   "skill:bend:workflow",
+   "skill:bend:z0-stack",
+   "tool:bend_verify",
+   "tool_override_policy:hermes_plugins.bend"
+  ],
+  "loaded_error": null,
+  "n_invocations": 26,
+  "plugin_key": "bend",
+  "registered_events": [
+   "api_request_error",
+   "on_session_end",
+   "on_session_start",
+   "post_api_request",
+   "post_auxiliary_call",
+   "post_llm_call",
+   "post_tool_call",
+   "pre_api_request",
+   "pre_auxiliary_call",
+   "pre_llm_call",
+   "pre_tool_call",
+   "subagent_stop"
+  ],
+  "stack_last_error_after_hostile": "JSONDecodeError",
+  "stack_rows_dropped": 0,
+  "surfaces": {
+   "aux_tasks": [],
+   "context_engine": "None",
+   "hooks_with_callbacks": {
+    "api_request_error": 1,
+    "on_session_end": 1,
+    "on_session_start": 1,
+    "post_api_request": 1,
+    "post_auxiliary_call": 1,
+    "post_llm_call": 1,
+    "post_tool_call": 1,
+    "pre_api_request": 1,
+    "pre_auxiliary_call": 1,
+    "pre_llm_call": 1,
+    "pre_tool_call": 1,
+    "subagent_stop": 1
+   },
+   "middleware": {},
+   "system_prompt_sections": []
+  }
+ },
+ "section": "h2",
+ "started_at": 1790998838.0521035
+}

@@ -1,0 +1,354 @@
+{
+ "schema": "z0int.state_packet.v0",
+ "packet_id": "2d50a319cbfa5f7137fc",
+ "built_at": "2026-10-03T04:19:52Z",
+ "intent": {
+  "name": "status",
+  "required": [
+   "git.head",
+   "git.branch",
+   "git.dirty"
+  ]
+ },
+ "scope": {
+  "repo": "<STABLE>/cwd",
+  "repo_name": "cwd"
+ },
+ "decision": {
+  "mode": "ACT",
+  "missing": [],
+  "reason": "all required facts observed"
+ },
+ "current_claims": [
+  {
+   "id": "c:ad67601a79",
+   "key": "git.branch",
+   "value": "main",
+   "status": "observed",
+   "evidence": [
+    "e:7c51394f08"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  {
+   "id": "c:3aff4660a5",
+   "key": "git.head",
+   "value": {
+    "sha": "f51ec02",
+    "date": "2026-10-01T00:00:00Z",
+    "subject": "fixture: contract repo"
+   },
+   "status": "observed",
+   "evidence": [
+    "e:113d03b49d"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  {
+   "id": "c:0696a6f2cb",
+   "key": "git.recent_commits",
+   "value": [
+    {
+     "sha": "f51ec02",
+     "date": "2026-10-01T00:00:00Z",
+     "subject": "fixture: contract repo"
+    }
+   ],
+   "status": "observed",
+   "evidence": [
+    "e:61b9a160cb"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": false
+  },
+  {
+   "id": "c:41f4d135db",
+   "key": "git.default_branch",
+   "value": "main",
+   "status": "observed",
+   "evidence": [
+    "e:f29c5d1978"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  {
+   "id": "c:fbcf5b7e9e",
+   "key": "git.dirty",
+   "value": {
+    "clean": true,
+    "modified": [],
+    "untracked": [],
+    "modified_count": 0,
+    "untracked_count": 0
+   },
+   "status": "observed",
+   "evidence": [
+    "e:0c312a4baa"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  {
+   "id": "c:f210fd59b7",
+   "key": "git.branches_ahead",
+   "value": {
+    "vs": "main",
+    "complete": true,
+    "local_branches": 1,
+    "ahead": []
+   },
+   "status": "observed",
+   "evidence": [
+    "e:a93932ccfe"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  {
+   "id": "c:c38d19a19c",
+   "key": "docs.last_commit[README.md]",
+   "value": {
+    "sha": "f51ec02",
+    "date": "2026-10-01T00:00:00Z"
+   },
+   "status": "observed",
+   "evidence": [
+    "e:ae95ab7819"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": false
+  },
+  {
+   "id": "c:dc60186103",
+   "key": "docs.open_items[README.md]",
+   "value": {
+    "count": 1,
+    "first": [
+     "Ship the next release"
+    ]
+   },
+   "status": "observed",
+   "evidence": [
+    "e:17e5bd8c12"
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  }
+ ],
+ "evidence": {
+  "e:7c51394f08": {
+   "source_id": "git:cwd",
+   "source_version": "f51ec026df75",
+   "locator": "<STABLE>/cwd:git branch --show-current",
+   "trust_class": "code",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:113d03b49d": {
+   "source_id": "git:cwd",
+   "source_version": "f51ec026df75",
+   "locator": "<STABLE>/cwd:git log -1 f51ec02",
+   "trust_class": "code",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:61b9a160cb": {
+   "source_id": "git:cwd",
+   "source_version": "f51ec026df75",
+   "locator": "<STABLE>/cwd:git log -n 8",
+   "trust_class": "code",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:f29c5d1978": {
+   "source_id": "git:cwd",
+   "source_version": "f51ec026df75",
+   "locator": "<STABLE>/cwd:refs/remotes/origin/HEAD",
+   "trust_class": "code",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:0c312a4baa": {
+   "source_id": "git:cwd",
+   "source_version": "f51ec026df75+ste3b0c44298fc",
+   "locator": "<STABLE>/cwd:git status --porcelain",
+   "trust_class": "code",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:a93932ccfe": {
+   "source_id": "git:cwd",
+   "source_version": "f51ec026df75",
+   "locator": "<STABLE>/cwd:git for-each-ref refs/heads",
+   "trust_class": "code",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:ae95ab7819": {
+   "source_id": "doc:cwd/README.md",
+   "source_version": "sha256:fd07702d663c",
+   "locator": "README.md:L1",
+   "trust_class": "project_constraint",
+   "observed_at": "2026-10-03T04:19:52Z"
+  },
+  "e:17e5bd8c12": {
+   "source_id": "doc:cwd/README.md",
+   "source_version": "sha256:fd07702d663c",
+   "locator": "README.md:L5",
+   "trust_class": "project_constraint",
+   "observed_at": "2026-10-03T04:19:52Z"
+  }
+ },
+ "contradictions": [],
+ "blocking_unknowns": [],
+ "unknowns": [
+  {
+   "key": "docs.priority",
+   "reason": "no P0 heading found in ROADMAP/README/AGENTS"
+  }
+ ],
+ "open_work": [
+  {
+   "kind": "doc_checklist",
+   "what": "README.md: 1 unchecked item(s)",
+   "evidence": [
+    "e:17e5bd8c12"
+   ]
+  }
+ ],
+ "superseded_claims": [],
+ "allowed_transitions": [
+  {
+   "kind": "OBSERVE",
+   "action": "refresh_packet",
+   "why": "always legal; re-reads changed sources only",
+   "authorizes": false
+  }
+ ],
+ "source_revisions": {
+  "git": {
+   "head": "f51ec026df752cbcb82055b57c5f06eabc493edb",
+   "status": "e3b0c44298fc",
+   "refs": "d0520362664e"
+  },
+  "docs": {
+   "README.md": "sha256:fd07702d663c"
+  },
+  "claude_code": {}
+ },
+ "policy_revision": "sp-v0.2",
+ "coverage": {
+  "git": "full",
+  "docs": "full"
+ },
+ "freshness": {},
+ "claims_index": {
+  "git.branch": {
+   "id": "c:ad67601a79",
+   "value": "main",
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  "git.head": {
+   "id": "c:3aff4660a5",
+   "value": {
+    "sha": "f51ec02",
+    "date": "2026-10-01T00:00:00Z",
+    "subject": "fixture: contract repo"
+   },
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  "git.recent_commits": {
+   "id": "c:0696a6f2cb",
+   "value": [
+    {
+     "sha": "f51ec02",
+     "date": "2026-10-01T00:00:00Z",
+     "subject": "fixture: contract repo"
+    }
+   ],
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": false
+  },
+  "git.default_branch": {
+   "id": "c:41f4d135db",
+   "value": "main",
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  "git.dirty": {
+   "id": "c:fbcf5b7e9e",
+   "value": {
+    "clean": true,
+    "modified": [],
+    "untracked": [],
+    "modified_count": 0,
+    "untracked_count": 0
+   },
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  "git.branches_ahead": {
+   "id": "c:f210fd59b7",
+   "value": {
+    "vs": "main",
+    "complete": true,
+    "local_branches": 1,
+    "ahead": []
+   },
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  },
+  "docs.last_commit[README.md]": {
+   "id": "c:c38d19a19c",
+   "value": {
+    "sha": "f51ec02",
+    "date": "2026-10-01T00:00:00Z"
+   },
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": false
+  },
+  "docs.open_items[README.md]": {
+   "id": "c:dc60186103",
+   "value": {
+    "count": 1,
+    "first": [
+     "Ship the next release"
+    ]
+   },
+   "observed_at": "2026-10-03T04:19:52Z",
+   "material": true
+  }
+ },
+ "cache": {
+  "key": "2d50a319cbfa5f7137fc",
+  "prior_packet_id": null
+ },
+ "privacy": {
+  "local_only": true,
+  "excerpt_max_chars": 160,
+  "note": "conversation content limited to redacted short excerpts/titles"
+ },
+ "measurements": {
+  "cache_hit": false,
+  "wall_ms": 15.34,
+  "adapters": {
+   "git": {
+    "wall_ms": 9.71,
+    "reads": 12,
+    "bytes_read": 292,
+    "claims": 6
+   },
+   "docs": {
+    "wall_ms": 1.53,
+    "reads": 2,
+    "bytes_read": 172,
+    "claims": 2
+   }
+  },
+  "raw_source_reads": 18,
+  "bytes_read": 693,
+  "transcript_bytes_read": 0,
+  "packet_bytes": 6255,
+  "concurrent_adapters": 2,
+  "network_calls": 0
+ }
+}

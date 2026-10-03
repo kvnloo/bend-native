@@ -1,0 +1,1 @@
+{"expected": "ctr-canary-tool-91c2", "schema": "contract.reply_oracle.v1", "source": "fixture_known_answer", "task": "repo", "verdict": "pass"}

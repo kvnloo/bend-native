@@ -1,0 +1,1 @@
+{"expected": "pass", "schema": "contract.reply_oracle.v1", "source": "fixture_known_answer", "task": "bend", "verdict": "fail"}

@@ -1,0 +1,125 @@
+{
+ "schema": "z0int.state_packet.v0",
+ "packet_id": "d5763d85b4d4aee5440c",
+ "built_at": "2026-10-03T04:18:26Z",
+ "intent": {
+  "name": "status",
+  "required": [
+   "git.head",
+   "git.branch",
+   "git.dirty"
+  ]
+ },
+ "scope": {
+  "repo": "<STABLE>/cwd",
+  "repo_name": "cwd"
+ },
+ "decision": {
+  "mode": "OBSERVE",
+  "missing": [
+   "git.head",
+   "git.branch",
+   "git.dirty"
+  ],
+  "reason": "required fact(s) missing/contested: git.head, git.branch, git.dirty"
+ },
+ "current_claims": [],
+ "evidence": {},
+ "contradictions": [],
+ "blocking_unknowns": [
+  {
+   "key": "git.head",
+   "reason": "<STABLE>/cwd is not a readable git repository",
+   "required_by": "status"
+  },
+  {
+   "key": "git.branch",
+   "reason": "no source produced this fact",
+   "required_by": "status"
+  },
+  {
+   "key": "git.dirty",
+   "reason": "no source produced this fact",
+   "required_by": "status"
+  }
+ ],
+ "unknowns": [
+  {
+   "key": "docs.any",
+   "reason": "no top-level AGENTS/README/ROADMAP docs"
+  }
+ ],
+ "open_work": [],
+ "superseded_claims": [],
+ "allowed_transitions": [
+  {
+   "kind": "OBSERVE",
+   "action": "refresh_packet",
+   "why": "always legal; re-reads changed sources only",
+   "authorizes": false
+  },
+  {
+   "kind": "OBSERVE",
+   "action": "resolve_unknown:git.head",
+   "why": "<STABLE>/cwd is not a readable git repository",
+   "authorizes": false
+  },
+  {
+   "kind": "OBSERVE",
+   "action": "resolve_unknown:git.branch",
+   "why": "no source produced this fact",
+   "authorizes": false
+  },
+  {
+   "kind": "OBSERVE",
+   "action": "resolve_unknown:git.dirty",
+   "why": "no source produced this fact",
+   "authorizes": false
+  }
+ ],
+ "source_revisions": {
+  "git": null,
+  "docs": {},
+  "claude_code": {}
+ },
+ "policy_revision": "sp-v0.2",
+ "coverage": {
+  "git": "none",
+  "docs": "none"
+ },
+ "freshness": {},
+ "claims_index": {},
+ "cache": {
+  "key": "d5763d85b4d4aee5440c",
+  "prior_packet_id": null
+ },
+ "privacy": {
+  "local_only": true,
+  "excerpt_max_chars": 160,
+  "note": "conversation content limited to redacted short excerpts/titles"
+ },
+ "measurements": {
+  "cache_hit": false,
+  "wall_ms": 3.29,
+  "adapters": {
+   "git": {
+    "wall_ms": 0.69,
+    "reads": 1,
+    "bytes_read": 0,
+    "claims": 0
+   },
+   "docs": {
+    "wall_ms": 0.07,
+    "reads": 0,
+    "bytes_read": 0,
+    "claims": 0
+   }
+  },
+  "raw_source_reads": 2,
+  "bytes_read": 0,
+  "transcript_bytes_read": 0,
+  "packet_bytes": 1921,
+  "concurrent_adapters": 2,
+  "network_calls": 0
+ }
+}

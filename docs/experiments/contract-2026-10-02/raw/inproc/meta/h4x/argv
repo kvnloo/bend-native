@@ -1,0 +1,17 @@
+<VENV>/bin/python
+-B
+<PLUGIN_WT>/docs/experiments/contract-2026-10-02/harness/inproc_contract.py
+--hermes-root
+<HERMES_WT>
+--plugin
+<TEMPLATE>/.hermes/plugins/bend
+--bend
+<BENDSTACK>/official/bend/bin/bend
+--lean-bin
+<BENDSTACK>/lean-4.34.0-linux/bin
+--work
+<STABLE_INPROC>/tmp/work
+--out
+<RUNS>/ip-h4x-01/result.json
+--section
+h4x

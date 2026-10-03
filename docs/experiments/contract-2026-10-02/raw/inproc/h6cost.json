@@ -1,0 +1,24 @@
+{
+ "ended_at": 1791004924.5827458,
+ "ok": true,
+ "result": {
+  "disabled": {
+   "has_hook": false,
+   "mean_us": 19.05,
+   "n": 3000,
+   "p50_us": 18.19,
+   "p99_us": 53.53,
+   "threads_after": 1
+  },
+  "enabled_off": {
+   "has_hook": true,
+   "mean_us": 164.92,
+   "n": 3000,
+   "p50_us": 161.87,
+   "p99_us": 203.75,
+   "threads_after": 1
+  }
+ },
+ "section": "h6cost",
+ "started_at": 1791004923.2671676
+}

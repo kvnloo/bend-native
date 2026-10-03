@@ -1,0 +1,11 @@
+{
+ "arm": "shadow",
+ "max_turns": 4,
+ "pair": 12,
+ "prompt_sha256": "4d627116b7961269a25660b9b768c293c7ddca203510f4d770ed969b55abb467",
+ "run_id": "m108-bend-shadow-p12",
+ "seed": 5012,
+ "set": "measured",
+ "task": "bend",
+ "toolsets": "bend"
+}

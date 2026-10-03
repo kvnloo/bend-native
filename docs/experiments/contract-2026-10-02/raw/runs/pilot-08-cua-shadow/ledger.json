@@ -1,0 +1,1 @@
+{"hermes_rc": "0", "loadavg1_at_start": 32.28, "oracle": "pass", "run_id": "pilot-08-cua-shadow", "server_at_start": {"loaded": [{"context_length": 32768, "digest": "845dbda0ea48", "name": "qwen2.5:7b-instruct", "size_vram": 6564274502}]}, "session_rc": 0, "set": "pilot", "started": 1790998035.7047057, "wall_s_untimed": 36.4}

@@ -1,0 +1,41 @@
+{
+ "ended_at": 1790998931.3906105,
+ "ok": true,
+ "result": {
+  "off": {
+   "canary_hits": {},
+   "plugin_data_tree": []
+  },
+  "shadow_no_opportunities": {
+   "canary_hits": {},
+   "plugin_data_tree": [
+    "bend",
+    "bend/z0",
+    "bend/z0/events.jsonl"
+   ]
+  },
+  "shadow_opportunities": {
+   "canary_hits": {
+    "bend/z0/opportunities.jsonl": [
+     "ipc-user-0a1b"
+    ]
+   },
+   "plugin_data_tree": [
+    "bend",
+    "bend/z0",
+    "bend/z0/empty-transcripts",
+    "bend/z0/events.jsonl",
+    "bend/z0/opportunities.jsonl",
+    "bend/z0/state",
+    "bend/z0/state/state_packet",
+    "bend/z0/state/state_packet/78b5fe246c432dfe",
+    "bend/z0/state/state_packet/78b5fe246c432dfe/history.jsonl",
+    "bend/z0/state/state_packet/78b5fe246c432dfe/latest.json",
+    "bend/z0/state/state_packet/transcript_cursors",
+    "bend/z0/state/state_packet/transcript_cursors/78b5fe246c432dfe.json"
+   ]
+  }
+ },
+ "section": "h5",
+ "started_at": 1790998929.9589038
+}

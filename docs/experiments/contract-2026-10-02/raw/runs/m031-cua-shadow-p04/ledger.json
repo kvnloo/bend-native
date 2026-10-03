@@ -1,0 +1,1 @@
+{"hermes_rc": "0", "loadavg1_at_start": 18.29, "oracle": "pass", "run_id": "m031-cua-shadow-p04", "server_at_start": {"loaded": [{"context_length": 32768, "digest": "845dbda0ea48", "name": "qwen2.5:7b-instruct", "size_vram": 6564274502}]}, "session_rc": 0, "set": "measured", "started": 1790999341.983434, "wall_s_untimed": 29.1}

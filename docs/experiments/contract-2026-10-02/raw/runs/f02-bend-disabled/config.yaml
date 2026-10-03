@@ -1,0 +1,50 @@
+# contract lane private Hermes profile (generated per run; arm=disabled); local model through the capture proxy.
+model:
+  default: "qwen2.5:7b-instruct"
+  provider: "custom"
+  base_url: "http://127.0.0.1:11541/v1"
+  api_key: "ollama-local-no-key"
+  context_length: 65536
+  ollama_num_ctx: 65536
+plugins:
+  auto_update_check_hours: 0
+  auto_apply: false
+  enabled:
+    []
+  disabled:
+    - bend
+  entries:
+    bend:
+      settings:
+        executable: <BENDSTACK>/official/bend/bin/bend
+        dependency_cache: <TEMPLATE>/bend-hub-cache
+        stack_service_port: 11521
+updates:
+  check: false
+  refresh_cua_driver: false
+  pre_update_backup: "off"
+model_catalog:
+  enabled: false
+tools:
+  tool_search:
+    enabled: "off"
+computer_use:
+  cua_telemetry: false
+  permission_mode: "standard"
+  autostart: false
+  native_wayland: false
+  capture_after_mode: "ax"
+bot_desktop:
+  auto_start: false
+command_allowlist:
+  - "cua:click:background"
+  - "cua:click:foreground"
+  - "cua:type:background"
+  - "cua:type:foreground"
+  - "cua:key:background"
+  - "cua:key:foreground"
+  - "cua:set_value:background"
+  - "cua:scroll:background"
+  - "cua:scroll:foreground"
+logging:
+  level: "INFO"

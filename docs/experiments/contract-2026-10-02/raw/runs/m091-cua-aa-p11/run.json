@@ -1,0 +1,11 @@
+{
+ "arm": "aa",
+ "max_turns": 12,
+ "pair": 11,
+ "prompt_sha256": "efb1af5af77c9b39d9b6ae0f2ca458f6c99d903c145862ca428260db85f755ef",
+ "run_id": "m091-cua-aa-p11",
+ "seed": 5011,
+ "set": "measured",
+ "task": "cua",
+ "toolsets": "computer_use,bend"
+}

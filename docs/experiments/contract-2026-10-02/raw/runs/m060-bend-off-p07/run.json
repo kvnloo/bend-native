@@ -1,0 +1,11 @@
+{
+ "arm": "off",
+ "max_turns": 4,
+ "pair": 7,
+ "prompt_sha256": "4d627116b7961269a25660b9b768c293c7ddca203510f4d770ed969b55abb467",
+ "run_id": "m060-bend-off-p07",
+ "seed": 5007,
+ "set": "measured",
+ "task": "bend",
+ "toolsets": "bend"
+}

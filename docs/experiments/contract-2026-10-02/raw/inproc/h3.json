@@ -1,0 +1,63 @@
+{
+ "ended_at": 1791002093.2335937,
+ "ok": true,
+ "result": {
+  "accounting": {
+   "balance_submitted_minus_written_minus_dropped": 0,
+   "dropped": 3124,
+   "submitted": 3400,
+   "written": 276
+  },
+  "callback_latency_ms": {
+   "max": 6.1817,
+   "mean": 1.1833,
+   "n": 3200,
+   "p50": 1.0944,
+   "p99": 3.6535
+  },
+  "close_minus_2s_ms": 0.062,
+  "close_s": 2.0001,
+  "close_within_2s": false,
+  "events_rows_at_close": 20,
+  "events_rows_final": 276,
+  "flood_wall_s": 0.49,
+  "fresh_process_report": {
+   "events": 276,
+   "last_error": null,
+   "queue_pending": 0,
+   "rc": 0,
+   "rows_dropped": 0
+  },
+  "in_process_at_close": {
+   "dropped": 3124,
+   "error": null,
+   "pending": 256,
+   "report_queue_pending": 256,
+   "report_rows_dropped": 3124
+  },
+  "invoke_hook_latency_ms_saturated": {
+   "max": 0.5328,
+   "n": 200,
+   "p50": 0.2555,
+   "p99": 0.4573
+  },
+  "opportunities_written_after_close": 72,
+  "opportunity_rows_at_close": 7,
+  "opportunity_rows_final": 79,
+  "per_thread": 400,
+  "persisted_drop_markers": {},
+  "queue_max_observed": 256,
+  "queue_maxsize": 256,
+  "repo_files": 0,
+  "rows_written_after_close": 256,
+  "submitted": {
+   "pre_llm_call": 800,
+   "total": 3400
+  },
+  "threads": 8,
+  "worker_alive_after_close": true,
+  "worker_exit_after_close_s": 3.0
+ },
+ "section": "h3",
+ "started_at": 1791002084.7526941
+}

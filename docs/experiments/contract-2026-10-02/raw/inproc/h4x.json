@@ -1,0 +1,111 @@
+{
+ "ended_at": 1790998927.9873807,
+ "ok": true,
+ "result": {
+  "drained": true,
+  "phases": [
+   [
+    "A",
+    "sA"
+   ],
+   [
+    "B",
+    "sB"
+   ],
+   [
+    "A",
+    "sA2"
+   ]
+  ],
+  "profiles": {
+   "A": {
+    "events_rows": 326,
+    "foreign_ids_found": {},
+    "only_own_sessions": true,
+    "plugin_data_tree": [
+     "agent-plugin-bend-36e11081",
+     "agent-plugin-bend-36e11081/.state.json.lock",
+     "agent-plugin-bend-36e11081/state.json",
+     "bend",
+     "bend/z0",
+     "bend/z0/empty-transcripts",
+     "bend/z0/events.jsonl",
+     "bend/z0/opportunities.jsonl",
+     "bend/z0/state",
+     "bend/z0/state/state_packet",
+     "bend/z0/state/state_packet/13ea5ba1e363ca6f",
+     "bend/z0/state/state_packet/13ea5ba1e363ca6f/history.jsonl",
+     "bend/z0/state/state_packet/13ea5ba1e363ca6f/latest.json",
+     "bend/z0/state/state_packet/transcript_cursors",
+     "bend/z0/state/state_packet/transcript_cursors/13ea5ba1e363ca6f.json"
+    ],
+    "rows_without_session": false,
+    "sessions_in_spool": [
+     "sA",
+     "sA2"
+    ]
+   },
+   "B": {
+    "events_rows": 163,
+    "foreign_ids_found": {},
+    "only_own_sessions": true,
+    "plugin_data_tree": [
+     "agent-plugin-bend-36e11081",
+     "agent-plugin-bend-36e11081/.state.json.lock",
+     "bend",
+     "bend/z0",
+     "bend/z0/empty-transcripts",
+     "bend/z0/events.jsonl",
+     "bend/z0/opportunities.jsonl",
+     "bend/z0/state",
+     "bend/z0/state/state_packet",
+     "bend/z0/state/state_packet/13ea5ba1e363ca6f",
+     "bend/z0/state/state_packet/13ea5ba1e363ca6f/history.jsonl",
+     "bend/z0/state/state_packet/13ea5ba1e363ca6f/latest.json",
+     "bend/z0/state/state_packet/transcript_cursors",
+     "bend/z0/state/state_packet/transcript_cursors/13ea5ba1e363ca6f.json"
+    ],
+    "rows_without_session": false,
+    "sessions_in_spool": [
+     "sB"
+    ]
+   }
+  },
+  "receipts": {
+   "sA": {
+    "code": null,
+    "error": null,
+    "kernel_strategy": "session-bootstrap",
+    "receipt_id": "6f82bddf27c34eef902e908e7a901f86",
+    "state_last_receipt_id": "6f82bddf27c34eef902e908e7a901f86",
+    "success": true,
+    "verdict": "pass"
+   },
+   "sA2": {
+    "code": null,
+    "error": null,
+    "kernel_strategy": "session-pinned",
+    "receipt_id": "3e79a3d378d1428bb5b04642c48b1491",
+    "state_last_receipt_id": "3e79a3d378d1428bb5b04642c48b1491",
+    "success": true,
+    "verdict": "pass"
+   },
+   "sB": {
+    "code": null,
+    "error": "Unknown tool: bend_verify",
+    "kernel_strategy": null,
+    "receipt_id": null,
+    "report_in_B": {
+     "events": 2,
+     "last_error": "JSONDecodeError",
+     "rows_dropped": 0
+    },
+    "state_last_receipt_id": null,
+    "success": null,
+    "verdict": null
+   }
+  }
+ },
+ "section": "h4x",
+ "started_at": 1790998893.890601
+}

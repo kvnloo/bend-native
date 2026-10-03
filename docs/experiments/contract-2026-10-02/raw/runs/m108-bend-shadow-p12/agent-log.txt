@@ -1,0 +1,44 @@
+2026-10-03 04:22:41,435 INFO hermes_cli.plugins: Plugin 'browser-browser-use' registered browser provider: browser-use
+2026-10-03 04:22:41,446 INFO hermes_cli.plugins: Plugin 'browser-browserbase' registered browser provider: browserbase
+2026-10-03 04:22:41,459 INFO hermes_cli.plugins: Plugin 'browser-firecrawl' registered browser provider: firecrawl
+2026-10-03 04:22:41,964 INFO hermes_cli.plugins: Plugin 'deepinfra' registered image_gen provider: deepinfra
+2026-10-03 04:22:41,969 INFO hermes_cli.plugins: Plugin 'fal' registered image_gen provider: fal
+2026-10-03 04:22:42,007 INFO hermes_cli.plugins: Plugin 'krea' registered image_gen provider: krea
+2026-10-03 04:22:42,010 INFO hermes_cli.plugins: Plugin 'meta-ai-image-gen' registered image_gen provider: meta-ai
+2026-10-03 04:22:42,018 INFO hermes_cli.plugins: Plugin 'openai' registered image_gen provider: openai
+2026-10-03 04:22:42,028 INFO hermes_cli.plugins: Plugin 'openai-codex' registered image_gen provider: openai-codex
+2026-10-03 04:22:42,037 INFO hermes_cli.plugins: Plugin 'openrouter' registered image_gen provider: openrouter
+2026-10-03 04:22:42,037 INFO hermes_cli.plugins: Plugin 'openrouter' registered image_gen provider: nous
+2026-10-03 04:22:42,071 INFO hermes_cli.plugins: Plugin 'xai' registered image_gen provider: xai
+2026-10-03 04:22:42,587 INFO hermes_cli.plugins: Plugin 'deepinfra' registered video_gen provider: deepinfra
+2026-10-03 04:22:42,605 INFO hermes_cli.plugins: Plugin 'fal' registered video_gen provider: fal
+2026-10-03 04:22:42,610 INFO hermes_cli.plugins: Plugin 'openrouter' registered video_gen provider: openrouter
+2026-10-03 04:22:42,632 INFO hermes_cli.plugins: Plugin 'xai' registered video_gen provider: xai
+2026-10-03 04:22:42,660 INFO hermes_cli.plugins: Plugin 'web-brave-free' registered web provider: brave-free
+2026-10-03 04:22:42,664 INFO hermes_cli.plugins: Plugin 'web-ddgs' registered web provider: ddgs
+2026-10-03 04:22:42,667 INFO hermes_cli.plugins: Plugin 'web-exa' registered web provider: exa
+2026-10-03 04:22:42,679 INFO hermes_cli.plugins: Plugin 'web-firecrawl' registered web provider: firecrawl
+2026-10-03 04:22:42,687 INFO hermes_cli.plugins: Plugin 'web-keenable' registered web provider: keenable
+2026-10-03 04:22:42,691 INFO hermes_cli.plugins: Plugin 'web-openai-native' registered web provider: openai-native
+2026-10-03 04:22:42,694 INFO hermes_cli.plugins: Plugin 'web-parallel' registered web provider: parallel
+2026-10-03 04:22:42,700 INFO hermes_cli.plugins: Plugin 'web-perplexity' registered web provider: perplexity
+2026-10-03 04:22:42,704 INFO hermes_cli.plugins: Plugin 'web-searxng' registered web provider: searxng
+2026-10-03 04:22:42,708 INFO hermes_cli.plugins: Plugin 'web-tavily' registered web provider: tavily
+2026-10-03 04:22:42,714 INFO hermes_cli.plugins: Plugin 'web-xai' registered web provider: xai
+2026-10-03 04:22:42,775 INFO hermes_cli.plugin_capabilities: capability_check plugin=bend capability=tools.override decision=deny checked_by=plugin_capability_granted evidence=not granted
+2026-10-03 04:22:42,809 INFO hermes_cli.plugins: Plugin discovery complete: 59 found, 54 enabled
+2026-10-03 04:22:44,045 INFO run_agent: No .env file found. Using system environment variables.
+2026-10-03 04:22:45,017 INFO cli: tirith not ready (downloading or lazy installs off); pattern matching only
+2026-10-03 04:22:45,096 WARNING cli: Background MCP discovery previously exited with no connected servers; retrying discovery thread
+2026-10-03 04:22:46,119 INFO run_agent: OpenAI client created (agent_init, shared=True) thread=MainThread:140426375031744 provider=custom base_url=http://127.0.0.1:11541/v1 model=qwen2.5:7b-instruct
+2026-10-03 04:22:46,262 WARNING agent.context_pin: model.context_length pins qwen2.5:7b-instruct at 65,536 tokens but the provider advertises 131,072; the pin wins. Remove model.context_length from config.yaml to use the advertised window.
+2026-10-03 04:22:46,509 INFO [20261003_042243_b86469] agent.turn_context: conversation turn: session=20261003_042243_b86469 model=qwen2.5:7b-instruct provider=custom platform=cli history=0 msg='Use the bend_verify tool with project_dir set to <LANETMP>/be...'
+2026-10-03 04:22:47,100 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-5 (<lambda>):140425681684160 provider=custom base_url=http://127.0.0.1:11541/v1 model=qwen2.5:7b-instruct
+2026-10-03 04:22:47,989 INFO [20261003_042243_b86469] agent.conversation_loop: API call #1: model=qwen2.5:7b-instruct provider=custom in=2320 out=49 total=2369 latency=1.0s cache=2319/2320 (100%) id=chatcmpl-363
+2026-10-03 04:23:11,693 INFO [20261003_042243_b86469] agent.tool_executor: tool bend_verify completed (23.62s, 2291 chars)
+2026-10-03 04:23:12,168 INFO [20261003_042243_b86469] agent.conversation_loop: API call #2: model=qwen2.5:7b-instruct provider=custom in=3532 out=4 total=3536 latency=0.5s cache=2336/3532 (66%) id=chatcmpl-721
+2026-10-03 04:23:12,182 INFO [20261003_042243_b86469] agent.conversation_loop: Turn ended: reason=text_response(finish_reason=stop) model=qwen2.5:7b-instruct api_calls=2/4 budget=2/4 tool_turns=1 last_msg_role=assistant response_len=6 session=20261003_042243_b86469
+2026-10-03 04:23:12,186 INFO agent.auxiliary_client: Auxiliary auto-detect: using main provider custom (qwen2.5:7b-instruct)
+2026-10-03 04:23:12,187 INFO agent.auxiliary_client: Auxiliary title_generation: using custom (qwen2.5:7b-instruct) at http://127.0.0.1:11541/v1/
+2026-10-03 04:23:12,217 INFO [20261003_042243_b86469] cli: CLI cleanup calling memory shutdown for session 20261003_042243_b86469 with 4 message(s)
+2026-10-03 04:23:12,246 INFO [20261003_042243_b86469] cli: CLI cleanup calling memory shutdown for session 20261003_042243_b86469 with 4 message(s)
