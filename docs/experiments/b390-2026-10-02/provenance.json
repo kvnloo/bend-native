@@ -1,0 +1,48 @@
+{
+  "schema": "bend_native.provenance.v1",
+  "lane": "B390",
+  "prereg_commit": "7eb782dc418d54a28856fd74de37dbafbe4d020c (2026-10-03T03:30:15Z); measured runs started 2026-10-03T03:30:26Z and ended 03:48:51Z (launcher meta in raw/launcher/*)",
+  "harness_unchanged_since_prereg": "git diff 7eb782d -- harness/ PREREG.json is empty. verify_artifacts.py was written after the run (it is not part of the measurement).",
+  "harness_sha256": {
+    "harness/fixtures.py": "d7a3dd0bb35d14d6980d9f1b9968e10e70ba0101d4498d3104d05b16238904d4",
+    "harness/matrix.py": "caeff056cd6bf9c8acb2e44243aa3378d36f50482aff218dc14c27d689ec9f79",
+    "harness/analyze.py": "823b30ca25ae794b9b705305fd0a8fc07a9b2fd235eff34698012600477168bb",
+    "harness/collect.py": "fde2a297b36d6153ca6d895385b6ab79bf0dca09fd609873f0e9ad3e6925d606",
+    "harness/cli_run.sh": "7c8d78c1f8bf2e50c462410863890a9751057ebb3324f04b354a3d87ba7054d7",
+    "harness/run_lane.sh": "b84d4f6903d668fd5d303f54e7257053b636434a26aed8bbf2c44c11d23cb2ff",
+    "PREREG.json": "b1b68bc2380d69fdbde01be79fbf1d66e0dc003299856c8aa80c11dace6da8c6"
+  },
+  "plugin": {
+    "repo": "kvnloo/bend-native",
+    "sha": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad",
+    "installed_checkout_head": "e85e65e5d2e11caba8412d6dbd19aad03fd785ad (recorded by every phase, raw/*/notes.jsonl kind=identity)",
+    "file_sha256": {
+      "__init__.py": "3a89ed920ad08443b687b891720c7eb60cf851283ca7616b835002771e37ea54",
+      "dependencies.py": "783769698991f7ee9c1946c281d17f18851517b9adf5d2cbd53047821ad0befd",
+      "receipts.py": "a3ae03f196d47120dd7fe8679e4422d628e4ed0071b9d8efb035f6cacc608d65",
+      "verify_core.py": "65f8f02fd23071d09faa08c7fe90a4ecbbecc116c90fcab3ca0d2a99fc455463",
+      "session_kernel.py": "bf26b70604b7a66bd7b031173bb74fd03002f1f2f4494f07f4226ca675d40ff4",
+      "service.py": "2b6fe23164336b82601047477375b0c2516db09b249d3dbf3aee656a57a1ae90",
+      "commands.py": "78d71dc7f99241a6d866cff37b62c76b6768c22b89e356aaa6e82eae07164dc9",
+      "plugin.yaml": "d25d9618e3600158ffd4e7c9d7b9c724eea148d3b6f62c4318146d46ef2c86cf"
+    },
+    "dependencies_py_matches_git_blob_at_sha": true
+  },
+  "hermes": {"repo": "kvnloo/hermes-agent", "branch": "exp/bend-stack-integration-20261002", "sha": "ad31bbf079f0ee559ce1b61c5f85178c4c3d9396", "base": "50a6abca7cff83afb0ebfe930a77c67311aa1044", "worktree_clean_in_all_runs": "24/24 (raw/launcher/*/worktree-status empty)", "python": "3.14.7 (dedicated uv venv)"},
+  "bend": {
+    "official": {"bin": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934", "base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt.lean": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292", "kernel_observed": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca", "release_tarball_sha256": "78106a97af242429dcc057258eb8d10f69cddebcd5e263022185a52d003e09bf"},
+    "patched": {"source": "kvnloo/bend@17db447a8b8c17b51517de42b35d3216e563f40f", "bin": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981", "base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt.lean": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce", "kernel_observed": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"},
+    "source_read_for_hub_behaviour": "bendlang/bend tag v2.0.34 (commit 7d8a3eb0) bend2/bend.ts hub_get/name_hash/book_file and bend2/main.ts cli_publish"
+  },
+  "lean": {"version": "4.34.0 (commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b)", "tarball_sha256": "caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b"},
+  "fixture_package_ids": {
+    "P_ok": "0xa40ae7ca7de9d120af2299846254ed37",
+    "P_bad": "0xa6808672c3601dcae38b206ab1582fdc",
+    "Q_ok": "0xf9dba70dd9b4cc800ee9348667de4cae",
+    "Q_alt": "0x6ebc2d66078d3e7f466a32b757b49116",
+    "Q_bad": "0xdba1a710dbdb6c325457ca009320e220"
+  },
+  "launcher": {"run-hermes.sh": "4252f75927cd123c6e05dbf0a26e385fc5853208eafdc2e5ce2380f834fc26d0", "hostless": "367388956f01a7327421dccd3cfbfddaec98730cb9a8790328f0ba60b878ed6b", "bwrap": "0.12.0"},
+  "models_services_gpu": "none used",
+  "path_variables": {"$RUNS": "launcher run directories", "$B390_WORK": "lane scratch root", "$BEND_STACK": "user-local toolchain root", "$LANE_WT": "this worktree", "$HERMES_WT": "Hermes worktrees and venv", "$LANE_TMP": "lane tmp root", "$LIVE_HERMES_HOME": "the user's live Hermes home (only its stat appears, from the launcher's before/after check)", "$ZROOT": "data volume root"}
+}

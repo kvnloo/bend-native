@@ -1,0 +1,5 @@
+{
+  "error": "Invalid cached package identity for sample@1.0.0.0",
+  "code": "dependency_integrity",
+  "success": false
+}

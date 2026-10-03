@@ -1,0 +1,257 @@
+[ok ] online X0_bootstrap - #0 verify: pass expect=['pass']
+[ok ] online O1_cold_missing H #0 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing H #1 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing H #2 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing H #3 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing H #4 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O2_cold_fetch_verify H #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 4, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify H #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 4, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify H #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 4, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify H #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 4, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify H #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 4, 'fetched_equals_fixture_layout': True}
+[ok ] online O3_warm_present H #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present H #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present H #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present H #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present H #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O4_mutated_benign H #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] online O4_mutated_benign H #0 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign H #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] online O4_mutated_benign H #1 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign H #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] online O4_mutated_benign H #2 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign H #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] online O4_mutated_benign H #3 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign H #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] online O4_mutated_benign H #4 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging H #0 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging H #0 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging H #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa6808672c3601dcae38b206ab1582fdc/Util.bend'}
+[ok ] online O5_mutated_forging H #1 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging H #1 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging H #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa6808672c3601dcae38b206ab1582fdc/Util.bend'}
+[ok ] online O5_mutated_forging H #2 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging H #2 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging H #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa6808672c3601dcae38b206ab1582fdc/Util.bend'}
+[ok ] online O5_mutated_forging H #3 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging H #3 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging H #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa6808672c3601dcae38b206ab1582fdc/Util.bend'}
+[ok ] online O5_mutated_forging H #4 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging H #4 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging H #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xa6808672c3601dcae38b206ab1582fdc/Util.bend'}
+[ok ] online O6_extra_file H #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file H #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file H #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file H #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file H #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package H #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package H #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package H #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package H #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package H #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O9_replay_same_cache H #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache H #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache H #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache H #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache H #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing H #0 replay: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing H #1 replay: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing H #2 replay: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing H #3 replay: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing H #4 replay: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O11_replay_cache_mutated H #0 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated H #1 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated H #2 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated H #3 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated H #4 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O12_replay_after_refetch H #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch H #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch H #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch H #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch H #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O14_replay_race_injected H #0 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O14_replay_race_injected H #1 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O14_replay_race_injected H #2 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O14_replay_race_injected H #3 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O14_replay_race_injected H #4 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O15_mutate_cache_during_verdict H #0 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict H #1 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict H #2 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict H #3 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict H #4 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict H #0 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict H #1 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict H #2 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict H #3 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict H #4 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O17_concurrent_bend_fetch H #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch H #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch H #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch H #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch H #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O18_verify_racing_fetch H #0 attempt00101: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #0 attempt00102: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #0 attempt00103: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #0 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 103, 'racing_outcomes': {'error:dependency_missing': 100, 'pass': 3}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch H #1 attempt00151: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #1 attempt00152: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #1 attempt00153: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #1 attempt00154: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #1 attempt00155: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #1 attempt00156: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #1 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 156, 'racing_outcomes': {'error:dependency_missing': 150, 'pass': 6}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch H #2 attempt00087: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #2 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 87, 'racing_outcomes': {'error:dependency_missing': 86, 'pass': 1}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch H #3 attempt00074: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #3 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 74, 'racing_outcomes': {'error:dependency_missing': 73, 'pass': 1}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch H #4 attempt00101: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch H #4 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 101, 'racing_outcomes': {'error:dependency_missing': 100, 'pass': 1}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O1_cold_missing N #0 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing N #1 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing N #2 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing N #3 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O1_cold_missing N #4 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O2_cold_fetch_verify N #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 8, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify N #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 8, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify N #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 8, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify N #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 8, 'fetched_equals_fixture_layout': True}
+[ok ] online O2_cold_fetch_verify N #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0, 'fetch_rc': 0, 'fetch_hub_requests': 8, 'fetched_equals_fixture_layout': True}
+[ok ] online O3_warm_present N #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present N #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present N #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present N #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O3_warm_present N #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O4_mutated_benign N #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] online O4_mutated_benign N #0 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign N #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] online O4_mutated_benign N #1 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign N #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] online O4_mutated_benign N #2 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign N #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] online O4_mutated_benign N #3 raw_bend_control: pass expect=['pass']
+[ok ] online O4_mutated_benign N #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] online O4_mutated_benign N #4 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging N #0 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging N #0 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging N #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xdba1a710dbdb6c325457ca009320e220/Main.bend'}
+[ok ] online O5_mutated_forging N #1 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging N #1 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging N #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xdba1a710dbdb6c325457ca009320e220/Main.bend'}
+[ok ] online O5_mutated_forging N #2 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging N #2 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging N #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xdba1a710dbdb6c325457ca009320e220/Main.bend'}
+[ok ] online O5_mutated_forging N #3 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging N #3 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging N #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xdba1a710dbdb6c325457ca009320e220/Main.bend'}
+[ok ] online O5_mutated_forging N #4 verify_before_mutation: fail expect=['fail'] {'fetch_rc': 1}
+[ok ] online O5_mutated_forging N #4 raw_bend_control: pass expect=['pass']
+[ok ] online O5_mutated_forging N #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0, 'mutated': '0xdba1a710dbdb6c325457ca009320e220/Main.bend'}
+[ok ] online O6_extra_file N #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file N #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file N #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file N #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O6_extra_file N #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package N #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package N #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package N #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package N #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O7_partial_package N #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O8a_binding_missing N #0 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8a_binding_missing N #1 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8a_binding_missing N #2 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8a_binding_missing N #3 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8a_binding_missing N #4 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8b_binding_garbage N #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O8b_binding_garbage N #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O8b_binding_garbage N #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O8b_binding_garbage N #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O8b_binding_garbage N #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'hub_requests': 0}
+[ok ] online O8c_binding_absent_package N #0 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8c_binding_absent_package N #1 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8c_binding_absent_package N #2 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8c_binding_absent_package N #3 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8c_binding_absent_package N #4 verify: error:dependency_missing expect=['error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O8d_binding_rebound_fresh_verify N #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O8d_binding_rebound_fresh_verify N #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O8d_binding_rebound_fresh_verify N #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O8d_binding_rebound_fresh_verify N #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O8d_binding_rebound_fresh_verify N #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache N #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache N #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache N #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache N #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O9_replay_same_cache N #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing N #0 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing N #1 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing N #2 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing N #3 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O10_replay_cache_missing N #4 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'hub_requests': 0}
+[ok ] online O11_replay_cache_mutated N #0 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated N #1 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated N #2 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated N #3 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O11_replay_cache_mutated N #4 replay: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] online O12_replay_after_refetch N #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch N #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch N #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch N #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O12_replay_after_refetch N #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rc': 0, 'hub_requests': 0}
+[ok ] online O13a_replay_hub_rebound_refetch N #0 replay: error:receipt_stale expect=['error:receipt_stale'] {'fetch_rc': 0, 'cache_binding': '0x6ebc2d66078d3e7f466a32b757b49116', 'cache_binding_is_Q_alt': True}
+[ok ] online O13a_replay_hub_rebound_refetch N #0 fresh_verify_control: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] online O13a_replay_hub_rebound_refetch N #1 replay: error:receipt_stale expect=['error:receipt_stale'] {'fetch_rc': 0, 'cache_binding': '0x6ebc2d66078d3e7f466a32b757b49116', 'cache_binding_is_Q_alt': True}
+[ok ] online O13a_replay_hub_rebound_refetch N #1 fresh_verify_control: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] online O13a_replay_hub_rebound_refetch N #2 replay: error:receipt_stale expect=['error:receipt_stale'] {'fetch_rc': 0, 'cache_binding': '0x6ebc2d66078d3e7f466a32b757b49116', 'cache_binding_is_Q_alt': True}
+[ok ] online O13a_replay_hub_rebound_refetch N #2 fresh_verify_control: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] online O13a_replay_hub_rebound_refetch N #3 replay: error:receipt_stale expect=['error:receipt_stale'] {'fetch_rc': 0, 'cache_binding': '0x6ebc2d66078d3e7f466a32b757b49116', 'cache_binding_is_Q_alt': True}
+[ok ] online O13a_replay_hub_rebound_refetch N #3 fresh_verify_control: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] online O13a_replay_hub_rebound_refetch N #4 replay: error:receipt_stale expect=['error:receipt_stale'] {'fetch_rc': 0, 'cache_binding': '0x6ebc2d66078d3e7f466a32b757b49116', 'cache_binding_is_Q_alt': True}
+[ok ] online O13a_replay_hub_rebound_refetch N #4 fresh_verify_control: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] online O13b_replay_local_rebound N #0 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] online O13b_replay_local_rebound N #1 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] online O13b_replay_local_rebound N #2 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] online O13b_replay_local_rebound N #3 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] online O13b_replay_local_rebound N #4 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] online O13c_replay_hub_rebound_cache_warm N #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O13c_replay_hub_rebound_cache_warm N #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O13c_replay_hub_rebound_cache_warm N #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O13c_replay_hub_rebound_cache_warm N #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O13c_replay_hub_rebound_cache_warm N #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'hub_requests': 0}
+[ok ] online O14_replay_race_injected N #0 replay: replay_mismatch expect=['replay_mismatch']
+[ok ] online O14_replay_race_injected N #1 replay: replay_mismatch expect=['replay_mismatch']
+[ok ] online O14_replay_race_injected N #2 replay: replay_mismatch expect=['replay_mismatch']
+[ok ] online O14_replay_race_injected N #3 replay: replay_mismatch expect=['replay_mismatch']
+[ok ] online O14_replay_race_injected N #4 replay: replay_mismatch expect=['replay_mismatch']
+[ok ] online O15_mutate_cache_during_verdict N #0 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict N #1 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict N #2 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict N #3 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] online O15_mutate_cache_during_verdict N #4 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict N #0 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict N #1 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict N #2 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict N #3 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O16_mutate_snapshot_during_verdict N #4 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'snapshot bend-lib/0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] online O17_concurrent_bend_fetch N #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch N #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch N #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch N #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O17_concurrent_bend_fetch N #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'fetch_rcs': [0, 0, 0, 0], 'cache_equals_fixture': True}
+[ok ] online O18_verify_racing_fetch N #0 attempt00089: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #0 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 89, 'racing_outcomes': {'error:input_capture_failed': 82, 'error:dependency_missing': 6, 'pass': 1}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch N #1 attempt00088: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #1 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 88, 'racing_outcomes': {'error:input_capture_failed': 85, 'error:dependency_missing': 1, 'error:dependency_integrity': 1, 'pass': 1}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch N #2 attempt00100: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #2 attempt00101: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #2 attempt00102: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #2 attempt00103: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #2 attempt00104: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #2 attempt00105: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #2 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 105, 'racing_outcomes': {'error:input_capture_failed': 93, 'error:dependency_missing': 6, 'pass': 6}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch N #3 attempt00080: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #3 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 80, 'racing_outcomes': {'error:input_capture_failed': 75, 'error:dependency_missing': 4, 'pass': 1}, 'fetch_rcs': [0, 0, 0, 0]}
+[ok ] online O18_verify_racing_fetch N #4 attempt00093: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #4 attempt00094: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #4 attempt00095: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #4 attempt00096: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #4 attempt00097: pass expect=['pass', 'unstable', 'fail'] ident={'match': True, 'mismatched': []}
+[ok ] online O18_verify_racing_fetch N #4 final: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'racing_attempts': 97, 'racing_outcomes': {'error:input_capture_failed': 81, 'error:dependency_missing': 11, 'pass': 5}, 'fetch_rcs': [0, 0, 0, 0]}

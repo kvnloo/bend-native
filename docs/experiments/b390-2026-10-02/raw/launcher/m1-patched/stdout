@@ -1,0 +1,21 @@
+[ok ] patched X0_bootstrap - #0 verify: pass expect=['pass']
+[ok ] patched E1_patched_warm_present_offline H #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline H #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline H #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline H #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline H #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E2_patched_replay_official_receipt H #0 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt H #1 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt H #2 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt H #3 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt H #4 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E1_patched_warm_present_offline N #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline N #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline N #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline N #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E1_patched_warm_present_offline N #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_official_golden': True}
+[ok ] patched E2_patched_replay_official_receipt N #0 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt N #1 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt N #2 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt N #3 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] patched E2_patched_replay_official_receipt N #4 replay: error:receipt_stale expect=['error:receipt_stale']

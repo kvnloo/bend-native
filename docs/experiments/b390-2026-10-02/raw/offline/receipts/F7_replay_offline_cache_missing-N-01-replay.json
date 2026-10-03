@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "could not read Bend input $B390_WORK/measured/m1/offline/work/inner/0073-F7-N/cache/names/sample@1.0.0.0: [Errno 2] No such file or directory: '$B390_WORK/measured/m1/offline/work/inner/0073-F7-N/cache/names/sample@1.0.0.0'",
+  "code": "input_capture_failed"
+}

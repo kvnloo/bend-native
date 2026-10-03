@@ -1,0 +1,11 @@
+python
+$LANE_WT/docs/experiments/b390-2026-10-02/harness/matrix.py
+online
+--n
+5
+--out
+$B390_WORK/measured/m1/online/out
+--work
+$B390_WORK/measured/m1/online/work
+--state
+$B390_WORK/measured/m1/state

@@ -1,0 +1,11 @@
+{
+  "config_set_rc": 0,
+  "worker_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "shared_cache_unchanged": true,
+  "workers": 3,
+  "n": 5
+}

@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "Project inputs differ from the recorded receipt; run a fresh verification",
+  "code": "receipt_stale"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "runtime_identity": {
+    "bend": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+    "base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661",
+    "bendtt.lean": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292"
+  },
+  "runtime_changed_during_verify": false,
+  "dependency_snapshot_changed": false,
+  "verification_scope": "bend-emitted-book",
+  "source_semantics_attested": false,
+  "limitations": [
+    "A kernel verdict checks Bend's emitted book, not source/compiler equivalence or whether the laws capture the user's intended behavior.",
+    "Bend 2.0.32–2.0.34 have a documented translation limitation: https://github.com/bendlang/bend/issues/1212"
+  ],
+  "success": true,
+  "verdict": "pass",
+  "execution_verdict": "pass",
+  "exit_code": 0,
+  "duration_ms": 174.923,
+  "proof_file": "PROOF.bend",
+  "proof_sha256": "a70db1ea5da1d4fd2de70c2a7c3437ce9abcd0c652c474beee23cf714ffa5dc6",
+  "proof_changed_during_verify": false,
+  "source_changed_during_verify": false,
+  "input_manifest_sha256": "d33333b6fa3082804756a0ad34188a05ef54fcb3a61a9c03465b45bb3ba93a4c",
+  "input_file_count": 2,
+  "dependency_manifest_sha256": "4e3415998c9007ca182f8fd5e823945f3fb902baf688a79e73c3ecc7104fa831",
+  "dependency_packages": {
+    "0x6ebc2d66078d3e7f466a32b757b49116": "6ebc2d66078d3e7f466a32b757b49116339a4caec8ea1ff25e1271161f14dfbc"
+  },
+  "dependency_names": {
+    "sample@1.0.0.0": "0x6ebc2d66078d3e7f466a32b757b49116"
+  },
+  "dependency_file_count": 3,
+  "input_byte_count": 161,
+  "cache_mode": "isolated",
+  "kernel_cache_state": "pinned",
+  "kernel_source_sha256": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292",
+  "kernel_sha256_before": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+  "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+  "kernel_changed_during_verify": false,
+  "verdict_timeout_seconds": 30,
+  "bend_lib_manifest_sha256": "4e3415998c9007ca182f8fd5e823945f3fb902baf688a79e73c3ecc7104fa831",
+  "bend_lib_file_count": 3,
+  "bend_version": "2.0.34",
+  "bend_path": "$BEND_STACK/official/bend/bin/bend",
+  "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+  "bend_sha256_after": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+  "bend_changed_during_verify": false,
+  "stdout": "ALL PROOFS CHECK\n",
+  "stderr": "",
+  "kernel_strategy": "session-pinned",
+  "receipt_id": "928aa521c1cd41628e517047616f4008",
+  "verified_at": "2026-10-03T03:33:19.114129+00:00",
+  "receipt_saved": true
+}

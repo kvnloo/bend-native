@@ -1,0 +1,5 @@
+{
+  "error": "Hub package 0xc9514448877b7844d70c65ed8a8b2c49 is not cached; fetch it with Bend before verification",
+  "code": "dependency_missing",
+  "success": false
+}

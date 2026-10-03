@@ -1,0 +1,116 @@
+[ok ] offline X0_bootstrap - #0 verify: pass expect=['pass']
+[ok ] offline F1_cold_missing_offline H #0 verify: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F1_cold_missing_offline H #1 verify: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F1_cold_missing_offline H #2 verify: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F1_cold_missing_offline H #3 verify: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F1_cold_missing_offline H #4 verify: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F2_cold_fetch_offline H #0 verify: error:dependency_missing expect=['error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError: Unable to connect. Is the computer able to access the url?\n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline H #1 verify: error:dependency_missing expect=['error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError: Unable to connect. Is the computer able to access the url?\n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline H #2 verify: error:dependency_missing expect=['error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError: Unable to connect. Is the computer able to access the url?\n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline H #3 verify: error:dependency_missing expect=['error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError: Unable to connect. Is the computer able to access the url?\n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline H #4 verify: error:dependency_missing expect=['error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError: Unable to connect. Is the computer able to access the url?\n', 'cache_files_after_fetch': 0}
+[ok ] offline F3_warm_present_offline H #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline H #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline H #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline H #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline H #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F4_mutated_benign_offline H #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] offline F4_mutated_benign_offline H #0 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline H #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] offline F4_mutated_benign_offline H #1 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline H #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] offline F4_mutated_benign_offline H #2 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline H #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] offline F4_mutated_benign_offline H #3 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline H #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend'}
+[ok ] offline F4_mutated_benign_offline H #4 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline H #0 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline H #0 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline H #0 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline H #1 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline H #1 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline H #1 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline H #2 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline H #2 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline H #2 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline H #3 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline H #3 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline H #3 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline H #4 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline H #4 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline H #4 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F6_replay_offline H #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline H #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline H #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline H #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline H #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F7_replay_offline_cache_missing H #0 replay: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing H #1 replay: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing H #2 replay: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing H #3 replay: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing H #4 replay: error:dependency_missing expect=['error:dependency_missing']
+[ok ] offline F9_mutate_cache_during_verdict_offline H #0 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline H #1 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline H #2 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline H #3 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline H #4 verify: unstable expect=['unstable'] {'landed': True, 'mutated': '0xa40ae7ca7de9d120af2299846254ed37/Util.bend', 'child_pid_seen': True}
+[ok ] offline F1_cold_missing_offline N #0 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F1_cold_missing_offline N #1 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F1_cold_missing_offline N #2 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F1_cold_missing_offline N #3 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F1_cold_missing_offline N #4 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F2_cold_fetch_offline N #0 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError:\n- message  : a package named sample@1.0.0.0 on http://127.0.0.1:36305\nLocation:\n1 | import Base\n2>| import sample@1.0.0.0/Main.bend as Lib\n  |        ^\n3 | \n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline N #1 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError:\n- message  : a package named sample@1.0.0.0 on http://127.0.0.1:36305\nLocation:\n1 | import Base\n2>| import sample@1.0.0.0/Main.bend as Lib\n  |        ^\n3 | \n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline N #2 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError:\n- message  : a package named sample@1.0.0.0 on http://127.0.0.1:36305\nLocation:\n1 | import Base\n2>| import sample@1.0.0.0/Main.bend as Lib\n  |        ^\n3 | \n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline N #3 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError:\n- message  : a package named sample@1.0.0.0 on http://127.0.0.1:36305\nLocation:\n1 | import Base\n2>| import sample@1.0.0.0/Main.bend as Lib\n  |        ^\n3 | \n', 'cache_files_after_fetch': 0}
+[ok ] offline F2_cold_fetch_offline N #4 verify: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing'] {'fetch_rc': 1, 'fetch_stderr_tail': 'SOME PROOFS FAIL\nError:\n- message  : a package named sample@1.0.0.0 on http://127.0.0.1:36305\nLocation:\n1 | import Base\n2>| import sample@1.0.0.0/Main.bend as Lib\n  |        ^\n3 | \n', 'cache_files_after_fetch': 0}
+[ok ] offline F3_warm_present_offline N #0 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline N #1 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline N #2 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline N #3 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F3_warm_present_offline N #4 verify: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'input_manifest_equals_online_golden': True}
+[ok ] offline F4_mutated_benign_offline N #0 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] offline F4_mutated_benign_offline N #0 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline N #1 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] offline F4_mutated_benign_offline N #1 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline N #2 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] offline F4_mutated_benign_offline N #2 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline N #3 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] offline F4_mutated_benign_offline N #3 raw_bend_control: pass expect=['pass']
+[ok ] offline F4_mutated_benign_offline N #4 verify: error:dependency_integrity expect=['error:dependency_integrity'] {'mutated': '0xf9dba70dd9b4cc800ee9348667de4cae/Main.bend'}
+[ok ] offline F4_mutated_benign_offline N #4 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline N #0 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline N #0 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline N #0 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline N #1 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline N #1 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline N #1 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline N #2 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline N #2 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline N #2 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline N #3 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline N #3 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline N #3 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F5_mutated_forging_offline N #4 verify_before_mutation: fail expect=['fail']
+[ok ] offline F5_mutated_forging_offline N #4 raw_bend_control: pass expect=['pass']
+[ok ] offline F5_mutated_forging_offline N #4 verify: error:dependency_integrity expect=['error:dependency_integrity']
+[ok ] offline F6_replay_offline N #0 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline N #1 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline N #2 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline N #3 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F6_replay_offline N #4 replay: pass expect=['pass'] ident={'match': True, 'mismatched': []}
+[ok ] offline F7_replay_offline_cache_missing N #0 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing N #1 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing N #2 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing N #3 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F7_replay_offline_cache_missing N #4 replay: error:input_capture_failed expect=['error:input_capture_failed', 'error:dependency_missing']
+[ok ] offline F8_replay_offline_local_rebound N #0 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] offline F8_replay_offline_local_rebound N #1 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] offline F8_replay_offline_local_rebound N #2 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] offline F8_replay_offline_local_rebound N #3 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] offline F8_replay_offline_local_rebound N #4 replay: error:receipt_stale expect=['error:receipt_stale']
+[ok ] offline F9_mutate_cache_during_verdict_offline N #0 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline N #1 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline N #2 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline N #3 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}
+[ok ] offline F9_mutate_cache_during_verdict_offline N #4 verify: unstable expect=['unstable'] {'landed': True, 'mutated': 'names rebound to Q_alt', 'child_pid_seen': True}

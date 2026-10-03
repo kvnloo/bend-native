@@ -1,0 +1,1085 @@
+{
+  "schema": "bend_native.b390.summary.v1",
+  "rows": 427,
+  "cli_runs": 20,
+  "as_expected": 447,
+  "deviations": [],
+  "acceptance": {
+    "A1": {
+      "plugin_success_receipts": 181,
+      "identity_mismatches": 0,
+      "failures": [],
+      "pass": true
+    },
+    "A2": {
+      "rows": 35,
+      "successes": 0,
+      "outcomes": {
+        "F8_replay_offline_local_rebound|N|error:receipt_stale": 5,
+        "O14_replay_race_injected|H|error:dependency_integrity": 5,
+        "O13a_replay_hub_rebound_refetch|N|error:receipt_stale": 5,
+        "O13b_replay_local_rebound|N|error:receipt_stale": 5,
+        "O14_replay_race_injected|N|replay_mismatch": 5,
+        "E2_patched_replay_official_receipt|H|error:receipt_stale": 5,
+        "E2_patched_replay_official_receipt|N|error:receipt_stale": 5
+      },
+      "pass": true
+    },
+    "A3": {
+      "rows": 105,
+      "plugin_successes": 0,
+      "raw_bend_controls": 40,
+      "raw_bend_control_passes": 40,
+      "during_verdict_rows": 30,
+      "during_verdict_landed": 30,
+      "pass": true
+    },
+    "A4": {
+      "F6_rows": 10,
+      "F6_pass_match": 10,
+      "cli_replay_runs": 10,
+      "cli_replay_pass_match": 10,
+      "pass": true
+    },
+    "A5": {
+      "online_plugin_calls_counted": 125,
+      "online_plugin_calls_with_hub_requests": 0,
+      "offline_outer_hub_requests_during_inner": {
+        "offline": 0,
+        "workers": 0,
+        "patched": 0
+      },
+      "offline_netprobes": [
+        {
+          "phase": "offline",
+          "interfaces": [
+            "lo"
+          ],
+          "hub_connect": "ConnectionRefusedError: [Errno 111] Connection refused"
+        },
+        {
+          "phase": "patched",
+          "interfaces": [
+            "lo"
+          ],
+          "hub_connect": "ConnectionRefusedError: [Errno 111] Connection refused"
+        }
+      ],
+      "cli_netns_lo_only": 20,
+      "cli_runs": 20,
+      "offline_phase_successes": 85,
+      "pass": true
+    }
+  },
+  "cells": {
+    "D_cli_replay|H|cli": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass (exit 0, replay_match)"
+      ]
+    },
+    "D_cli_replay|N|cli": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass (exit 0, replay_match)"
+      ]
+    },
+    "D_cli_verify|H|cli": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass (exit 0)"
+      ]
+    },
+    "D_cli_verify|N|cli": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass (exit 0)"
+      ]
+    },
+    "E1_patched_warm_present_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "E1_patched_warm_present_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "E2_patched_replay_official_receipt|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:receipt_stale": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:receipt_stale"
+      ]
+    },
+    "E2_patched_replay_official_receipt|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:receipt_stale": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:receipt_stale"
+      ]
+    },
+    "F1_cold_missing_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_missing": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_missing"
+      ]
+    },
+    "F1_cold_missing_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:input_capture_failed": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:input_capture_failed",
+        "error:dependency_missing"
+      ]
+    },
+    "F2_cold_fetch_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_missing": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_missing"
+      ]
+    },
+    "F2_cold_fetch_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:input_capture_failed": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:input_capture_failed",
+        "error:dependency_missing"
+      ]
+    },
+    "F3_warm_present_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F3_warm_present_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F4_mutated_benign_offline|H|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F4_mutated_benign_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "F4_mutated_benign_offline|N|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F4_mutated_benign_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "F5_mutated_forging_offline|H|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F5_mutated_forging_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "F5_mutated_forging_offline|H|verify_before_mutation": {
+      "n": 5,
+      "outcomes": {
+        "fail": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "fail"
+      ]
+    },
+    "F5_mutated_forging_offline|N|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F5_mutated_forging_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "F5_mutated_forging_offline|N|verify_before_mutation": {
+      "n": 5,
+      "outcomes": {
+        "fail": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "fail"
+      ]
+    },
+    "F6_replay_offline|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F6_replay_offline|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "F7_replay_offline_cache_missing|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_missing": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_missing"
+      ]
+    },
+    "F7_replay_offline_cache_missing|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:input_capture_failed": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:input_capture_failed",
+        "error:dependency_missing"
+      ]
+    },
+    "F8_replay_offline_local_rebound|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:receipt_stale": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:receipt_stale"
+      ]
+    },
+    "F9_mutate_cache_during_verdict_offline|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "unstable": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "unstable"
+      ]
+    },
+    "F9_mutate_cache_during_verdict_offline|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "unstable": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "unstable"
+      ]
+    },
+    "O10_replay_cache_missing|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_missing": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_missing"
+      ]
+    },
+    "O10_replay_cache_missing|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:input_capture_failed": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:input_capture_failed",
+        "error:dependency_missing"
+      ]
+    },
+    "O11_replay_cache_mutated|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O11_replay_cache_mutated|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O12_replay_after_refetch|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O12_replay_after_refetch|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O13a_replay_hub_rebound_refetch|N|fresh_verify_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O13a_replay_hub_rebound_refetch|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:receipt_stale": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:receipt_stale"
+      ]
+    },
+    "O13b_replay_local_rebound|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:receipt_stale": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:receipt_stale"
+      ]
+    },
+    "O13c_replay_hub_rebound_cache_warm|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O14_replay_race_injected|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O14_replay_race_injected|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "replay_mismatch": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "replay_mismatch"
+      ]
+    },
+    "O15_mutate_cache_during_verdict|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "unstable": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "unstable"
+      ]
+    },
+    "O15_mutate_cache_during_verdict|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "unstable": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "unstable"
+      ]
+    },
+    "O16_mutate_snapshot_during_verdict|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "unstable": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "unstable"
+      ]
+    },
+    "O16_mutate_snapshot_during_verdict|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "unstable": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "unstable"
+      ]
+    },
+    "O17_concurrent_bend_fetch|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O17_concurrent_bend_fetch|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O18_verify_racing_fetch|H|attempt": {
+      "n": 12,
+      "outcomes": {
+        "pass": 12
+      },
+      "as_expected": 12,
+      "successes": 12,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass",
+        "unstable",
+        "fail"
+      ]
+    },
+    "O18_verify_racing_fetch|H|final": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O18_verify_racing_fetch|N|attempt": {
+      "n": 14,
+      "outcomes": {
+        "pass": 14
+      },
+      "as_expected": 14,
+      "successes": 14,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass",
+        "unstable",
+        "fail"
+      ]
+    },
+    "O18_verify_racing_fetch|N|final": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O1_cold_missing|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_missing": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_missing"
+      ]
+    },
+    "O1_cold_missing|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:input_capture_failed": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:input_capture_failed",
+        "error:dependency_missing"
+      ]
+    },
+    "O2_cold_fetch_verify|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O2_cold_fetch_verify|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O3_warm_present|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O3_warm_present|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O4_mutated_benign|H|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O4_mutated_benign|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O4_mutated_benign|N|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O4_mutated_benign|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O5_mutated_forging|H|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O5_mutated_forging|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O5_mutated_forging|H|verify_before_mutation": {
+      "n": 5,
+      "outcomes": {
+        "fail": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "fail"
+      ]
+    },
+    "O5_mutated_forging|N|raw_bend_control": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O5_mutated_forging|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O5_mutated_forging|N|verify_before_mutation": {
+      "n": 5,
+      "outcomes": {
+        "fail": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "fail"
+      ]
+    },
+    "O6_extra_file|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O6_extra_file|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O7_partial_package|H|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O7_partial_package|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O8a_binding_missing|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:input_capture_failed": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:input_capture_failed",
+        "error:dependency_missing"
+      ]
+    },
+    "O8b_binding_garbage|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_integrity": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_integrity"
+      ]
+    },
+    "O8c_binding_absent_package|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "error:dependency_missing": 5
+      },
+      "as_expected": 5,
+      "successes": 0,
+      "identity_mismatches": 0,
+      "expect": [
+        "error:dependency_missing"
+      ]
+    },
+    "O8d_binding_rebound_fresh_verify|N|verify": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O9_replay_same_cache|H|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "O9_replay_same_cache|N|replay": {
+      "n": 5,
+      "outcomes": {
+        "pass": 5
+      },
+      "as_expected": 5,
+      "successes": 5,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "W1_concurrent_processes_shared_cache|H|worker": {
+      "n": 15,
+      "outcomes": {
+        "pass": 15
+      },
+      "as_expected": 15,
+      "successes": 15,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "W1_concurrent_processes_shared_cache|N|worker": {
+      "n": 15,
+      "outcomes": {
+        "pass": 15
+      },
+      "as_expected": 15,
+      "successes": 15,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    },
+    "X0_bootstrap|-|verify": {
+      "n": 6,
+      "outcomes": {
+        "pass": 6
+      },
+      "as_expected": 6,
+      "successes": 6,
+      "identity_mismatches": 0,
+      "expect": [
+        "pass"
+      ]
+    }
+  },
+  "workers_outer": {
+    "config_set_rc": 0,
+    "worker_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "shared_cache_unchanged": true,
+    "workers": 3,
+    "n": 5
+  },
+  "kernel_hashes": [
+    "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+    "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+  ]
+}

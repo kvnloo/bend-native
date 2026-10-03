@@ -1,0 +1,33 @@
+[ok ] worker1 X0_bootstrap - #0 verify: pass expect=['pass']
+[ok ] worker0 X0_bootstrap - #0 verify: pass expect=['pass']
+[ok ] worker2 X0_bootstrap - #0 verify: pass expect=['pass']
+[ok ] worker2 W1_concurrent_processes_shared_cache H #0 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998530.8788848}
+[ok ] worker0 W1_concurrent_processes_shared_cache H #0 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998530.8740752}
+[ok ] worker1 W1_concurrent_processes_shared_cache H #0 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998530.8697765}
+[ok ] worker0 W1_concurrent_processes_shared_cache N #0 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998531.225728}
+[ok ] worker2 W1_concurrent_processes_shared_cache N #0 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998531.2230165}
+[ok ] worker1 W1_concurrent_processes_shared_cache N #0 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998531.231024}
+[ok ] worker0 W1_concurrent_processes_shared_cache H #1 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998531.5207055}
+[ok ] worker2 W1_concurrent_processes_shared_cache H #1 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998531.5237505}
+[ok ] worker1 W1_concurrent_processes_shared_cache H #1 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998531.527187}
+[ok ] worker0 W1_concurrent_processes_shared_cache N #1 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998531.8108954}
+[ok ] worker2 W1_concurrent_processes_shared_cache N #1 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998531.8146687}
+[ok ] worker1 W1_concurrent_processes_shared_cache N #1 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998531.8233497}
+[ok ] worker0 W1_concurrent_processes_shared_cache H #2 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998532.1364212}
+[ok ] worker2 W1_concurrent_processes_shared_cache H #2 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998532.1386552}
+[ok ] worker1 W1_concurrent_processes_shared_cache H #2 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998532.1491446}
+[ok ] worker0 W1_concurrent_processes_shared_cache N #2 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998532.4459958}
+[ok ] worker1 W1_concurrent_processes_shared_cache N #2 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998532.4565625}
+[ok ] worker2 W1_concurrent_processes_shared_cache N #2 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998532.448867}
+[ok ] worker0 W1_concurrent_processes_shared_cache H #3 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998532.7479954}
+[ok ] worker1 W1_concurrent_processes_shared_cache H #3 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998532.761097}
+[ok ] worker2 W1_concurrent_processes_shared_cache H #3 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998532.7637465}
+[ok ] worker0 W1_concurrent_processes_shared_cache N #3 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998533.0615122}
+[ok ] worker2 W1_concurrent_processes_shared_cache N #3 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998533.087629}
+[ok ] worker1 W1_concurrent_processes_shared_cache N #3 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998533.0822015}
+[ok ] worker0 W1_concurrent_processes_shared_cache H #4 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998533.3696218}
+[ok ] worker2 W1_concurrent_processes_shared_cache H #4 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998533.391911}
+[ok ] worker1 W1_concurrent_processes_shared_cache H #4 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998533.406609}
+[ok ] worker0 W1_concurrent_processes_shared_cache N #4 worker0: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 0, 'receipt_saved': True, 't_start': 1790998534.565076}
+[ok ] worker1 W1_concurrent_processes_shared_cache N #4 worker1: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 1, 'receipt_saved': True, 't_start': 1790998534.5881112}
+[ok ] worker2 W1_concurrent_processes_shared_cache N #4 worker2: pass expect=['pass'] ident={'match': True, 'mismatched': []} {'worker': 2, 'receipt_saved': True, 't_start': 1790998534.5782537}

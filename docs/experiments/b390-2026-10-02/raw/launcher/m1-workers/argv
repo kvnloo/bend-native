@@ -1,0 +1,17 @@
+python
+$LANE_WT/docs/experiments/b390-2026-10-02/harness/matrix.py
+offline-outer
+--phase
+workers
+--inner-mode
+workers-outer
+--workers
+3
+--n
+5
+--out
+$B390_WORK/measured/m1/workers/out
+--work
+$B390_WORK/measured/m1/workers/work
+--state
+$B390_WORK/measured/m1/state
