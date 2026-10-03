@@ -1,0 +1,9 @@
+-m
+hermes_cli.main
+bend
+replay
+${RUNS}/aodl-m-law-off-01/receipt.json
+--project
+${RUNS}/aodl-x-failrcpt-off-01/cwd
+--receipt
+${RUNS}/aodl-x-failrcpt-off-01/replay-receipt.json

@@ -1,0 +1,12 @@
+diff -u pristine/transition.bend impl-mut/transition.bend
+--- pristine/transition.bend
++++ impl-mut/transition.bend
+@@ -135,7 +135,7 @@
+ def kids_ok(t: Tr) -> Bool:
+   match t:
+     case Tr{cr, rr, dy, mc, md, ks, dp, ds, cl, rq}:
+-      Nat.is_le(1n+ks, mc)
++      Nat.is_le(0n+ks, mc)
+ 
+ def depth_ok(t: Tr) -> Bool:
+   match t:

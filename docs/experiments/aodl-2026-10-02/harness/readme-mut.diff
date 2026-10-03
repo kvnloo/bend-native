@@ -1,0 +1,11 @@
+diff -u pristine/README.md readme-mut/README.md
+--- pristine/README.md
++++ readme-mut/README.md
+@@ -1,6 +1,6 @@
+ # Bend AODL structural gate (experiment)
+ 
+-z0intelligence#48, kvnloo/aodl#19, z0intelligence#13. **Status: experimental.
++z0intelligence#48, kvnloo/aodl#19, z0intelligence#13. **Status: Experimental.
+ Keep it that way.** Parity with the canonical validator is exact on everything
+ the kernel models. Eight laws are machine-checked. But it is 4–25x slower than
+ the in-process CPython validator, so it gives no hot-path benefit.

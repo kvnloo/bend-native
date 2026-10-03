@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "Bend installation differs from the recorded receipt",
+  "code": "receipt_stale"
+}

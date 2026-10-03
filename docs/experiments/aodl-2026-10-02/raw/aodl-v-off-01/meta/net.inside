@@ -1,0 +1,2 @@
+netns=net:[4026531833]
+ifaces=lo enp4s0 wlan0 tailscale0 docker0 br-9a21f98c6ccd br-bd75d8ac0120 br-f434f6250472 br-1f744e9cce00 br-2256dbedc2f4 br-322c0aaa5084 br-876eec909476 br-bac6912bfec4 br-c9131e9078ec br-ff27007ba20f br-200d699f2713 br-3f424dcbabac br-46a0da759f33 veth64ed62f veth0111e80 veth7b02d06 

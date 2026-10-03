@@ -1,0 +1,3 @@
+bash
+-c
+getent hosts github.com || echo dns-fail; (exec 3<>/dev/tcp/140.82.112.3/443) 2>&1 | head -1; echo tcp-attempt-done

@@ -1,0 +1,7 @@
+-m
+hermes_cli.main
+bend
+verify
+${RUNS}/aodl-v-off-01/cwd
+--receipt
+${RUNS}/aodl-v-off-01/receipt.json

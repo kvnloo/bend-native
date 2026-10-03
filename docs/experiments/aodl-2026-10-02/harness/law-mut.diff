@@ -1,0 +1,12 @@
+diff -u pristine/LAWS.bend law-mut/LAWS.bend
+--- pristine/LAWS.bend
++++ law-mut/LAWS.bend
+@@ -85,7 +85,7 @@
+   for +cl: List<&2, Nat>
+   for +rq: List<&2, Nat>
+   for w: T(X.allows(X.Tr{cr, rr, dy, mc, md, ks, dp, ds, cl, rq}))
+-  T(Nat.is_le(1n+ks, mc)) & T(Nat.is_le(1n+dp, md))
++  T(Nat.is_le(2n+ks, mc)) & T(Nat.is_le(1n+dp, md))
+ 
+ # the budget property, stated apart from the gate's own checks: every
+ # declared dimension's observed plus proposed spend fits its limit, in

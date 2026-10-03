@@ -1,0 +1,665 @@
+{
+  "schema": "bend_native.experiment.summary.v1",
+  "id": "aodl-2026-10-02",
+  "denominators": {
+    "prereg_runs": 20,
+    "runs_with_raw": 20,
+    "launcher_probes_not_results": [
+      "aodl-probe-doctor-01",
+      "aodl-probe-net-01"
+    ]
+  },
+  "predictions": {
+    "P1": {
+      "runs": 6,
+      "held": 6,
+      "failed": []
+    },
+    "P2": {
+      "runs": 2,
+      "held": 2,
+      "failed": []
+    },
+    "P3": {
+      "runs": 4,
+      "held": 4,
+      "failed": []
+    },
+    "P4": {
+      "runs": 4,
+      "held": 4,
+      "failed": []
+    },
+    "P5": {
+      "runs": 2,
+      "held": 2,
+      "failed": []
+    },
+    "P6": {
+      "runs": 2,
+      "held": 2,
+      "failed": []
+    }
+  },
+  "P7_descriptive": {
+    "pristine_verdicts": {
+      "official": [
+        "pass"
+      ],
+      "patched": [
+        "pass"
+      ]
+    },
+    "pristine_manifests": [
+      "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0"
+    ],
+    "kernel_sha256_after_by_build": {
+      "official": [
+        "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+      ],
+      "patched": [
+        "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"
+      ]
+    }
+  },
+  "mutant_verdicts": {
+    "aodl-m-law-off-01": {
+      "verdict": "fail",
+      "exit_code": 1,
+      "input_manifest_sha256": "561d48404e9c20202a53575c8a22cd735aa6e3b6aa42b03f02011fee0e4ea25d",
+      "kernel_strategy": "session-uninitialized",
+      "kernel_sha256_after": null,
+      "bend_stderr_head": [
+        "SOME PROOFS FAIL"
+      ]
+    },
+    "aodl-m-law-pat-01": {
+      "verdict": "fail",
+      "exit_code": 1,
+      "input_manifest_sha256": "561d48404e9c20202a53575c8a22cd735aa6e3b6aa42b03f02011fee0e4ea25d",
+      "kernel_strategy": "session-uninitialized",
+      "kernel_sha256_after": null,
+      "bend_stderr_head": [
+        "SOME PROOFS FAIL"
+      ]
+    },
+    "aodl-m-impl-off-01": {
+      "verdict": "fail",
+      "exit_code": 1,
+      "input_manifest_sha256": "0b867abe1a1ca75103bd146e00c33061c62041c5f0ed4995d92393199b458ca6",
+      "kernel_strategy": "session-uninitialized",
+      "kernel_sha256_after": null,
+      "bend_stderr_head": [
+        "SOME PROOFS FAIL"
+      ]
+    },
+    "aodl-m-impl-pat-01": {
+      "verdict": "fail",
+      "exit_code": 1,
+      "input_manifest_sha256": "0b867abe1a1ca75103bd146e00c33061c62041c5f0ed4995d92393199b458ca6",
+      "kernel_strategy": "session-uninitialized",
+      "kernel_sha256_after": null,
+      "bend_stderr_head": [
+        "SOME PROOFS FAIL"
+      ]
+    }
+  },
+  "posthoc_not_preregistered": [
+    {
+      "id": "aodl-x-failrcpt-off-01",
+      "replayed_receipt_from": "aodl-m-law-off-01",
+      "evidence": "REAL",
+      "exit_code": 2,
+      "code": "invalid_receipt",
+      "error": "Receipt is missing input/kernel identity",
+      "source_receipt": {
+        "verdict": "fail",
+        "kernel_sha256_after": null,
+        "kernel_strategy": "session-uninitialized"
+      },
+      "offline_netns_lo_only": true,
+      "isolation_masks_empty": true,
+      "live_hermes_files_unchanged": true
+    },
+    {
+      "id": "aodl-x-failrcpt-pat-01",
+      "replayed_receipt_from": "aodl-m-law-pat-01",
+      "evidence": "REAL",
+      "exit_code": 2,
+      "code": "invalid_receipt",
+      "error": "Receipt is missing input/kernel identity",
+      "source_receipt": {
+        "verdict": "fail",
+        "kernel_sha256_after": null,
+        "kernel_strategy": "session-uninitialized"
+      },
+      "offline_netns_lo_only": true,
+      "isolation_masks_empty": true,
+      "live_hermes_files_unchanged": true
+    }
+  ],
+  "invariant_failures": {
+    "isolation_masks_empty": [],
+    "live_hermes_files_unchanged": [
+      "aodl-r-off-01"
+    ],
+    "hermes_head": [],
+    "offline_netns_lo_only": [],
+    "runtime_identity": [],
+    "scope": [],
+    "kernel_sha": [],
+    "kernel_strategy": [],
+    "proof_sha_unchanged": [],
+    "receipt_matches_stdout": []
+  },
+  "rows": [
+    {
+      "id": "aodl-v-off-01",
+      "kind": "verify",
+      "fixture": "pristine",
+      "verifier": "official",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "kernel_sha": true,
+        "kernel_strategy": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P1_pass": true,
+        "P1_manifest": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+      "kernel_strategy": "session-bootstrap"
+    },
+    {
+      "id": "aodl-v-off-02",
+      "kind": "verify",
+      "fixture": "pristine",
+      "verifier": "official",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "kernel_sha": true,
+        "kernel_strategy": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P1_pass": true,
+        "P1_manifest": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+      "kernel_strategy": "session-bootstrap"
+    },
+    {
+      "id": "aodl-v-off-03",
+      "kind": "verify",
+      "fixture": "pristine",
+      "verifier": "official",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "kernel_sha": true,
+        "kernel_strategy": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P1_pass": true,
+        "P1_manifest": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+      "kernel_strategy": "session-bootstrap"
+    },
+    {
+      "id": "aodl-v-pat-01",
+      "kind": "verify",
+      "fixture": "pristine",
+      "verifier": "patched",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "kernel_sha": true,
+        "kernel_strategy": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P1_pass": true,
+        "P1_manifest": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+      "kernel_strategy": "session-bootstrap"
+    },
+    {
+      "id": "aodl-v-pat-02",
+      "kind": "verify",
+      "fixture": "pristine",
+      "verifier": "patched",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "kernel_sha": true,
+        "kernel_strategy": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P1_pass": true,
+        "P1_manifest": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+      "kernel_strategy": "session-bootstrap"
+    },
+    {
+      "id": "aodl-v-pat-03",
+      "kind": "verify",
+      "fixture": "pristine",
+      "verifier": "patched",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "kernel_sha": true,
+        "kernel_strategy": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P1_pass": true,
+        "P1_manifest": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+      "kernel_strategy": "session-bootstrap"
+    },
+    {
+      "id": "aodl-r-off-01",
+      "kind": "replay-offline",
+      "fixture": "pristine",
+      "verifier": "official",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": false,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P2_replay_match": true,
+        "P2_replay_receipt": true,
+        "P2_identity_equal": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+      "kernel_strategy": "session-bootstrap",
+      "replay_match": true,
+      "replay_differences": [],
+      "replay_of": "4b2ec8894132441597104a6ce76ba3ed"
+    },
+    {
+      "id": "aodl-r-pat-01",
+      "kind": "replay-offline",
+      "fixture": "pristine",
+      "verifier": "patched",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P2_replay_match": true,
+        "P2_replay_receipt": true,
+        "P2_identity_equal": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+      "kernel_strategy": "session-bootstrap",
+      "replay_match": true,
+      "replay_differences": [],
+      "replay_of": "6bd47027a2324793aa1feba02486d428"
+    },
+    {
+      "id": "aodl-m-law-off-01",
+      "kind": "verify",
+      "fixture": "law-mut",
+      "verifier": "official",
+      "exit_code": 1,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P3_not_pass": true,
+        "P3_expected_fail_exit1": true,
+        "P3_manifest_differs": true
+      },
+      "verdict": "fail",
+      "execution_verdict": "fail",
+      "success": false,
+      "input_manifest_sha256": "561d48404e9c20202a53575c8a22cd735aa6e3b6aa42b03f02011fee0e4ea25d",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": null,
+      "kernel_strategy": "session-uninitialized"
+    },
+    {
+      "id": "aodl-m-law-pat-01",
+      "kind": "verify",
+      "fixture": "law-mut",
+      "verifier": "patched",
+      "exit_code": 1,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P3_not_pass": true,
+        "P3_expected_fail_exit1": true,
+        "P3_manifest_differs": true
+      },
+      "verdict": "fail",
+      "execution_verdict": "fail",
+      "success": false,
+      "input_manifest_sha256": "561d48404e9c20202a53575c8a22cd735aa6e3b6aa42b03f02011fee0e4ea25d",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": null,
+      "kernel_strategy": "session-uninitialized"
+    },
+    {
+      "id": "aodl-m-impl-off-01",
+      "kind": "verify",
+      "fixture": "impl-mut",
+      "verifier": "official",
+      "exit_code": 1,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P3_not_pass": true,
+        "P3_expected_fail_exit1": true,
+        "P3_manifest_differs": true
+      },
+      "verdict": "fail",
+      "execution_verdict": "fail",
+      "success": false,
+      "input_manifest_sha256": "0b867abe1a1ca75103bd146e00c33061c62041c5f0ed4995d92393199b458ca6",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": null,
+      "kernel_strategy": "session-uninitialized"
+    },
+    {
+      "id": "aodl-m-impl-pat-01",
+      "kind": "verify",
+      "fixture": "impl-mut",
+      "verifier": "patched",
+      "exit_code": 1,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "runtime_identity": true,
+        "scope": true,
+        "proof_sha_unchanged": true,
+        "receipt_matches_stdout": true,
+        "P3_not_pass": true,
+        "P3_expected_fail_exit1": true,
+        "P3_manifest_differs": true
+      },
+      "verdict": "fail",
+      "execution_verdict": "fail",
+      "success": false,
+      "input_manifest_sha256": "0b867abe1a1ca75103bd146e00c33061c62041c5f0ed4995d92393199b458ca6",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": null,
+      "kernel_strategy": "session-uninitialized"
+    },
+    {
+      "id": "aodl-s-law-off-01",
+      "kind": "replay-offline",
+      "fixture": "law-mut",
+      "verifier": "official",
+      "exit_code": 2,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P4_stale_inputs": true,
+        "P4_no_replay_receipt": true
+      },
+      "success": false,
+      "code": "receipt_stale",
+      "error": "Project inputs differ from the recorded receipt; run a fresh verification"
+    },
+    {
+      "id": "aodl-s-law-pat-01",
+      "kind": "replay-offline",
+      "fixture": "law-mut",
+      "verifier": "patched",
+      "exit_code": 2,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P4_stale_inputs": true,
+        "P4_no_replay_receipt": true
+      },
+      "success": false,
+      "code": "receipt_stale",
+      "error": "Project inputs differ from the recorded receipt; run a fresh verification"
+    },
+    {
+      "id": "aodl-s-impl-off-01",
+      "kind": "replay-offline",
+      "fixture": "impl-mut",
+      "verifier": "official",
+      "exit_code": 2,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P4_stale_inputs": true,
+        "P4_no_replay_receipt": true
+      },
+      "success": false,
+      "code": "receipt_stale",
+      "error": "Project inputs differ from the recorded receipt; run a fresh verification"
+    },
+    {
+      "id": "aodl-s-impl-pat-01",
+      "kind": "replay-offline",
+      "fixture": "impl-mut",
+      "verifier": "patched",
+      "exit_code": 2,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P4_stale_inputs": true,
+        "P4_no_replay_receipt": true
+      },
+      "success": false,
+      "code": "receipt_stale",
+      "error": "Project inputs differ from the recorded receipt; run a fresh verification"
+    },
+    {
+      "id": "aodl-c-readme-off-01",
+      "kind": "replay-offline",
+      "fixture": "readme-mut",
+      "verifier": "official",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P5_replay_match": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+      "kernel_strategy": "session-bootstrap",
+      "replay_match": true,
+      "replay_differences": [],
+      "replay_of": "4b2ec8894132441597104a6ce76ba3ed"
+    },
+    {
+      "id": "aodl-c-readme-pat-01",
+      "kind": "replay-offline",
+      "fixture": "readme-mut",
+      "verifier": "patched",
+      "exit_code": 0,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P5_replay_match": true
+      },
+      "verdict": "pass",
+      "execution_verdict": "pass",
+      "success": true,
+      "input_manifest_sha256": "04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0",
+      "input_file_count": 6,
+      "proof_sha256": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376",
+      "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+      "kernel_strategy": "session-bootstrap",
+      "replay_match": true,
+      "replay_differences": [],
+      "replay_of": "6bd47027a2324793aa1feba02486d428"
+    },
+    {
+      "id": "aodl-c-xrt-offrcpt-patbin-01",
+      "kind": "replay-offline",
+      "fixture": "pristine",
+      "verifier": "patched",
+      "exit_code": 2,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P6_stale_runtime": true,
+        "P6_no_replay_receipt": true
+      },
+      "success": false,
+      "code": "receipt_stale",
+      "error": "Bend installation differs from the recorded receipt"
+    },
+    {
+      "id": "aodl-c-xrt-patrcpt-offbin-01",
+      "kind": "replay-offline",
+      "fixture": "pristine",
+      "verifier": "official",
+      "exit_code": 2,
+      "evidence": "REAL",
+      "checks": {
+        "isolation_masks_empty": true,
+        "live_hermes_files_unchanged": true,
+        "hermes_head": true,
+        "offline_netns_lo_only": true,
+        "P6_stale_runtime": true,
+        "P6_no_replay_receipt": true
+      },
+      "success": false,
+      "code": "receipt_stale",
+      "error": "Bend installation differs from the recorded receipt"
+    }
+  ]
+}
