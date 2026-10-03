@@ -1,0 +1,2224 @@
+{
+ "acceptance": {
+  "A": {
+   "g1_primary_oracles_certify_source_all_reps": false,
+   "g2_no_derived_mismatch_or_indeterminate": true,
+   "g3_law_true_never_passes": true,
+   "identities_as_expected": true,
+   "no_plugin_false_pass": true,
+   "preferred_verifier_recommendation": false,
+   "promotable_semantic_gate_389": false
+  },
+  "B": {
+   "g1_primary_oracles_certify_source_all_reps": true,
+   "g2_no_derived_mismatch_or_indeterminate": true,
+   "g3_law_true_never_passes": true,
+   "identities_as_expected": true,
+   "no_plugin_false_pass": true,
+   "no_stable_new_failures_vs_stock": true,
+   "preferred_verifier_recommendation": true,
+   "promotable_semantic_gate_389": true
+  },
+  "C1": {
+   "g1_primary_oracles_certify_source_all_reps": false,
+   "g2_no_derived_mismatch_or_indeterminate": true,
+   "g3_law_true_never_passes": true,
+   "identities_as_expected": true,
+   "no_plugin_false_pass": true,
+   "preferred_verifier_recommendation": false,
+   "promotable_semantic_gate_389": false
+  },
+  "C2": {
+   "g1_primary_oracles_certify_source_all_reps": true,
+   "g2_no_derived_mismatch_or_indeterminate": true,
+   "g3_law_true_never_passes": true,
+   "identities_as_expected": true,
+   "no_plugin_false_pass": true,
+   "preferred_verifier_recommendation": true,
+   "promotable_semantic_gate_389": true
+  }
+ },
+ "arms": {
+  "A": {
+   "F": {
+    "f1179_ab": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1179_ba": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1179_self": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1193": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "t",
+      "t"
+     ],
+     "direct_reason": [
+      "In agree_32: | out of fuel"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_erased": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1194_kept": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "direct_reason": [
+      "In A.group: | affine live code, calls that descend"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_moved": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1212_g4": {
+     "control": false,
+     "crash": true,
+     "direct_classes": [
+      "rejects",
+      "rejects",
+      "rejects"
+     ],
+     "direct_reason": [
+      "bend2 rejects: "
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    }
+   },
+   "P": {
+    "agree": 51,
+    "classes": {
+     "!": 1,
+     "agree": 51,
+     "rejects": 34
+    },
+    "n": 86,
+    "pass_rate": 0.593
+   },
+   "S": {
+    "b389cases/s1212_fb3/fb3.bend": {
+     "certified": [
+      "different",
+      "different",
+      "different"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_fb3_law_false/fb3.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_fb3_law_true/fb3.bend": {
+     "certified": [
+      null,
+      null,
+      null
+     ],
+     "classes": [
+      "rejects",
+      "rejects",
+      "rejects"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_prlaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward/group_dead_forward.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    }
+   },
+   "T": {
+    "agree": 969,
+    "classes": {
+     "!": 3,
+     "-": 2,
+     "agree": 969,
+     "rejects": 487,
+     "u": 65
+    },
+    "n": 1526,
+    "pass_rate": 0.635
+   },
+   "X": {
+    "agree": 43,
+    "classes": {
+     "agree": 43,
+     "rejects": 15,
+     "t": 1,
+     "u": 11
+    },
+    "n": 70,
+    "pass_rate": 0.6143
+   },
+   "corpus_false_rejects_T": [
+    "tests/check/conversion_shared_cells_once.bend",
+    "tests/check/spec_arg_unused_column.bend",
+    "tests/proof/group_name_collision_semantics.bend"
+   ],
+   "corpus_nonagree_X": {
+    "demos/app_slash_boss_3d/PROOF.bend": "t"
+   },
+   "corpus_out_of_scope_T": [
+    "tests/check/erased_field_bare_arm.bend",
+    "tests/check/spec_arg_depth.bend"
+   ],
+   "corpus_timeouts_T": [],
+   "false_negative_controls_failed": [],
+   "false_negatives_F": [
+    "f1179_ab",
+    "f1179_self",
+    "f1193",
+    "f1194_kept",
+    "f1212_g4"
+   ],
+   "flaky": [
+    {
+     "case": "b389cases/f1193/conversion_shared_cells_once.bend",
+     "classes": [
+      "!",
+      "t",
+      "t"
+     ]
+    }
+   ],
+   "identity": {
+    "bin_as_expected": true,
+    "direct_bin_sha256": [
+     "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934"
+    ],
+    "direct_kernel_sha256": [
+     "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+    ],
+    "kernel_as_expected": true,
+    "plugin_kernel_sha256": [
+     "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+    ]
+   },
+   "oracles": {
+    "derived_cases_evaluated": 75,
+    "derived_evaluated_runs": 75,
+    "derived_not_applicable_runs": {
+     "no_main_of_supported_type": 937
+    },
+    "indeterminate_derived": [],
+    "primary": {
+     "b389cases/s1212_fb3/fb3.bend": {
+      "certified": [
+       "different",
+       "different",
+       "different"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+      "certified": [
+       "neither",
+       "neither",
+       "neither"
+      ],
+      "classes": [
+       "!",
+       "!",
+       "!"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+      "certified": [
+       "neither",
+       "neither",
+       "neither"
+      ],
+      "classes": [
+       "!",
+       "!",
+       "!"
+      ],
+      "runs": 3,
+      "source_value": [
+       5,
+       5,
+       5
+      ]
+     }
+    },
+    "translation_mismatch_derived": []
+   },
+   "plugin": {
+    "outcomes": {
+     "error": 13,
+     "layout_na": 31,
+     "nonpass": 563,
+     "pass": 1004
+    },
+    "pass_rate_over_ran": 0.6354,
+    "plugin_false_pass": [],
+    "plugin_nonpass_on_direct_agree": [],
+    "plugin_policy_errors": {
+     "input_capture_failed (direct rejects)": 4,
+     "unsupported_import (direct rejects)": 9
+    },
+    "ran": 1580
+   },
+   "translation_mismatch_count": 1,
+   "translation_mismatch_runs": 3
+  },
+  "B": {
+   "F": {
+    "f1179_ab": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1179_ba": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1179_self": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1193": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "t",
+      "t"
+     ],
+     "direct_reason": [
+      "In agree_32: | out of fuel"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_erased": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1194_kept": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "direct_reason": [
+      "In A.group: | affine live code, calls that descend"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_moved": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1212_g4": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    }
+   },
+   "P": {
+    "agree": 52,
+    "classes": {
+     "agree": 52,
+     "rejects": 34
+    },
+    "n": 86,
+    "pass_rate": 0.6047
+   },
+   "S": {
+    "b389cases/s1212_fb3/fb3.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_fb3_law_false/fb3.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_fb3_law_true/fb3.bend": {
+     "certified": [
+      null,
+      null,
+      null
+     ],
+     "classes": [
+      "rejects",
+      "rejects",
+      "rejects"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_prlaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward/group_dead_forward.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    }
+   },
+   "T": {
+    "agree": 973,
+    "classes": {
+     "!": 1,
+     "agree": 973,
+     "rejects": 487,
+     "u": 65
+    },
+    "n": 1526,
+    "pass_rate": 0.6376
+   },
+   "X": {
+    "agree": 43,
+    "classes": {
+     "agree": 43,
+     "rejects": 15,
+     "t": 1,
+     "u": 11
+    },
+    "n": 70,
+    "pass_rate": 0.6143
+   },
+   "corpus_false_rejects_T": [
+    "tests/check/conversion_shared_cells_once.bend"
+   ],
+   "corpus_nonagree_X": {
+    "demos/app_slash_boss_3d/PROOF.bend": "t"
+   },
+   "corpus_out_of_scope_T": [],
+   "corpus_timeouts_T": [],
+   "false_negative_controls_failed": [],
+   "false_negatives_F": [
+    "f1179_ab",
+    "f1179_self",
+    "f1193",
+    "f1194_kept"
+   ],
+   "flaky": [
+    {
+     "case": "b389cases/f1193/conversion_shared_cells_once.bend",
+     "classes": [
+      "!",
+      "t",
+      "t"
+     ]
+    },
+    {
+     "case": "demos/app_slash_boss_3d/PROOF.bend",
+     "classes": [
+      "u",
+      "t",
+      "t"
+     ]
+    }
+   ],
+   "identity": {
+    "bin_as_expected": true,
+    "direct_bin_sha256": [
+     "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981"
+    ],
+    "direct_kernel_sha256": [
+     "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"
+    ],
+    "kernel_as_expected": true,
+    "plugin_kernel_sha256": [
+     "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"
+    ]
+   },
+   "oracles": {
+    "derived_cases_evaluated": 79,
+    "derived_evaluated_runs": 87,
+    "derived_not_applicable_runs": {
+     "no_main_of_supported_type": 937
+    },
+    "indeterminate_derived": [],
+    "primary": {
+     "b389cases/s1212_fb3/fb3.bend": {
+      "certified": [
+       "source",
+       "source",
+       "source"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+      "certified": [
+       "source",
+       "source",
+       "source"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+      "certified": [
+       "source",
+       "source",
+       "source"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       5,
+       5,
+       5
+      ]
+     }
+    },
+    "translation_mismatch_derived": []
+   },
+   "plugin": {
+    "outcomes": {
+     "error": 13,
+     "layout_na": 31,
+     "nonpass": 553,
+     "pass": 1014
+    },
+    "pass_rate_over_ran": 0.6418,
+    "plugin_false_pass": [],
+    "plugin_nonpass_on_direct_agree": [],
+    "plugin_policy_errors": {
+     "input_capture_failed (direct rejects)": 4,
+     "unsupported_import (direct rejects)": 9
+    },
+    "ran": 1580
+   },
+   "translation_mismatch_count": 0,
+   "translation_mismatch_runs": 0
+  },
+  "C1": {
+   "F": {
+    "f1179_ab": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1179_ba": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1179_self": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1193": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "t",
+      "t"
+     ],
+     "direct_reason": [
+      "In agree_32: | out of fuel"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_erased": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1194_kept": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "direct_reason": [
+      "In A.group: | affine live code, calls that descend"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_moved": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1212_g4": {
+     "control": false,
+     "crash": true,
+     "direct_classes": [
+      "rejects",
+      "rejects",
+      "rejects"
+     ],
+     "direct_reason": [
+      "bend2 rejects: "
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    }
+   },
+   "P": {
+    "agree": 51,
+    "classes": {
+     "!": 1,
+     "agree": 51,
+     "rejects": 34
+    },
+    "n": 86,
+    "pass_rate": 0.593
+   },
+   "S": {
+    "b389cases/s1212_fb3/fb3.bend": {
+     "certified": [
+      "different",
+      "different",
+      "different"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_fb3_law_false/fb3.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_fb3_law_true/fb3.bend": {
+     "certified": [
+      null,
+      null,
+      null
+     ],
+     "classes": [
+      "rejects",
+      "rejects",
+      "rejects"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_prlaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward/group_dead_forward.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+     "certified": [
+      "neither",
+      "neither",
+      "neither"
+     ],
+     "classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    }
+   },
+   "T": {
+    "agree": 972,
+    "classes": {
+     "!": 2,
+     "agree": 972,
+     "rejects": 487,
+     "u": 65
+    },
+    "n": 1526,
+    "pass_rate": 0.637
+   },
+   "X": {
+    "agree": 43,
+    "classes": {
+     "agree": 43,
+     "rejects": 15,
+     "t": 1,
+     "u": 11
+    },
+    "n": 70,
+    "pass_rate": 0.6143
+   },
+   "corpus_false_rejects_T": [
+    "tests/check/conversion_shared_cells_once.bend",
+    "tests/proof/group_name_collision_semantics.bend"
+   ],
+   "corpus_nonagree_X": {
+    "demos/app_slash_boss_3d/PROOF.bend": "t"
+   },
+   "corpus_out_of_scope_T": [],
+   "corpus_timeouts_T": [],
+   "false_negative_controls_failed": [],
+   "false_negatives_F": [
+    "f1179_ab",
+    "f1179_self",
+    "f1193",
+    "f1194_kept",
+    "f1212_g4"
+   ],
+   "flaky": [
+    {
+     "case": "b389cases/f1193/conversion_shared_cells_once.bend",
+     "classes": [
+      "!",
+      "t",
+      "t"
+     ]
+    },
+    {
+     "case": "demos/app_slash_boss_3d/PROOF.bend",
+     "classes": [
+      "u",
+      "t",
+      "t"
+     ]
+    }
+   ],
+   "identity": {
+    "bin_as_expected": true,
+    "direct_bin_sha256": [
+     "897bd02cf3b7f63107e77ea9cb64d82e92885a68f08a6d06e7ecbcc01bf0dfe9"
+    ],
+    "direct_kernel_sha256": [
+     "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"
+    ],
+    "kernel_as_expected": true,
+    "plugin_kernel_sha256": [
+     "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"
+    ]
+   },
+   "oracles": {
+    "derived_cases_evaluated": 78,
+    "derived_evaluated_runs": 84,
+    "derived_not_applicable_runs": {
+     "no_main_of_supported_type": 937
+    },
+    "indeterminate_derived": [],
+    "primary": {
+     "b389cases/s1212_fb3/fb3.bend": {
+      "certified": [
+       "different",
+       "different",
+       "different"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+      "certified": [
+       "neither",
+       "neither",
+       "neither"
+      ],
+      "classes": [
+       "!",
+       "!",
+       "!"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+      "certified": [
+       "neither",
+       "neither",
+       "neither"
+      ],
+      "classes": [
+       "!",
+       "!",
+       "!"
+      ],
+      "runs": 3,
+      "source_value": [
+       5,
+       5,
+       5
+      ]
+     }
+    },
+    "translation_mismatch_derived": []
+   },
+   "plugin": {
+    "outcomes": {
+     "error": 13,
+     "layout_na": 31,
+     "nonpass": 560,
+     "pass": 1007
+    },
+    "pass_rate_over_ran": 0.6373,
+    "plugin_false_pass": [],
+    "plugin_nonpass_on_direct_agree": [],
+    "plugin_policy_errors": {
+     "input_capture_failed (direct rejects)": 4,
+     "unsupported_import (direct rejects)": 9
+    },
+    "ran": 1580
+   },
+   "translation_mismatch_count": 1,
+   "translation_mismatch_runs": 3
+  },
+  "C2": {
+   "F": {
+    "f1179_ab": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1179_ba": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1179_self": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "-",
+      "-",
+      "-"
+     ],
+     "direct_reason": [
+      "out of scope"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1193": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "t",
+      "t"
+     ],
+     "direct_reason": [
+      "In agree_32: | out of fuel"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_erased": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1194_kept": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "!",
+      "!",
+      "!"
+     ],
+     "direct_reason": [
+      "In A.group: | affine live code, calls that descend"
+     ],
+     "expected": "pass",
+     "false_negative": true,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "f1194_moved": {
+     "control": true,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "f1212_g4": {
+     "control": false,
+     "crash": false,
+     "direct_classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "direct_reason": [
+      "agree"
+     ],
+     "expected": "pass",
+     "false_negative": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    }
+   },
+   "P": {
+    "agree": 52,
+    "classes": {
+     "agree": 52,
+     "rejects": 34
+    },
+    "n": 86,
+    "pass_rate": 0.6047
+   },
+   "S": {
+    "b389cases/s1212_fb3/fb3.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_fb3_law_false/fb3.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_fb3_law_true/fb3.bend": {
+     "certified": [
+      null,
+      null,
+      null
+     ],
+     "classes": [
+      "rejects",
+      "rejects",
+      "rejects"
+     ],
+     "crash": false,
+     "plugin": [
+      "nonpass:fail",
+      "nonpass:fail",
+      "nonpass:fail"
+     ]
+    },
+    "b389cases/s1212_prlaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward/group_dead_forward.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    },
+    "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+     "certified": [
+      "source",
+      "source",
+      "source"
+     ],
+     "classes": [
+      "agree",
+      "agree",
+      "agree"
+     ],
+     "crash": false,
+     "plugin": [
+      "pass",
+      "pass",
+      "pass"
+     ]
+    }
+   },
+   "T": {
+    "agree": 970,
+    "classes": {
+     "!": 2,
+     "-": 2,
+     "agree": 970,
+     "rejects": 487,
+     "u": 65
+    },
+    "n": 1526,
+    "pass_rate": 0.6356
+   },
+   "X": {
+    "agree": 43,
+    "classes": {
+     "agree": 43,
+     "rejects": 15,
+     "t": 1,
+     "u": 11
+    },
+    "n": 70,
+    "pass_rate": 0.6143
+   },
+   "corpus_false_rejects_T": [
+    "tests/check/conversion_shared_cells_once.bend",
+    "tests/check/spec_arg_unused_column.bend"
+   ],
+   "corpus_nonagree_X": {
+    "demos/app_slash_boss_3d/PROOF.bend": "t"
+   },
+   "corpus_out_of_scope_T": [
+    "tests/check/erased_field_bare_arm.bend",
+    "tests/check/spec_arg_depth.bend"
+   ],
+   "corpus_timeouts_T": [],
+   "false_negative_controls_failed": [],
+   "false_negatives_F": [
+    "f1179_ab",
+    "f1179_self",
+    "f1193",
+    "f1194_kept"
+   ],
+   "flaky": [
+    {
+     "case": "b389cases/f1193/conversion_shared_cells_once.bend",
+     "classes": [
+      "!",
+      "t",
+      "t"
+     ]
+    },
+    {
+     "case": "demos/app_slash_boss_3d/PROOF.bend",
+     "classes": [
+      "u",
+      "t",
+      "t"
+     ]
+    }
+   ],
+   "identity": {
+    "bin_as_expected": true,
+    "direct_bin_sha256": [
+     "37e0b98fce8e4de7a2dc3a26b7485f76f9537b289934f29985efcf3e6e637959"
+    ],
+    "direct_kernel_sha256": [
+     "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+    ],
+    "kernel_as_expected": true,
+    "plugin_kernel_sha256": [
+     "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"
+    ]
+   },
+   "oracles": {
+    "derived_cases_evaluated": 76,
+    "derived_evaluated_runs": 78,
+    "derived_not_applicable_runs": {
+     "no_main_of_supported_type": 937
+    },
+    "indeterminate_derived": [],
+    "primary": {
+     "b389cases/s1212_fb3/fb3.bend": {
+      "certified": [
+       "source",
+       "source",
+       "source"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend": {
+      "certified": [
+       "source",
+       "source",
+       "source"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       false,
+       false,
+       false
+      ]
+     },
+     "b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend": {
+      "certified": [
+       "source",
+       "source",
+       "source"
+      ],
+      "classes": [
+       "agree",
+       "agree",
+       "agree"
+      ],
+      "runs": 3,
+      "source_value": [
+       5,
+       5,
+       5
+      ]
+     }
+    },
+    "translation_mismatch_derived": []
+   },
+   "plugin": {
+    "outcomes": {
+     "error": 13,
+     "layout_na": 31,
+     "nonpass": 556,
+     "pass": 1011
+    },
+    "pass_rate_over_ran": 0.6399,
+    "plugin_false_pass": [],
+    "plugin_nonpass_on_direct_agree": [],
+    "plugin_policy_errors": {
+     "input_capture_failed (direct rejects)": 4,
+     "unsupported_import (direct rejects)": 9
+    },
+    "ran": 1580
+   },
+   "translation_mismatch_count": 0,
+   "translation_mismatch_runs": 0
+  }
+ },
+ "cli": {
+  "b389-cli-official-f1179_ab-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-f1179_ba-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-official-f1179_self-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-f1193-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-f1194_erased-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-official-f1194_kept-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-f1194_moved-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-official-f1212_g4-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-s1212_fb3-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-official-s1212_fb3_law_false-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-s1212_fb3_law_true-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-s1212_prlaw-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-s1212_prlaw_nolaw-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-s1212_up_dead_forward-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-official-s1212_up_dead_forward_nolaw-r1": {
+   "bend_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-patched-f1179_ab-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-patched-f1179_ba-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-f1179_self-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-patched-f1193-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-patched-f1194_erased-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-f1194_kept-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-patched-f1194_moved-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-f1212_g4-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-s1212_fb3-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-s1212_fb3_law_false-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-s1212_fb3_law_true-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "1",
+   "kernel_sha256_after": null,
+   "kernel_strategy": "session-uninitialized",
+   "source_semantics_attested": false,
+   "success": false,
+   "verdict": "fail"
+  },
+  "b389-cli-patched-s1212_prlaw-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-s1212_prlaw_nolaw-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-s1212_up_dead_forward-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  },
+  "b389-cli-patched-s1212_up_dead_forward_nolaw-r1": {
+   "bend_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981",
+   "code": null,
+   "exit_code": "0",
+   "kernel_sha256_after": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5",
+   "kernel_strategy": "session-bootstrap",
+   "source_semantics_attested": false,
+   "success": true,
+   "verdict": "pass"
+  }
+ },
+ "differential": {
+  "A_to_B_gained": [
+   {
+    "A": "-",
+    "B": "agree",
+    "C1": "agree",
+    "C2": "-",
+    "attribution": "upstream delta (01875127 also gains it)",
+    "case": "tests/check/erased_field_bare_arm.bend",
+    "stable": true
+   },
+   {
+    "A": "-",
+    "B": "agree",
+    "C1": "agree",
+    "C2": "-",
+    "attribution": "upstream delta (01875127 also gains it)",
+    "case": "tests/check/spec_arg_depth.bend",
+    "stable": true
+   },
+   {
+    "A": "!",
+    "B": "agree",
+    "C1": "agree",
+    "C2": "!",
+    "attribution": "upstream delta (01875127 also gains it)",
+    "case": "tests/check/spec_arg_unused_column.bend",
+    "stable": true
+   },
+   {
+    "A": "!",
+    "B": "agree",
+    "C1": "!",
+    "C2": "agree",
+    "attribution": "the 2-line patch (01875127 does not)",
+    "case": "tests/proof/group_name_collision_semantics.bend",
+    "stable": true
+   }
+  ],
+  "A_to_B_lost": [],
+  "A_to_C2_gained": [
+   {
+    "A": "!",
+    "C2": "agree",
+    "case": "tests/proof/group_name_collision_semantics.bend",
+    "stable": true
+   }
+  ],
+  "A_to_C2_lost (patch alone on stock)": [],
+  "C1_to_B_gained": [
+   {
+    "B": "agree",
+    "C1": "!",
+    "case": "tests/proof/group_name_collision_semantics.bend",
+    "stable": true
+   }
+  ],
+  "C1_to_B_lost (patch alone on main)": [],
+  "new_failures_attributed_to_patch": 0,
+  "new_failures_introduced_by_candidate_stable": 0
+ },
+ "records": {
+  "direct-A": 1611,
+  "direct-A-confirm-r2": 5,
+  "direct-A-confirm-r3": 5,
+  "direct-A-special-r2": 15,
+  "direct-A-special-r3": 15,
+  "direct-B": 1611,
+  "direct-B-confirm-r2": 5,
+  "direct-B-confirm-r3": 5,
+  "direct-B-special-r2": 15,
+  "direct-B-special-r3": 15,
+  "direct-C1": 1611,
+  "direct-C1-confirm-r2": 5,
+  "direct-C1-confirm-r3": 5,
+  "direct-C1-special-r2": 15,
+  "direct-C1-special-r3": 15,
+  "direct-C2": 1611,
+  "direct-C2-confirm-r2": 5,
+  "direct-C2-confirm-r3": 5,
+  "direct-C2-special-r2": 15,
+  "direct-C2-special-r3": 15,
+  "plugin-A": 1611,
+  "plugin-A-special-r2": 15,
+  "plugin-A-special-r3": 15,
+  "plugin-B": 1611,
+  "plugin-B-special-r2": 15,
+  "plugin-B-special-r3": 15,
+  "plugin-C1": 1611,
+  "plugin-C1-special-r2": 15,
+  "plugin-C1-special-r3": 15,
+  "plugin-C2": 1611,
+  "plugin-C2-special-r2": 15,
+  "plugin-C2-special-r3": 15
+ }
+}

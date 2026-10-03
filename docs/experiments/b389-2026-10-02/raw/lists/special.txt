@@ -1,0 +1,15 @@
+b389cases/f1179_ab/ab.bend
+b389cases/f1179_ba/ba.bend
+b389cases/f1179_self/self.bend
+b389cases/f1193/conversion_shared_cells_once.bend
+b389cases/f1194_erased/kept_erased.bend
+b389cases/f1194_kept/kept.bend
+b389cases/f1194_moved/kept_moved.bend
+b389cases/f1212_g4/g4.bend
+b389cases/s1212_fb3/fb3.bend
+b389cases/s1212_fb3_law_false/fb3.bend
+b389cases/s1212_fb3_law_true/fb3.bend
+b389cases/s1212_prlaw/group_name_collision_semantics.bend
+b389cases/s1212_prlaw_nolaw/group_name_collision_semantics.bend
+b389cases/s1212_up_dead_forward/group_dead_forward.bend
+b389cases/s1212_up_dead_forward_nolaw/group_dead_forward.bend

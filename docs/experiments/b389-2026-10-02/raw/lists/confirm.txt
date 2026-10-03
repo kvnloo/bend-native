@@ -1,0 +1,5 @@
+demos/app_slash_boss_3d/PROOF.bend
+tests/check/erased_field_bare_arm.bend
+tests/check/spec_arg_depth.bend
+tests/check/spec_arg_unused_column.bend
+tests/proof/group_name_collision_semantics.bend
