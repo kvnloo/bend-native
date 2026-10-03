@@ -1,0 +1,11 @@
+{
+  "schema": "bend_e2e.prereg_amendment.v1",
+  "written_at": "2026-10-03T04:20Z",
+  "committed_before": "the fail-open supplement runs (M-fo_*), after measured reps 1-6 had run",
+  "deviation": "The preregistered in-run stop during M-bend_fix-06 did not take effect: the driver runs under hostless, whose Landlock scope refuses signals to processes outside it, and the private z0 service had been started from the plain shell. run-z0svc.sh stop exited 1 ('kill: Operation not permitted'); the service stayed up. M-bend_fix-06 is kept in the battery as an ordinary run and its fail-open column is recorded as NOT_EXERCISED. Nothing else in the battery changes.",
+  "supplement": {
+    "runs": "3 extra runs, same harness and profile: M-fo_bend_fix-01, M-fo_cua_gtk3-01, M-fo_bend_contra-01 (rep 11; excluded from the per-task 10-run denominators, reported separately).",
+    "procedure": "Before each run: stop the battery service (once, after rep 10), probe the bridge (expect rc 2), start a fresh private service (e2e-svc-fo-<n>, port 11523) from the plain shell and probe it (expect rc 0). Launch the run; a plain-shell helper (harness/fo_stop.sh) stops that service 15 s after launch. Record the stop time against the Hermes started_at/ended_at to show it fell inside the Hermes run. After the run, probe again (expect rc 2, connection refused, no retry/fallback).",
+    "pass": "Each supplement run: Hermes rc 0 and on_session_end completed=true; the stop fell inside the Hermes run; the post-stop probe fails closed. Oracle verdicts are reported but are not part of the fail-open criterion."
+  }
+}

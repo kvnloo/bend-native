@@ -1,0 +1,5 @@
+{"runs": [
+ {"run_id": "M-fo_bend_fix-01", "task": "bend_fix", "rep": 11, "set": "failopen", "failopen_stop_after_s": null},
+ {"run_id": "M-fo_cua_gtk3-01", "task": "cua_gtk3", "rep": 11, "set": "failopen", "failopen_stop_after_s": null},
+ {"run_id": "M-fo_bend_contra-01", "task": "bend_contra", "rep": 11, "set": "failopen", "failopen_stop_after_s": null}
+]}
