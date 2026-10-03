@@ -1,0 +1,67 @@
+# bend-stack private Hermes profile (exp/bend-stack-integration-20261002).
+# Copied per run into $BEND_LANE/runs/<run>/home/.hermes by run-hermes.sh.
+# Local model only (user-local Ollama 127.0.0.1:11500, GPU); nothing phones home or self-updates.
+model:
+  default: "qwen2.5:7b-instruct"
+  provider: "custom"
+  base_url: "http://127.0.0.1:11500/v1"
+  api_key: "ollama-local-no-key"
+  # Hermes refuses windows below 64K (MINIMUM_CONTEXT_LENGTH=64000). Ollama serves n_ctx 65536 split
+  # into 2 slots of 32768 tokens each (clamped to the model's n_ctx_train 32768): prompts above
+  # 32768 tokens are truncated by the server. Lanes must check prompt tokens < 32768.
+  context_length: 65536
+  ollama_num_ctx: 65536
+
+plugins:
+  auto_update_check_hours: 0
+  auto_apply: false
+
+# No passive update checks, no driver refresh, no remote model catalog.
+  enabled:
+    - bend
+  disabled: []
+  entries:
+    bend:
+      settings:
+        executable: $BEND_STACK/official/bend/bin/bend
+        dependency_cache: $BEND_LANE/template/home/bend-hub-cache
+        stack_service_port: 11523
+        stack_mode: shadow
+        stack_opportunities: true
+updates:
+  check: false
+  refresh_cua_driver: false
+  pre_update_backup: "off"
+model_catalog:
+  enabled: false
+
+# Small local models misuse the tool_search bridge (stack SAMPLES finding): all tools eager.
+tools:
+  tool_search:
+    enabled: "off"
+
+# Computer use: driver comes from HERMES_CUA_DRIVER_CMD (set by run-hermes.sh);
+# telemetry off; standard approval boundary (no bypass).
+computer_use:
+  cua_telemetry: false
+  permission_mode: "standard"
+  autostart: false
+  native_wayland: false
+  capture_after_mode: "ax"
+bot_desktop:
+  auto_start: false
+
+logging:
+  level: "INFO"
+
+# e2e: explicit per-action grants (verbatim from the accepted stack SMOKE/ADDR harness); no yolo, Driver stays standard.
+command_allowlist:
+  - "cua:click:background"
+  - "cua:click:foreground"
+  - "cua:type:background"
+  - "cua:type:foreground"
+  - "cua:key:background"
+  - "cua:key:foreground"
+  - "cua:set_value:background"
+  - "cua:scroll:background"
+  - "cua:scroll:foreground"

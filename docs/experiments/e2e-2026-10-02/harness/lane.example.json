@@ -1,0 +1,26 @@
+{
+  "e2e_home": "$E2E",
+  "runs_dir": "$E2E/runs",
+  "cua_out_dir": "$E2E/cua-out",
+  "log_dir": "$E2E/logs",
+  "work_dir": "$E2E/work",
+  "launcher": "$E2E/bin/run-hermes-e2e.sh",
+  "config": "$E2E/config/e2e-config.yaml",
+  "x11_session": "$CUA_LANES/cua-x11-session.sh",
+  "cua_fixture_dir": "$E2E/fixtures/cua",
+  "cua_timeout": 600,
+  "cua_max_turns": 12,
+  "bend_timeout": 900,
+  "bend_max_turns": 16,
+  "bend_fixtures": {
+    "bend_fix": "$E2E/fixtures/bend-fix",
+    "bend_contra": "$E2E/fixtures/bend-contra"
+  },
+  "bend_official": "$BEND_STACK/official/bend/bin/bend",
+  "oracle_bend": "$E2E/bin/oracle-bend.sh",
+  "pinned_repo": "$E2E/pinned-repo",
+  "z0svc": "$Z0SVC_LANE/run-z0svc.sh",
+  "z0svc_run_id": "e2e-svc-01",
+  "base_url": "http://127.0.0.1:11500/v1",
+  "pm_installs_mask": "$BEND_LANE/template/home/.hermes/installs"
+}
