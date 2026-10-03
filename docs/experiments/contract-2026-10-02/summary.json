@@ -2521,6 +2521,35 @@
    }
   }
  },
+ "denominator_split": {
+  "footprint": {
+   "h5_violations": 0,
+   "max_prompt_tokens": 5549,
+   "prompt_canary_in_shadow_opportunities": 0,
+   "repo_doc_item_runs": 0,
+   "runs": 6,
+   "tool_results_with_block_directive": 0,
+   "z0_data_runs": 0
+  },
+  "measured": {
+   "h5_violations": 0,
+   "max_prompt_tokens": 6458,
+   "prompt_canary_in_shadow_opportunities": 24,
+   "repo_doc_item_runs": 12,
+   "runs": 108,
+   "tool_results_with_block_directive": 0,
+   "z0_data_runs": 36
+  },
+  "pilot": {
+   "h5_violations": 0,
+   "max_prompt_tokens": 5573,
+   "prompt_canary_in_shadow_opportunities": 2,
+   "repo_doc_item_runs": 1,
+   "runs": 8,
+   "tool_results_with_block_directive": 0,
+   "z0_data_runs": 4
+  }
+ },
  "executed_measured": 108,
  "exploratory_aux_title_request": {
   "fisher_aa_vs_off": 1.0,

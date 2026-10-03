@@ -3,8 +3,16 @@
 Plugin under test: kvnloo/bend-native e85e65e5 (v0.4.0), installed as a real Hermes plugin. Host: the integration
 Hermes `exp/bend-stack-integration-20261002` @ ad31bbf0. Local model qwen2.5:7b-instruct 845dbda0 on the
 workflow's own Ollama. No plugin file changed on this branch. Order of work: PREREG 86c605c (before any measured
-run), then the analysis harness and DEVIATIONS 8b4de8f (before any measured analysis), then the results commit.
-`python3 verify_artifacts.py` re-checks everything from the committed files.
+run), then the analysis harness and DEVIATIONS 8b4de8f (before any measured analysis), then the results commit
+93d91ce, then the review correction (DEVIATIONS D7). `python3 verify_artifacts.py` re-checks everything from the
+committed files.
+
+**Correction (D7, after review of 93d91ce).** The results commit reported H3 as PASS. That was wrong: the
+preregistered H3 rule includes "`Stack.close()` returns within 2.0 s", and both H3 records say it did not
+(`close_within_2s: false` in `raw/inproc/h3.json` and `h3slow.json`). H3 is now **PARTIAL**: queue bound,
+accounting and non-blocking PASS; unload FAIL. Headline: H1, H2, H4, H5 and H6 pass; H3 fails its unload
+criterion, so this packet does **not** show that all six contracts hold. No measurement changed; D7 also splits
+pilots out of the chat-run counts and adds a plugin-free check of the bend oracle key.
 
 Evidence labels: REAL = real Hermes + plugin + model/toolchain; FIXTURE = real plugin through Hermes's
 PluginManager with synthetic payloads; SOURCE = code review; BENCHMARK = quiet-timed; EXPLORATORY = not
@@ -15,17 +23,21 @@ preregistered.
 | # | Contract | Evidence | Verdict |
 |---|---|---|---|
 | H1 | Shadow cannot change behaviour | REAL, 108 runs (36 pairs per comparison) | **PASS**: 0/36 plugin-attributable divergences; off-vs-shadow divergence equals the A/A control |
-| H2 | Hooks return None; prompts, tools, provider and context engine unchanged | SOURCE + FIXTURE + REAL | **PASS** |
-| H3 | Bounded queue, nothing blocks, unload within 2 s | FIXTURE + BENCHMARK | **PASS with 2 findings**: drops are not visible outside the process; the worker keeps writing after unload |
+| H2 | Hooks return None; prompts, tools, provider and context engine unchanged | SOURCE + FIXTURE + REAL (108 measured + 6 footprint runs) | **PASS** |
+| H3 | Bounded queue, nothing blocks, unload within 2 s | FIXTURE + BENCHMARK | **PARTIAL: unload FAIL.** Queue bound, accounting and non-blocking PASS. `Stack.close()` returned only when `join(timeout=2)` expired (2.0001 s and 2.0000 s, `close_within_2s: false` in both records); the worker stayed alive 3.0 s / 3.25 s longer and wrote 256 rows + 72 / 66 opportunity records after close returned (F2). Drops are reported only inside the dropping process (F1). `manager.unload('bend')` was not timed |
 | H4 | Profile isolation A→B→A | FIXTURE (real Bend verify) | **PASS** (1 low finding in the single-manager variant) |
-| H5 | No raw prompt, tool or response content in plugin data | REAL (122 runs) + FIXTURE | **PASS**, with 1 disclosure gap: State Packet stores repository text |
+| H5 | No raw prompt, tool or response content in plugin data | REAL (108 measured + 6 footprint runs; 8 pilots reported apart) + FIXTURE | **PASS**, with 1 disclosure gap: State Packet stores repository text |
 | H6 | Disabled plugin leaves zero footprint | REAL (6 runs) + FIXTURE | **PASS**; `stack_mode: off` is not zero-cost (EXPLORATORY) |
 
 ## Design (PREREG.json)
 
 - Three tasks, each with an independent oracle:
   - **cua**: GTK3 fixture "I agree" checkbox in a private Xvfb session, cua-driver 0.32.0. The oracle is the fixture-owned state file.
-  - **bend**: `bend_verify` on the fixture project. The oracle is the known verdict `pass`.
+  - **bend**: `bend_verify` on the fixture project. The oracle is the known verdict `pass`, a substring match on the final reply.
+    The key was set before the runs as the fixture's known answer; D7 adds `raw/oracle_key/bend-verdict.json`, a direct run of
+    official Bend 2.0.34 (`bend ./PROOF.bend --verdict`, fresh HOME, no Hermes, no plugin code) on the committed fixture:
+    exit 0, `ALL PROOFS CHECK`, kernel a7e5203d built cold. So the key does not come from the plugin. It is still the same
+    Bend/kernel identity the plugin uses, and a kernel verdict over the emitted book, not task success.
   - **repo**: read a file in a git fixture. The oracle is the known codename.
 - Arms differ only in two plugin setting lines:
   - **off**: `stack_mode: off`, `stack_opportunities: false`.
@@ -73,8 +85,9 @@ preregistered.
   It registers no middleware, system-prompt section, context engine or aux task.
 - **Invocations.** 26 invocations through `manager.invoke_hook` in shadow + opportunities mode, 12 normal and 14 malformed or
   hostile payloads, all returned `[]`. One hostile payload claimed `task_success` and an `execute` grant in a `bend_verify` result; nothing used it.
-- **Chat runs** (REAL). Per-request component identity held, as in H1. 0 of the tool results across all 122 runs carried a
-  `pre_tool_call` block directive.
+- **Chat runs** (REAL). Per-request component identity held, as in H1. 0 tool results carried a `pre_tool_call` block
+  directive: 0 in the 108 measured runs and 0 in the 6 footprint runs (`summary.json` `denominator_split`). The 8 pilots,
+  which are not in any denominator, also had 0.
 - **SOURCE.** See the code-path review below.
 
 ### H2 code-path review (SOURCE)
@@ -119,8 +132,16 @@ Setup: 8 threads × 400 direct callback calls (one in four is an opportunity-pro
   reports `rows_dropped: 0` with 276 events. Nothing about the 3,124 drops is persisted. The counter lives only on the in-memory Stack. The bundled
   original observer writes `observer_rows_dropped` marker rows, but the native bridge does not use that path. The README
   says "report exposes delivery errors", which is true only inside the process that dropped.
-- **Unload.** `Stack.close()` returned after 2.0001 s, which is the `join(timeout=2)` bound plus 0.06 ms of scheduling. By the strict
-  preregistered "≤ 2.0 s" reading this misses by 62 µs; in substance unload is bounded at 2 s.
+- **Unload: FAIL.** `Stack.close()` returned after 2.0001 s (h3) and 2.0000 s (h3slow; `close_within_2s: false` in both), so it
+  misses the preregistered "returns within 2.0 s" rule. The miss is not a 62 µs rounding question. `close()` returns only because
+  `join(timeout=2)` expires: it swallows `queue.Full` when it tries to enqueue its stop sentinel into the full queue
+  (`stack/bridge.py` `close()`), and the daemon worker then keeps draining every accepted job (F2). Unload is not complete at 2 s.
+  The earlier "in substance unload is bounded at 2 s" reading had no DEVIATIONS entry and is withdrawn (D7).
+  - Scope: H3 timed `Stack.close()` directly (`inproc_contract.py`), not Hermes's unload path `manager.unload('bend')`. That
+    path runs both registered `on_unload` callbacks, including the session-kernel close, and was not timed. These records
+    make no claim about its duration beyond the fact that it includes `Stack.close()`.
+- **Against spec item (3).** The queue is bounded and nothing blocks. But unload does not complete within 2 s, and drops are
+  reported only inside the dropping process: a fresh-process `hermes z0 report` shows `rows_dropped: 0` after 3,124 drops (F1).
 - **Finding F2 (low/medium): the worker keeps writing after unload.** The drain thread outlived `close()` by 3.0 s. In that time it wrote
   **256 event rows and 72 opportunity records after unload returned**, because `close()` cannot enqueue its
   stop sentinel into a full queue, and the thread then drains every accepted job, running a reducer subprocess for each opportunity.
@@ -142,16 +163,19 @@ Setup: 8 threads × 400 direct callback calls (one in four is an opportunity-pro
 
 ## H5: no raw content in plugin data
 
-- **REAL** (122 runs). Canaries were scanned in each run's plugin data (`plugin-data/bend/**` and the plugin's state dir):
-  - The tool-result, model-reply, Bend-source and CUA-AX canaries (`Save note`, D1) were absent everywhere.
-  - The user-prompt canary appears only in shadow-arm `opportunities.jsonl` (26 runs, as allowed by `stack_opportunities`).
-  - The off, aa and disabled arms wrote no `plugin-data/bend/z0` at all.
+- **REAL** (108 measured + 6 footprint runs; the 8 pilots are counted apart in `summary.json` `denominator_split`). Canaries were
+  scanned in each run's plugin data (`plugin-data/bend/**` and the plugin's state dir):
+  - The tool-result, model-reply, Bend-source and CUA-AX canaries (`Save note`, D1) were absent everywhere (0 violations in
+    measured, footprint and pilot runs).
+  - The user-prompt canary appears only in shadow-arm `opportunities.jsonl`: 24 measured runs (the 12 bend + 12 repo shadow
+    runs; the CUA prompt canary is `CuaTestHarness`, also only there), as allowed by `stack_opportunities`. Pilots add 2 more.
+  - The off, aa and disabled arms wrote no `plugin-data/bend/z0` at all; z0 data exists in exactly the 36 measured shadow runs.
 - **FIXTURE.** With the ambient `Z0INT_HERMES_CAPTURE_SANITIZED_CONTENT=1` set, no request, response, history, args, result,
   error or system canary is persisted. Only the bounded user request appears in `opportunities.jsonl`, and only with
   opportunities on.
 - **Finding F4 (low, disclosure): the State Packet persists repository text.** With `stack_opportunities` on, the bundled
   State Packet reducer stores repository document text and git metadata in `plugin-data/bend/z0/state/state_packet/<repo>/latest.json`
-  and `history.jsonl`, and in each opportunity record. That includes README open-item text (canary `Ship the next release`, 13/13 repo shadow runs), commit subjects, branch names and dirty-file names.
+  and `history.jsonl`, and in each opportunity record. That includes README open-item text (canary `Ship the next release`, 12/12 measured repo shadow runs, plus 1 pilot), commit subjects, branch names and dirty-file names.
   This is not prompt, tool or response content, but the README only mentions metadata and the bounded user request.
 
 ## H6: disabled plugin footprint
@@ -169,9 +193,14 @@ boot, and that environment lacks the `computer-use` extra. The first call then t
 lane used a private copy of the template provisioned once through PM's own `uv sync --locked`, which hash-checks against uv.lock
 (provenance.json). The shared template was not changed.
 
+Disclosure: that provisioning step used network inside hostless and bwrap, for PM's `uv sync --locked`, which goes beyond
+the pinned Bend/Lean downloads. It ran once, before any measured run; no measured run had network. A reviewer checked that the
+shared setup template still holds only the setup environment, and that the provisioned environment exists only in this lane's
+private template copy.
+
 ## Files
 
-- `PREREG.json`, `DEVIATIONS.json` (D1-D6), `plan.json`, `provenance.json`, `summary.json` (machine-readable results).
+- `PREREG.json`, `DEVIATIONS.json` (D1-D7), `plan.json`, `provenance.json`, `summary.json` (machine-readable results).
 - `harness/`:
   - `proxy.py`, `drive.py`, `launch.sh`, `run_cua.sh`, `oracle.py`, `make_plan.py`;
   - `inproc_contract.py`, `export_raw.py`, `analyze.py`.
@@ -179,4 +208,7 @@ lane used a private copy of the template provisioned once through PM's own `uv s
 - `raw/runs/<id>/`: run.json, oracle, ledger, config, capture index, meta, plugin data, this run's agent-log lines.
 - `raw/bodies/`: content-addressed request and response bodies, gzip, local paths replaced by placeholders.
 - `raw/inproc/`: in-process records, their launcher meta, and the quiet-lane ledger lines.
-- Pilots (`pilot-*`) are kept and excluded from every denominator.
+- `raw/oracle_key/bend-verdict.json`: the plugin-free official Bend verdict on the bend fixture (D7).
+- Pilots (`pilot-*`) are kept in `raw/runs` and excluded from every H1 denominator and from the H2-chat, H5 and H6 counts
+  above; `summary.json` `H2_chat` and the `H5` totals still include them, and `denominator_split` separates them.
+  pilot-01..04 ran on the shared setup template.

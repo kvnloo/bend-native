@@ -36,6 +36,12 @@
       "what": "Exploratory, found in the interim look at runs 1-24 and added to analyze.py after all measured runs: whether Hermes's auxiliary title-generation request reaches the model before the one-shot CLI process exits. It is a race between the title thread and CLI cleanup inside Hermes (agent.log: 'Auxiliary title_generation: transient transport error ... Connection error' after 'CLI cleanup').",
       "change": "Reported per arm with a Fisher test as an EXPLORATORY row. It is not a main-loop payload and not part of H1.",
       "recorded_after_measured_runs": true
+    },
+    {
+      "id": "D7",
+      "what": "Review correction after the results commit 93d91ce. (a) H3 verdict: 93d91ce reported H3 as PASS, reading the preregistered rule 'Stack.close() returns within 2.0 s' as met 'in substance', with no deviation recorded. Both records have close_within_2s false (h3 2.0001 s, h3slow 2.0000 s). close() returns only when join(timeout=2) expires, because it swallows queue.Full on its stop sentinel, and the worker stays alive 3.0 s / 3.25 s longer and writes 256 rows plus 72 / 66 opportunity records after close returns. (b) Scope: H3 timed Stack.close() directly, not manager.unload('bend'), which also runs the session-kernel on_unload callback. (c) Denominators: summary H2_chat and H5 totals counted the 8 pilots (122 runs; 26 prompt-canary runs = 24 measured + 2 pilots; 13 repo_doc_item runs = 12 + 1). (d) The bend oracle key 'pass' was the fixture's known answer with no plugin-free receipt in the packet.",
+      "change": "(a) H3 verdict corrected to PARTIAL: queue bound, accounting and non-blocking PASS; unload FAIL. README verdict table, H3 section and headline corrected; no number changed. PREREG is unchanged. (b) The unload claim is limited to Stack.close(); manager.unload is not timed. (c) analyze.py gained a reporting-only 'denominator_split' block (measured / footprint / pilot); no verdict input changed, and every other summary.json key is byte-identical in content. README reports measured and footprint counts apart from pilots. (d) Disclosed extension: one direct official Bend 2.0.34 run ('bend ./PROOF.bend --verdict', fresh HOME, no Hermes or plugin code) on the committed fixture under hostless, recorded in raw/oracle_key/bend-verdict.json (exit 0, ALL PROOFS CHECK, kernel a7e5203d built cold); verify_artifacts.py checks it. No other run was added.",
+      "recorded_after_measured_runs": true
     }
   ]
 }

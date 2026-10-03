@@ -1,0 +1,26 @@
+{
+ "schema": "bend_native.contract.oracle_key.v1",
+ "purpose": "Establish the bend-task oracle key ('pass') independently of the plugin: official Bend run directly on the committed fixture, no Hermes, no plugin code (DEVIATIONS D7, disclosed extension after the results commit).",
+ "evidence": "REAL",
+ "started_utc": "2026-10-03T05:35:06Z",
+ "ended_utc": "2026-10-03T05:35:31Z",
+ "command": "<BEND_OFFICIAL> ./PROOF.bend --verdict",
+ "cwd": "<ORACLE_KEY_DIR>/project (a copy of fixtures/bend)",
+ "env": "hostless; env -i PATH=<LEAN_4_34_0_BIN>:/usr/bin:/bin HOME=<ORACLE_KEY_DIR>/home (fresh, empty: kernel built cold) TMPDIR=<ORACLE_KEY_DIR>/tmp BEND_LIB=<ORACLE_KEY_DIR>/lib (empty) BEND_HUB=http://127.0.0.1:0 LANG=C.UTF-8; timeout 900",
+ "exit_code": 0,
+ "stdout": "ALL PROOFS CHECK\n",
+ "stderr": "",
+ "inputs_sha256": {
+  "LAWS.bend": "a543d01b05a32f7134751238cd6502f10eddd6492225ad234ddd2a9299d530d5",
+  "PROOF.bend": "a70db1ea5da1d4fd2de70c2a7c3437ce9abcd0c652c474beee23cf714ffa5dc6"
+ },
+ "fixture_sha256": {
+  "LAWS.bend": "a543d01b05a32f7134751238cd6502f10eddd6492225ad234ddd2a9299d530d5",
+  "PROOF.bend": "a70db1ea5da1d4fd2de70c2a7c3437ce9abcd0c652c474beee23cf714ffa5dc6"
+ },
+ "bend_binary_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934",
+ "bendtt_lean_sha256": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292",
+ "kernel_built_sha256": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca",
+ "plugin_pass_marker": "ALL PROOFS CHECK (verify_core._PASS_MARKER)",
+ "boundary": "This shows that official Bend 2.0.34 itself says the fixture's emitted book checks, so the oracle key 'pass' does not come from the plugin. It is still a kernel verdict over the emitted book (source_semantics_attested false), not task success, and it is the same Bend/kernel identity the plugin used (a7e5203d), so it does not independently check Bend."
+}

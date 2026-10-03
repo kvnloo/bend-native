@@ -8,7 +8,8 @@ Checks:
   3. PREREG.json was committed before the first measured run started (git history + raw ledgers);
   4. every planned run has a raw record; every measured run's record carries the pinned plugin and Hermes heads;
   5. no local absolute path, host name or user name leaked into the packet;
-  6. in-process records (raw/inproc) are present for every section the README reports.
+  6. in-process records (raw/inproc) are present for every section the README reports;
+  7. the bend-task oracle key comes from a direct official Bend run on the committed fixture (D7).
 """
 from __future__ import annotations
 
@@ -100,6 +101,13 @@ check("no local paths or host name in the packet", not leaks, leaks[:5])
 # 6. in-process records
 present = {p.stem for p in (HERE / "raw" / "inproc").glob("*.json")}
 check("in-process records present", all(s in present for s in SECTIONS), sorted(set(SECTIONS) - present))
+
+# 7. bend oracle key established without the plugin (DEVIATIONS D7)
+key = json.loads((HERE / "raw" / "oracle_key" / "bend-verdict.json").read_text())
+fixture = {n: hashlib.sha256((HERE / "fixtures" / "bend" / n).read_bytes()).hexdigest() for n in ("LAWS.bend", "PROOF.bend")}
+check("bend oracle key: direct official Bend verdict on the committed fixture is pass",
+      key["exit_code"] == 0 and key["stdout"].strip() == "ALL PROOFS CHECK" and key["inputs_sha256"] == fixture
+      and key["kernel_built_sha256"].startswith("a7e5203d"), key["stdout"].strip())
 
 ok = all(r[1] for r in results)
 print("RESULT", "PASS" if ok else "FAIL")

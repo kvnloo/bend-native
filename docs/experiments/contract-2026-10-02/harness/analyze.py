@@ -311,6 +311,26 @@ def main():
                            if (r["rd"] / "plugin-data").exists() else 0, "rc": r["rc"], "oracle": r["oracle"]}
     h6["pass"] = bool(h6["runs"]) and all(not v["bend_paths"] and v["plugin_data_files"] == 0 for v in h6["runs"].values())
     summary["H6"] = h6
+    # ---- denominator split (DEVIATIONS D7, added after the results commit; reporting only, no verdict input) ----
+    def run_class(rid: str) -> str:
+        return "pilot" if rid.startswith("pilot") else ("footprint" if runs[rid]["run"]["arm"] == "disabled" else "measured")
+    split = {}
+    for rid, r in runs.items():
+        c = split.setdefault(run_class(rid), {"runs": 0, "tool_results_with_block_directive": 0,
+                                              "h5_violations": 0, "prompt_canary_in_shadow_opportunities": 0,
+                                              "repo_doc_item_runs": 0, "z0_data_runs": 0, "max_prompt_tokens": None})
+        d = h5["per_run"][rid]
+        c["runs"] += 1
+        c["tool_results_with_block_directive"] += r["blocked_tool_results"]
+        c["h5_violations"] += sum(1 for v in h5["violations"] if v["run"] == rid)
+        c["prompt_canary_in_shadow_opportunities"] += int(d["arm"] == "shadow" and any(
+            p.endswith("opportunities.jsonl") and "prompt" in f for p, f in d["canary_hits"].items()))
+        c["repo_doc_item_runs"] += int(any("repo_doc_item" in f for f in d["canary_hits"].values()))
+        c["z0_data_runs"] += int(d["z0_paths"] > 0)
+        t = [x for x in r["prompt_tokens"] if x]
+        if t:
+            c["max_prompt_tokens"] = max(t + ([c["max_prompt_tokens"]] if c["max_prompt_tokens"] else []))
+    summary["denominator_split"] = dict(sorted(split.items()))
     # ---- in-process records ----
     ip = packet / "raw" / "inproc"
     summary["inproc"] = {f.stem: json.loads(f.read_text()) for f in sorted(ip.glob("*.json"))} if ip.exists() else {}
