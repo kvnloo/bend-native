@@ -1,0 +1,35 @@
+{
+  "schema": "bend_native.contract.deviations.v1",
+  "recorded_before_measured_analysis": true,
+  "deviations": [
+    {
+      "id": "D1",
+      "what": "H5 CUA canary. PREREG listed 'CuaTestHarness' as a CUA tool-result canary, but the verbatim CUA prompt names the window 'CuaTestHarness GTK3 Tasks', so the string legitimately reaches the stored bounded user request.",
+      "change": "'CuaTestHarness' is judged under the prompt rule (allowed only in shadow-arm opportunities.jsonl). 'Save note' (an AX label of the fixture that reaches Hermes only through computer_use tool results) is added as the CUA tool-result canary.",
+      "found_by": "analysis dry run on pilot copies (pilot-08)"
+    },
+    {
+      "id": "D2",
+      "what": "H5 'also measured' repository content. The README marker line is not persisted by the State Packet reducer, but README open-item text is (docs.open_items).",
+      "change": "Added 'Ship the next release' (the fixture README's open item) as a measured-only canary next to the README marker. Neither is a violation under H5; both are reported.",
+      "found_by": "pilot-02 State Packet inspection"
+    },
+    {
+      "id": "D3",
+      "what": "H4 design. A single PluginManager cannot dispatch bend_verify under another profile's scope (tools are registered per profile scope; 'Unknown tool: bend_verify' in a debug run). Hermes itself keeps one manager per profile home (get_plugin_manager).",
+      "change": "H4 uses the supported path: hermes_cli.plugins.invoke_hook and registry dispatch under each profile's home override (one manager and one plugin Stack per profile), as the plugin's smoke.py does. The single-manager variant is kept as H4x (callbacks of one Stack served under different profile scopes, hooks only for profile B).",
+      "found_by": "in-process debug runs ip-dbg-h4-01/02"
+    },
+    {
+      "id": "D4",
+      "what": "Exploratory additions, not preregistered: H3slow (the H3 flood with a 20,000-file repository to slow the reducer) and H6cost (Hermes hook-dispatch cost of the hooks the plugin registers with stack_mode off vs plugin disabled).",
+      "change": "Reported as EXPLORATORY rows; they do not change any H1-H6 verdict.",
+      "found_by": "dry runs"
+    },
+    {
+      "id": "D5",
+      "what": "The in-process harness (inproc_contract.py), export_raw.py and analyze.py were written after the PREREG commit (the PREREG fixed the checks and pass rules). Debug runs ip-dbg-* were used only to make the code work; their numbers are not reported. All reported in-process records come from fresh ip-* runs after this commit; timed rows come only from quiet-timed blocks.",
+      "change": "none (disclosure)"
+    }
+  ]
+}
