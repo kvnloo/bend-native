@@ -1,0 +1,917 @@
+{
+ "seed": 20261002,
+ "runs": [
+  {
+   "run_id": "m001-bend-off-p01",
+   "task": "bend",
+   "arm": "off",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m002-bend-shadow-p01",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m003-bend-aa-p01",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m004-repo-off-p01",
+   "task": "repo",
+   "arm": "off",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m005-repo-aa-p01",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m006-repo-shadow-p01",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m007-cua-aa-p01",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m008-cua-shadow-p01",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m009-cua-off-p01",
+   "task": "cua",
+   "arm": "off",
+   "pair": 1,
+   "seed": 5001,
+   "set": "measured"
+  },
+  {
+   "run_id": "m010-cua-off-p02",
+   "task": "cua",
+   "arm": "off",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m011-cua-aa-p02",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m012-cua-shadow-p02",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m013-repo-aa-p02",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m014-repo-shadow-p02",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m015-repo-off-p02",
+   "task": "repo",
+   "arm": "off",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m016-bend-shadow-p02",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m017-bend-off-p02",
+   "task": "bend",
+   "arm": "off",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m018-bend-aa-p02",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 2,
+   "seed": 5002,
+   "set": "measured"
+  },
+  {
+   "run_id": "m019-cua-shadow-p03",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m020-cua-off-p03",
+   "task": "cua",
+   "arm": "off",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m021-cua-aa-p03",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m022-repo-shadow-p03",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m023-repo-off-p03",
+   "task": "repo",
+   "arm": "off",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m024-repo-aa-p03",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m025-bend-shadow-p03",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m026-bend-aa-p03",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m027-bend-off-p03",
+   "task": "bend",
+   "arm": "off",
+   "pair": 3,
+   "seed": 5003,
+   "set": "measured"
+  },
+  {
+   "run_id": "m028-bend-aa-p04",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m029-bend-shadow-p04",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m030-bend-off-p04",
+   "task": "bend",
+   "arm": "off",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m031-cua-shadow-p04",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m032-cua-aa-p04",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m033-cua-off-p04",
+   "task": "cua",
+   "arm": "off",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m034-repo-aa-p04",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m035-repo-shadow-p04",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m036-repo-off-p04",
+   "task": "repo",
+   "arm": "off",
+   "pair": 4,
+   "seed": 5004,
+   "set": "measured"
+  },
+  {
+   "run_id": "m037-cua-off-p05",
+   "task": "cua",
+   "arm": "off",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m038-cua-aa-p05",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m039-cua-shadow-p05",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m040-repo-shadow-p05",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m041-repo-off-p05",
+   "task": "repo",
+   "arm": "off",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m042-repo-aa-p05",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m043-bend-off-p05",
+   "task": "bend",
+   "arm": "off",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m044-bend-aa-p05",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m045-bend-shadow-p05",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 5,
+   "seed": 5005,
+   "set": "measured"
+  },
+  {
+   "run_id": "m046-repo-aa-p06",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m047-repo-off-p06",
+   "task": "repo",
+   "arm": "off",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m048-repo-shadow-p06",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m049-cua-shadow-p06",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m050-cua-aa-p06",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m051-cua-off-p06",
+   "task": "cua",
+   "arm": "off",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m052-bend-off-p06",
+   "task": "bend",
+   "arm": "off",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m053-bend-aa-p06",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m054-bend-shadow-p06",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 6,
+   "seed": 5006,
+   "set": "measured"
+  },
+  {
+   "run_id": "m055-repo-aa-p07",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m056-repo-shadow-p07",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m057-repo-off-p07",
+   "task": "repo",
+   "arm": "off",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m058-bend-aa-p07",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m059-bend-shadow-p07",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m060-bend-off-p07",
+   "task": "bend",
+   "arm": "off",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m061-cua-shadow-p07",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m062-cua-off-p07",
+   "task": "cua",
+   "arm": "off",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m063-cua-aa-p07",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 7,
+   "seed": 5007,
+   "set": "measured"
+  },
+  {
+   "run_id": "m064-bend-off-p08",
+   "task": "bend",
+   "arm": "off",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m065-bend-aa-p08",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m066-bend-shadow-p08",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m067-repo-off-p08",
+   "task": "repo",
+   "arm": "off",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m068-repo-shadow-p08",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m069-repo-aa-p08",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m070-cua-off-p08",
+   "task": "cua",
+   "arm": "off",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m071-cua-aa-p08",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m072-cua-shadow-p08",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 8,
+   "seed": 5008,
+   "set": "measured"
+  },
+  {
+   "run_id": "m073-bend-off-p09",
+   "task": "bend",
+   "arm": "off",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m074-bend-shadow-p09",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m075-bend-aa-p09",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m076-cua-aa-p09",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m077-cua-off-p09",
+   "task": "cua",
+   "arm": "off",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m078-cua-shadow-p09",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m079-repo-shadow-p09",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m080-repo-aa-p09",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m081-repo-off-p09",
+   "task": "repo",
+   "arm": "off",
+   "pair": 9,
+   "seed": 5009,
+   "set": "measured"
+  },
+  {
+   "run_id": "m082-bend-shadow-p10",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m083-bend-aa-p10",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m084-bend-off-p10",
+   "task": "bend",
+   "arm": "off",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m085-repo-shadow-p10",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m086-repo-aa-p10",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m087-repo-off-p10",
+   "task": "repo",
+   "arm": "off",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m088-cua-shadow-p10",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m089-cua-aa-p10",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m090-cua-off-p10",
+   "task": "cua",
+   "arm": "off",
+   "pair": 10,
+   "seed": 5010,
+   "set": "measured"
+  },
+  {
+   "run_id": "m091-cua-aa-p11",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m092-cua-shadow-p11",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m093-cua-off-p11",
+   "task": "cua",
+   "arm": "off",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m094-bend-aa-p11",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m095-bend-shadow-p11",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m096-bend-off-p11",
+   "task": "bend",
+   "arm": "off",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m097-repo-off-p11",
+   "task": "repo",
+   "arm": "off",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m098-repo-aa-p11",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m099-repo-shadow-p11",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 11,
+   "seed": 5011,
+   "set": "measured"
+  },
+  {
+   "run_id": "m100-repo-off-p12",
+   "task": "repo",
+   "arm": "off",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m101-repo-aa-p12",
+   "task": "repo",
+   "arm": "aa",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m102-repo-shadow-p12",
+   "task": "repo",
+   "arm": "shadow",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m103-cua-shadow-p12",
+   "task": "cua",
+   "arm": "shadow",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m104-cua-aa-p12",
+   "task": "cua",
+   "arm": "aa",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m105-cua-off-p12",
+   "task": "cua",
+   "arm": "off",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m106-bend-off-p12",
+   "task": "bend",
+   "arm": "off",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m107-bend-aa-p12",
+   "task": "bend",
+   "arm": "aa",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "m108-bend-shadow-p12",
+   "task": "bend",
+   "arm": "shadow",
+   "pair": 12,
+   "seed": 5012,
+   "set": "measured"
+  },
+  {
+   "run_id": "f01-cua-disabled",
+   "task": "cua",
+   "arm": "disabled",
+   "pair": 101,
+   "seed": 5101,
+   "set": "footprint"
+  },
+  {
+   "run_id": "f02-bend-disabled",
+   "task": "bend",
+   "arm": "disabled",
+   "pair": 102,
+   "seed": 5102,
+   "set": "footprint"
+  },
+  {
+   "run_id": "f03-repo-disabled",
+   "task": "repo",
+   "arm": "disabled",
+   "pair": 103,
+   "seed": 5103,
+   "set": "footprint"
+  },
+  {
+   "run_id": "f04-cua-disabled",
+   "task": "cua",
+   "arm": "disabled",
+   "pair": 104,
+   "seed": 5104,
+   "set": "footprint"
+  },
+  {
+   "run_id": "f05-bend-disabled",
+   "task": "bend",
+   "arm": "disabled",
+   "pair": 105,
+   "seed": 5105,
+   "set": "footprint"
+  },
+  {
+   "run_id": "f06-repo-disabled",
+   "task": "repo",
+   "arm": "disabled",
+   "pair": 106,
+   "seed": 5106,
+   "set": "footprint"
+  }
+ ]
+}

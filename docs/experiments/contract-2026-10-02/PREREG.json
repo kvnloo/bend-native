@@ -1,0 +1,86 @@
+{
+  "schema": "bend_native.contract.prereg.v1",
+  "lane": "CONTRACT (plugin contract and shadow safety on the integration Hermes)",
+  "written_before_measured_runs": true,
+  "pilots_before_prereg": "8 pilot runs (pilot-01..08) were used only to build the harness and to find per-process volatile fields; they are excluded from every denominator and kept in raw/pilots. pilot-05/06 (CUA) failed because the setup template cannot run computer_use (see provenance.json computer_use_provisioning); pilot-01..04 ran on the shared setup template before the private provisioned copy existed.",
+  "identities": {
+    "plugin": "kvnloo/bend-native e85e65e5d2e11caba8412d6dbd19aad03fd785ad, installed checkout in the profile template (clean); never modified on this branch",
+    "hermes": "integration worktree exp/bend-stack-integration-20261002 @ ad31bbf079f0ee559ce1b61c5f85178c4c3d9396 (base 50a6abca, uv.lock de17d70b...)",
+    "model": "qwen2.5:7b-instruct digest 845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e on the workflow's user-local Ollama 0.35.0 (127.0.0.1:11500), 32768 tokens served per request",
+    "bend": "official 2.0.34 bin sha256 7fafb749...; kernel source bendtt.lean 61e0d2d9...",
+    "driver": "cua-driver 0.32.0 sha256 8b03796185055cc40c1a9ef0b2b4bbe9595a3eefa4f9a3aa64f34e5ce1974cd3",
+    "gtk3_fixture": "libs/cua-driver/tests/fixtures/apps/linux/gtk3/main.py blob fa4b5ad3 (sha256 547b7bca...), copied from git objects",
+    "bend_fixture": "examples/basic + one comment line '# ctr-canary-src-b81e' in LAWS.bend (LAWS a543d01b..., PROOF a70db1ea...)",
+    "repo_fixture": "git repo, one commit f51ec026 (README.md fd07702d..., data/release.txt ea1760a5...)"
+  },
+  "design": {
+    "arms": {
+      "off": "bend plugin enabled; settings stack_mode 'off', stack_opportunities false",
+      "shadow": "bend plugin enabled; settings stack_mode 'shadow', stack_opportunities true",
+      "aa": "byte-identical config to 'off' (same-arm A/A control)",
+      "disabled": "plugin installed in the profile but not enabled (plugins.enabled [], disabled [bend]); footprint set only"
+    },
+    "only_difference_between_off_and_shadow": "the two plugin setting lines; everything else (prompt, toolsets, max turns, model, base_url = capture proxy, per-pair seed, template home, cwd path) is identical. cwd/tmp/xdg are bound at one stable path for every run.",
+    "tasks": {
+      "cua": "GTK3 fixture 'I agree' checkbox in a private Xvfb session (verbatim stack SMOKE/ADDR prompt), toolsets computer_use,bend, max 12 turns; independent oracle = fixture-owned state file (agreed true, nothing else changed)",
+      "bend": "bend_verify on the fixture project, reply with the verdict; toolsets bend, max 4 turns; oracle = known fixture verdict 'pass' in the final reply",
+      "repo": "read data/release.txt in the fixture git repo, reply with the codename; toolsets file,bend, max 6 turns; oracle = known codename in the final reply"
+    },
+    "n": "12 pair blocks x 3 tasks x 3 arms = 108 measured runs, plus 6 footprint runs (disabled, 2 per task). Order: make_plan.py (random.Random(20261002)); seed per block = 5000 + block",
+    "sampling_control": "the capture proxy forwards temperature 0 and the block seed to the model on every chat request (Hermes sends neither); the stored and hashed payload is the unmodified Hermes request",
+    "isolation": "drive.py runs under hostless; each run via launch.sh (bwrap: live Hermes home, real home, /run/user and host X11 masked; env -i; dead egress proxy except loopback); CUA runs inside cua-x11-session.sh under hostless; fixture state dir masked from Hermes"
+  },
+  "normalization": {
+    "N1": "system prompt line 'Conversation started: ...' -> '<DATE>'",
+    "N2": "tool-call ids (assistant tool_calls[].id and tool messages' tool_call_id) -> ordinal 'call#k' by first appearance in the run",
+    "N3_tool_results_only": "inside tool message content only: '\"duration_ms\": <number>', '\"receipt_id\": \"<hex>\"', '\"verified_at\": \"<iso>\"', any other ISO-8601 timestamp, 'pid <digits>' and '\"pid\": <digits>' -> placeholders",
+    "N4_for_commit": "local absolute paths and the host name are replaced by fixed placeholders in committed copies; all comparisons are computed on the N4-substituted text, which is identical for every arm because the substitution map is fixed"
+  },
+  "metrics": {
+    "classification": "a main request = POST /v1/chat/completions carrying 'tools'; anything else on that path is auxiliary (title generation); GET/other paths are probes",
+    "M1_first_request": "sha256 of canonical JSON of the first main request after N1+N2+N4",
+    "M2_hermes_built_components": "for every main request index k present in both runs of a pair: sha256 of (system prompt after N1, tools array, all body params except messages) and of the first user message",
+    "M3_trajectory": "sequence of main-request hashes after N1+N2+N3+N4; first divergence index and its class",
+    "M4_tool_calls": "sequence of (tool name, canonical JSON arguments) reconstructed from the streamed responses; names-only and full",
+    "M5_prompt_tokens": "usage.prompt_tokens per main response; flag any >= 32768",
+    "M6_outcome": "oracle verdict per run"
+  },
+  "attribution_rule": "For a pair (off, X) walk main requests k = 1.. and find the first k whose normalized requests differ. Class 'hermes_built' if the system prompt, tools or params differ at ANY k, or the first user message differs (plugin-attributable: the arms differ only in plugin settings). Otherwise class 'model' if the first differing message is an assistant message (model output) while all earlier responses were followed identically, 'tool_result' if it is a tool message (environment), 'length' if one run simply has more requests after identical prefixes and an assistant message differs earlier in the response stream. Responses are compared too: if request k is identical and response k differs, the divergence starts in the model.",
+  "hypotheses": {
+    "H1_shadow_no_behaviour_change": {
+      "pass_if": "0 pairs (off, shadow) of 36 in class 'hermes_built'; M1 identical in every run of a task across arms; M2 identical at every shared index in every (off, shadow) pair",
+      "attribution": "model/tool_result divergence rates in (off, shadow) are compared with (off, aa): per task and pooled, two-sided Fisher exact test at alpha 0.05, reported descriptively (n=12 per task gives low power; 'no detectable difference' is not equivalence). Same for M4 full tool-call sequence equality and M6 outcome.",
+      "evidence": "REAL"
+    },
+    "H2_hooks_return_none_surfaces_unchanged": {
+      "source": "code-path review of register(), Stack.callback, observer._row, decision_hooks.classify/turn_behaviour and of Hermes's invoke sites (pre_llm_call context injection, pre_tool_call block directives, has_hook gates)",
+      "runtime_inprocess": "real PluginManager discovery of the installed plugin: ownership-ledger inventory is exactly {12 hooks, tool bend_verify, CLI bend+z0, skills bend:workflow + bend:z0-stack, 2 on_unload}; no middleware, system-prompt section, context engine, provider, aux task or transform_* hook; every registered hook invoked through manager.invoke_hook in shadow+opportunities mode (normal, malformed and hostile payloads) returns []",
+      "runtime_chat": "H1's M2 identity plus 0 tool results carrying a pre_tool_call block directive in all measured runs",
+      "pass_if": "all of the above hold"
+    },
+    "H3_bounded_queue_and_unload": {
+      "fixture": "in-process real plugin, shadow + opportunities; flood from 8 threads (opportunity-producing pre_llm_call plus metadata hooks) while the drain thread is busy with the bundled reducer",
+      "pass_if": "submitted == written + dropped (+ errors); queue size never above 256; callback wall time p99 and max reported (quiet-timed); in-process report() rows_dropped == observed drops; Stack.close() returns within 2.0 s (quiet-timed)",
+      "also_measured": "(a) whether drops are visible to a fresh-process 'hermes z0 report' (persisted marker or counter); (b) worker activity after close(): seconds until the drain thread exits and rows/opportunities written after close returned",
+      "evidence": "FIXTURE (+BENCHMARK for the timing rows)"
+    },
+    "H4_profile_isolation_ABA": {
+      "fixture": "in-process real plugin, one manager, set_hermes_home_override A -> B -> A, both profiles shadow + opportunities, real bend_verify (official Bend) in each phase, rows enqueued in A immediately before switching to B",
+      "pass_if": "each profile's plugin-data/bend/z0 events/opportunities and receipt state contain only that profile's session ids and receipt ids; no path of one profile is written in the other",
+      "also_measured": "whether in-memory delivery counters (rows_dropped, last_error, queue_pending) are shared across profiles in report()"
+    },
+    "H5_no_raw_content": {
+      "chat": "every measured run's private home: canaries ctr-canary-prompt-7f3a (user prompt), ctr-canary-tool-91c2 (tool result and model reply), ctr-canary-src-b81e (Bend source), 'CuaTestHarness' (CUA tool results) scanned in plugin-data/bend/** and the plugin's state dir",
+      "pass_if": "tool-result, reply, source and CUA canaries absent everywhere in plugin data; the prompt canary appears only in shadow-arm opportunities.jsonl (the bounded user request explicitly stored by stack_opportunities); off/aa arms write no plugin-data/bend/z0 at all",
+      "also_measured": "repository document excerpts (ctr-canary-readme-5d0e) persisted by the bundled State Packet reducer: where, and whether README documents it",
+      "inprocess": "with Z0INT_HERMES_CAPTURE_SANITIZED_CONTENT=1 set, request/response/conversation canaries passed to every hook are absent from plugin-data"
+    },
+    "H6_disabled_zero_footprint": {
+      "chat": "6 footprint runs: no path containing 'bend' is created under the private home's .hermes other than the installed plugin tree that already exists in the template; no plugin-data/bend, no agent-plugin-bend state",
+      "inprocess": "PluginManager with the plugin installed but not enabled: bend not loaded, no ledger entries, no bend callbacks on any hook; has_hook(e) is False for all 12 events the plugin would register",
+      "pass_if": "both hold"
+    }
+  },
+  "denominators": "every executed run counts, including harness errors, Hermes timeouts and oracle 'unknown'; nothing is re-run silently (a re-run gets a new id and both are reported)",
+  "timing": "every latency number reported comes from quiet-timed blocks (<= 10 min each); run wall times in the ledger are descriptive only and are never reported as results"
+}
