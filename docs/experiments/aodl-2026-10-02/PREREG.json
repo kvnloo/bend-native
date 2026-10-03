@@ -1,0 +1,77 @@
+{
+  "schema": "bend_native.experiment.prereg.v1",
+  "id": "aodl-2026-10-02",
+  "lane": "AODL (downstream proof consumer)",
+  "written_at": "2026-10-03T03:20Z",
+  "status": "pre-registered before any measured run; the probe runs aodl-probe-net-01 and aodl-probe-doctor-01 only checked the launcher and are not results",
+  "question": "Does the bend-native plugin, used through the supported 'hermes bend verify' and 'hermes bend replay' commands, give a real downstream proof project (the z0intelligence AODL structural gate) receipts that (a) pass under stock Bend 2.0.34 and under the patched candidate kvnloo/bend@17db447a, (b) replay offline to an identical verdict and identity, and (c) change verdict and go stale when one byte of a law or of the implementation changes?",
+  "context": {
+    "rfc": "kvnloo/hermes-agent#324 meta triage (2026-10-01): no broad semantic matrix; focus on kernel provenance (#388), release qualification (#389) and dependency provenance / replayable receipts (#390). This lane is a downstream-consumer check on replayable receipts and on running the patched candidate over a real proof project outside the Bend corpus (one input to the #389 next gate; not the gate itself).",
+    "ownership": "Hermes orchestrates and executes tools. Bend checks proof evidence over the emitted BendTT book only (verification_scope bend-emitted-book, source_semantics_attested false). z0intelligence owns admission and outcome decisions. AODL owns intent and authority. A proof PASS here is evidence about the Bend kernel's own decision functions over the Core IR; it is never whole-task success, never an admission decision and never grants authority."
+  },
+  "identities": {
+    "plugin": "kvnloo/bend-native e85e65e5d2e11caba8412d6dbd19aad03fd785ad, installed in the lane profile template (installed tree clean at that SHA)",
+    "hermes": "kvnloo/hermes-agent branch exp/bend-stack-integration-20261002 head ad31bbf079f0ee559ce1b61c5f85178c4c3d9396 (base 50a6abca7cff83afb0ebfe930a77c67311aa1044)",
+    "bend_official": {"release_tarball_sha256": "78106a97af242429dcc057258eb8d10f69cddebcd5e263022185a52d003e09bf", "bin_bend": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934", "base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt.lean": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292", "expected_kernel_sha256": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"},
+    "bend_patched": {"source": "kvnloo/bend@17db447a8b8c17b51517de42b35d3216e563f40f (kvnloo/bend#2)", "bin_bend": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981", "base.bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt.lean": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce", "expected_kernel_sha256": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5", "note": "reports version 2.0.34; distinguishable only by hashes"},
+    "lean": {"release_tarball_sha256": "caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b", "bin_lean": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550", "bin_leanc": "68a45f8329e2d79133cdcc7b1fa494e37844282d7b5f8908ce1deda7cfdf161a"},
+    "profile_config_sha256": {"official": "35c17ca75629a8ebb86b7aefa356b87dedfb986870ef0dbfc2006984a6d124e8", "patched": "fa6fbf60fea60d8147de5220580ceb2c90771f1ae87d37af47a85a0d59eb17d9"},
+    "launcher": {"base_sha256": "4252f75927cd123c6e05dbf0a26e385fc5853208eafdc2e5ce2380f834fc26d0", "lane_derivative_sha256": "3b98c86b3b6d6b4100c430bb0631800a866c3e09fe7fa1aed637fa8ecfd7e851", "derivative_diff": "adds '${BEND_NET_NONE:+--unshare-net}' to the bwrap call and writes meta/net.inside (netns id + interface list); nothing else changes"},
+    "proof_project": {"repo": "kvnloo/z0intelligence", "branch": "exp/bend-aodl-gate", "commit": "a0e95785fe810ae0d1cfbb128096b5deca5c2712", "path": "bend/aodl_gate", "tree": "62b9bf667ea946d6728f1099f627252c98dcb67e", "fixture": "git archive of that tree, read-only copy; copied per run into the run cwd"}
+  },
+  "fixtures": {
+    "pristine": {"LAWS.bend": "32bc4f69c37e67c751a169b667e297d1d99ecbc93cd5a4e1acf0222a8eb84560", "PROOF.bend": "88b17baf8cd1ff44acd2a425e684603a9b3cb1f919946b573c2e2c5098a7b376", "core.bend": "e1302068e3c957cc35961c1640ddacb2298f11ef3f2662650015d9387de73d06", "gate.bend": "19e8d1f3bfa466fc9bb582061b9170e2f295d90d5664d7eebed6ff55fe34606d", "rules.bend": "84ec227fc9e9173d567f76af06b63049392fe5f4602e1ddb8314dd00251e3455", "transition.bend": "0b9f24ade4e16550a58f0c8bb6720d39c8774f7a80a9b13f2319b9cef59a56e1", "main.bend": "553186a49fa7da65b6092b8c5793b0c014417de049f67d9d48676b91321acfab", "README.md": "35150872322bb8c051d16de325d5878547b9d7168afcbdb45e3c1de5becbcb4b", ".gitignore": "181314065df2f2fdaf920b1a8b5311daa216a2d6489a06ada5b49cc514d89417"},
+    "law-mut": {"file": "LAWS.bend", "line": 88, "byte_offset_1based": 2505, "before": "'1' (0x31)", "after": "'2' (0x32)", "edit": "law spawn_within_bounds conclusion T(Nat.is_le(1n+ks, mc)) -> T(Nat.is_le(2n+ks, mc)): the law now claims ks+2 <= maxChildren, which the unchanged gate does not guarantee", "new_sha256": "3a0e97827987193b435d6c9aff710efdf1eefc496bf0308b82a381a7df9df16c", "bytes_changed": 1},
+    "impl-mut": {"file": "transition.bend", "line": 138, "byte_offset_1based": 3968, "before": "'1' (0x31)", "after": "'0' (0x30)", "edit": "spawn gate bound Nat.is_le(1n+ks, mc) -> Nat.is_le(0n+ks, mc): off-by-one weakening of maxChildren (same family as the project's own 'off-by-one on maxChildren' law-mutation, reduced to one byte)", "new_sha256": "cacbcd643da5d68872e7e3365877f7f8b514d24df8e436874d273e00741da5f8", "bytes_changed": 1},
+    "readme-mut": {"file": "README.md", "line": 3, "byte_offset_1based": 107, "before": "'e' (0x65)", "after": "'E' (0x45)", "edit": "control: one byte outside the proof's local import closure", "new_sha256": "e43cf107e017c70ad59de1a8e786871e949b1da374e8160e1e1cb34274e5f692", "bytes_changed": 1}
+  },
+  "procedure": {
+    "launcher_call": "run-hermes-aodl.sh <run-id> -m hermes_cli.main bend verify <run>/cwd --receipt <run>/receipt.json   |   bend replay <receipt> --project <run>/cwd --receipt <run>/replay-receipt.json",
+    "verifier_select": "BEND_VERIFIER=patched binds the patched profile config; otherwise the official one",
+    "offline": "replay runs set BEND_NET_NONE=1 (private network namespace, loopback only) and record meta/net.inside",
+    "isolation": "hostless + bwrap masks (live Hermes home, real home, /run/user, host X11), env -i, per-run overlay of the profile template; no model, no z0 service, no GUI in this lane",
+    "replayed_receipt": "rep 01 of each build's pristine verification"
+  },
+  "runs": [
+    {"id": "aodl-v-off-01", "kind": "verify", "fixture": "pristine", "verifier": "official"},
+    {"id": "aodl-v-off-02", "kind": "verify", "fixture": "pristine", "verifier": "official"},
+    {"id": "aodl-v-off-03", "kind": "verify", "fixture": "pristine", "verifier": "official"},
+    {"id": "aodl-v-pat-01", "kind": "verify", "fixture": "pristine", "verifier": "patched"},
+    {"id": "aodl-v-pat-02", "kind": "verify", "fixture": "pristine", "verifier": "patched"},
+    {"id": "aodl-v-pat-03", "kind": "verify", "fixture": "pristine", "verifier": "patched"},
+    {"id": "aodl-r-off-01", "kind": "replay-offline", "fixture": "pristine", "verifier": "official", "receipt": "aodl-v-off-01"},
+    {"id": "aodl-r-pat-01", "kind": "replay-offline", "fixture": "pristine", "verifier": "patched", "receipt": "aodl-v-pat-01"},
+    {"id": "aodl-m-law-off-01", "kind": "verify", "fixture": "law-mut", "verifier": "official"},
+    {"id": "aodl-m-law-pat-01", "kind": "verify", "fixture": "law-mut", "verifier": "patched"},
+    {"id": "aodl-m-impl-off-01", "kind": "verify", "fixture": "impl-mut", "verifier": "official"},
+    {"id": "aodl-m-impl-pat-01", "kind": "verify", "fixture": "impl-mut", "verifier": "patched"},
+    {"id": "aodl-s-law-off-01", "kind": "replay-offline", "fixture": "law-mut", "verifier": "official", "receipt": "aodl-v-off-01"},
+    {"id": "aodl-s-law-pat-01", "kind": "replay-offline", "fixture": "law-mut", "verifier": "patched", "receipt": "aodl-v-pat-01"},
+    {"id": "aodl-s-impl-off-01", "kind": "replay-offline", "fixture": "impl-mut", "verifier": "official", "receipt": "aodl-v-off-01"},
+    {"id": "aodl-s-impl-pat-01", "kind": "replay-offline", "fixture": "impl-mut", "verifier": "patched", "receipt": "aodl-v-pat-01"},
+    {"id": "aodl-c-readme-off-01", "kind": "replay-offline", "fixture": "readme-mut", "verifier": "official", "receipt": "aodl-v-off-01"},
+    {"id": "aodl-c-readme-pat-01", "kind": "replay-offline", "fixture": "readme-mut", "verifier": "patched", "receipt": "aodl-v-pat-01"},
+    {"id": "aodl-c-xrt-offrcpt-patbin-01", "kind": "replay-offline", "fixture": "pristine", "verifier": "patched", "receipt": "aodl-v-off-01"},
+    {"id": "aodl-c-xrt-patrcpt-offbin-01", "kind": "replay-offline", "fixture": "pristine", "verifier": "official", "receipt": "aodl-v-pat-01"}
+  ],
+  "predictions": {
+    "P1_pristine_verify": "all 6 runs: exit 0, success true, verdict pass, execution_verdict pass, stdout 'ALL PROOFS CHECK', kernel_strategy session-bootstrap, input_file_count 6 (PROOF, LAWS, core, rules, transition, gate; main.bend and README.md are outside the closure), input_manifest_sha256 04e7c7c5fe8bb5740a270facdffd03f21a57340b15bf9faa4b0428b9b5c423b0, proof_sha256 88b17baf..., verification_scope bend-emitted-book, source_semantics_attested false; kernel_sha256_after a7e5203d... (official) / 72e11a86... (patched), identical across the 3 fresh bootstraps of each build; runtime_identity equals the build's bin/base/bendtt hashes above",
+    "P2_offline_replay": "aodl-r-off-01 and aodl-r-pat-01: exit 0, replay_match true, replay_differences [], verdict pass, replay_of = the replayed receipt_id, net.inside shows only 'lo'",
+    "P3_mutant_verdict_changes": "the 4 mutant verify runs: success false and verdict != pass (expected 'fail' with exit 1); input_manifest_sha256 differs from 04e7c7c5...; proof_sha256 unchanged (88b17baf...) because PROOF.bend is untouched, which shows the receipt identity covers laws and implementation, not just the proof file",
+    "P4_stale": "the 4 aodl-s-* runs: exit 2, code receipt_stale, message 'Project inputs differ from the recorded receipt; run a fresh verification'; no Bend execution and no replay receipt written",
+    "P5_control_out_of_closure": "aodl-c-readme-*: exit 0, replay_match true (a byte outside the import closure is not part of the receipt identity; reported as scope, not as a defect)",
+    "P6_control_cross_runtime": "aodl-c-xrt-*: exit 2, code receipt_stale, message 'Bend installation differs from the recorded receipt'",
+    "P7_official_vs_patched": "same verdict (pass) and same input manifest on the pristine project under both builds; different kernel hashes. Agreement on this project says nothing about bendlang/bend issue 1212 (which this project does not exercise)"
+  },
+  "decision_rules": {
+    "lane_pass": "P1-P6 hold on every run. P7 is descriptive.",
+    "deviation": "Any deviation is reported as a finding with the raw receipt. No run is dropped; an infrastructure failure may be retried once under a new id (-02 suffix for that id), and both attempts stay in the denominators.",
+    "plugin_behaviour": "The plugin is not modified on this branch. A plugin defect is a finding with evidence, not a code change.",
+    "timing": "No latency is measured or reported. duration_ms fields in receipts are incidental and are not results."
+  },
+  "restated_not_measured": {
+    "evidence": "SOURCE (z0intelligence a0e95785 bend/aodl_gate/README.md and src/z0int/bend_gate.py); this lane does not re-run parity, fuzz or latency",
+    "parity": "seed 48: 22,079 document cases, 0 unexplained verdict disagreements, 0 false allows, 1 false deny (hotl-0.1-fanin, not modeled, refused); issue-code multisets equal on all 9,519 kernel-routed cases without a validator exception; spawn transitions 16,356 compared, 0 disagreements with the reference and 0 with check_budget; 3,644 unrepresentable proposals denied",
+    "authority": "The canonical AODL validator (aodl_contract.validator.validate) stays authoritative. The Bend gate is an experimental fast structural filter; every adapter error, timeout, malformed reply or missing binary becomes DENY, and a canonical disagreement denies. The project README recommends against promoting Bend to the hot path (4-25x slower than in-process CPython validation)."
+  }
+}
