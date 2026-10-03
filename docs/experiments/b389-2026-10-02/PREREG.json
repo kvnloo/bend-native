@@ -1,0 +1,65 @@
+{
+  "schema": "b389.prereg.v1",
+  "lane": "B389",
+  "issue": "kvnloo/hermes-agent#389 (release qualification), next gate after the stock and patched oracle comments",
+  "written_before_measured_runs": true,
+  "question": "Is the patched Bend candidate kvnloo/bend@17db447a promotable over stock Bend 2.0.34 as the bend-native plugin's verifier, judged by source-vs-certified value agreement on every semantic-attestation oracle, with the Bend repo's own corpus and the known false-negative regressions measured separately?",
+  "not_run_by_design": [
+    "stock 2.0.32 and 2.0.33 (settled in kvnloo/hermes-agent#389; not rerun)",
+    "upstream Bend main after 01875127, including the upstream fix for bendlang/bend issue 1212 (bendlang/bend PR 1215, commit e1ed2435, unreleased). Only its regression test file is borrowed as a case.",
+    "latency: no duration is a result; nothing is timed under quiet-timed. Durations are used only for the safe.ts timeout class."
+  ],
+  "arms": {
+    "A": {"role": "release under test: stock", "what": "official bend-2.0.34-linux-x64 release", "bin_sha256": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934", "bendtt_lean_sha256": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292", "expected_kernel_sha256": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"},
+    "B": {"role": "release under test: candidate", "what": "kvnloo/bend@17db447a (v2.0.34 + 6 upstream main commits + the 2-line kvnloo/bend#2 patch), release-layout build", "bin_sha256": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981", "bendtt_lean_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce", "expected_kernel_sha256": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"},
+    "C1": {"role": "attribution control (not a candidate)", "what": "upstream main 01875127 = candidate without the 2-line patch, same recipe", "bin_sha256": "897bd02cf3b7f63107e77ea9cb64d82e92885a68f08a6d06e7ecbcc01bf0dfe9", "bendtt_lean_sha256": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce", "expected_kernel_sha256": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5 (same kernel source as B)"},
+    "C2": {"role": "attribution control (not a candidate)", "what": "tag v2.0.34 + only the 2 safe.ts lines (local branch exp/b389-patchonly-20261002 @ 6e940a0b), same recipe", "bin_sha256": "37e0b98fce8e4de7a2dc3a26b7485f76f9537b289934f29985efcf3e6e637959", "bendtt_lean_sha256": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292", "expected_kernel_sha256": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca (same kernel source as A)"},
+    "common": "Lean 4.34.0 (lean e8baaa71..., leanc 68a45f83...); base.bend c742fae9... in every arm; each arm compiles its own BendTT kernel in a private HOME; BEND_LIB empty and private; BEND_HUB points at a dead loopback port; no network."
+  },
+  "corpus": {
+    "source": "kvnloo/bend@17db447a tree (a superset of tag v2.0.34's tests: 5 added files, none changed or removed)",
+    "T": "tests/**/*.bend, 1526 files: the official gates/safe.ts 'tests' corpus; every file is run, including helper modules, exactly as the gate does",
+    "P": "tests/proof/**/*.bend, 86 files (subset of T, reported on its own as the proof corpus)",
+    "X": "demos/**/*.bend and evals/**/*.bend, 70 files (examples)",
+    "S": {
+      "s1212_fb3": "PRIMARY oracle. bendlang/bend issue 1212 fb3.bend + a-b.bend verbatim (the prior kvnloo/hermes-agent#389 oracle). Source computes False{}.",
+      "s1212_prlaw_nolaw": "PRIMARY oracle. The kvnloo/bend#2 regression program (tests/proof/group_name_collision_semantics.bend) with its law and proof removed, so main's certified value is visible in the PR's own file layout.",
+      "s1212_up_dead_forward_nolaw": "PRIMARY oracle. The upstream fix's regression test (tests/proof/group_dead_forward.bend at e1ed2435) with its laws removed; source computes 5n.",
+      "s1212_fb3_law_false": "fb3 + law main == False (claim matching the source): expected fail-closed on a mis-routing release, PASS on a fixed one",
+      "s1212_fb3_law_true": "fb3 + law main == True (claim matching the mis-routed book): must never PASS",
+      "s1212_prlaw": "the PR regression law as committed",
+      "s1212_up_dead_forward": "the upstream regression test as committed (laws helper and non_member)",
+      "D": "DERIVED oracles: every T/X file that the arm certifies (class agree) whose emitted book types main as Bool, Nat or U32 and whose source run prints exactly one literal of that type (Nat <= 4096)"
+    },
+    "F": {
+      "expected_pass_regressions": ["f1179_ab (bendlang/bend issue 1179 ab.bend)", "f1179_self (issue 1179 self.bend)", "f1193 (issue 1193, tests/check/conversion_shared_cells_once.bend)", "f1194_kept (issue 1194 kept.bend)", "f1212_g4 (issue 1212 crash face g4.bend)"],
+      "positive_controls": ["f1179_ba (issue 1179 ba.bend)", "f1194_erased (-c variant)", "f1194_moved (+c moved last)"],
+      "meaning": "Each file is accepted by bend2 (--check-only) and upstream diagnoses the kernel-side rejection or crash as a defect, so PASS is the correct verdict and anything else is a false negative (fail-closed). Kept separate from semantic false positives."
+    }
+  },
+  "procedure": {
+    "direct": "run_direct.py per arm: `bend <f> --verdict` from the corpus root, 30 s cap, stdout+stderr merged; on 'Sorry - ' the gates/safe_node.ts follow-up (-o; out-of-scope text or the arm kernel's output on the book); class by gates/safe.ts judge (agree, bend2 rejects, u unsafe, - out of scope, ! false reject, t timeout). Value oracle for every agree case and every b389cases/ case: source run, -o book, main type from the book, then two kernel claims appended to the book: {main == source value} and {main == a different value (not b / n+1 / n+1 mod 2^32)}; certified relation source|different|both|neither. 4 worker threads; first verdict of an arm builds its kernel (bootstrap record kept apart).",
+    "plugin": "run_plugin.py per arm: the pinned plugin e85e65e5 exported from the bend-native clone, loaded through Hermes PluginManager in a disposable profile (as scripts/smoke.py), registry.dispatch('bend_verify') per case with project_dir = corpus root and the case written as PROOF.bend in its own directory (removed after). A directory already holding LAWS.bend/PROOF.bend that is not the case itself is layout_na. One profile per process: session-bootstrap once, then session-pinned.",
+    "cli": "run_cli.sh: `hermes bend verify` via the INSTALLED plugin in the lane's isolated template profile, arms A (official) and B (BEND_VERIFIER=patched) only, S and F cases only, 1 repetition, one Hermes process per case.",
+    "repetitions": "Primary pass: every case once per arm per mode (direct, plugin). S and F: 3 repetitions per arm in direct and plugin modes. Confirmation pass: every T/X case whose direct class differs between any two arms, or is t / harness_error on any arm, or whose plugin pass disagrees with direct agree on its arm, gets 2 more direct runs on all 4 arms. Final class = majority of the 3 runs; a case is flaky when the 3 runs differ. Every run stays in the denominators.",
+    "isolation": "all execution via the lane launcher run-hermes.sh (hostless + bwrap masks + env -i + dead proxy); heavy sweeps hold the SHARED quiet-lane lock in blocks of <= 10 min with a ledger line each; never the exclusive lock (no timing).",
+    "pilot_disclosure": "Before this file: harness pilots b389-pilot-direct-A-01 (20 cases) and b389-pilot-plugin-A-01 (17 cases) on arm A plus manual pilots under hostless, to debug the harness and learn the BendTT literal encodings. Pilots are excluded from all results."
+  },
+  "metrics_per_arm": [
+    "pass rate: agree / N for T, P and X (direct); plugin pass / N_ran (plugin)",
+    "class counts (safe.ts taxonomy), stable and flaky",
+    "translation_mismatch: evaluated value oracles (PRIMARY + D on certified cases) with certified in {different, both}",
+    "oracle_indeterminate: certified == neither on a certified (agree) case or on a PRIMARY oracle",
+    "false negatives: (i) F expected_pass_regressions not PASS; (ii) corpus false rejects '!' and timeouts 't' in T (bend2 checks, kernel does not); '-' out of scope reported separately (fail-closed by design)",
+    "new failures introduced by the patch: stable T/X cases agree on A and not agree on B; attributed with C1 (same case also not agree on C1 => from the 6 upstream commits, not the patch) and C2 (not agree on C2 but agree on A => the 2-line patch itself); gains (non-agree on A -> agree on B) listed the same way",
+    "plugin/direct consistency: plugin pass where direct is not agree (plugin false pass) and plugin non-pass where direct agrees, excluding layout_na and plugin input-policy errors (reported with their codes)",
+    "kernel identity: each arm's direct and plugin kernel sha256 equals the expected value; unchanged across the sweep"
+  ],
+  "acceptance": {
+    "rule_389_semantic_gate": "A release is PROMOTABLE (semantic gate) only if: (1) each PRIMARY oracle's emitted book certifies the source value (certified == source) in all 3 repetitions; (2) translation_mismatch == 0 and oracle_indeterminate == 0 over all D oracles on cases the release certifies; (3) s1212_fb3_law_true never PASSes. Anything missing, errored or indeterminate fails closed (not promotable).",
+    "preferred_verifier_recommendation": "Additionally requires zero stable new failures versus stock in T/X, zero plugin false passes, and the expected kernel identities. Reported separately from the kvnloo/hermes-agent#389 gate so the owner can weigh fail-closed regressions.",
+    "predictions": {"A": "not promotable: s1212_fb3 certifies a different value (True) than the source (False), as in kvnloo/hermes-agent#389", "B": "PRIMARY oracles certify the source value; corpus outcome unknown", "F": "expected FAIL on A and B for 1179/1193/1194 (open upstream); f1212_g4 crash on A, unknown on B"},
+    "authority": "A promotable result is evidence for the owner. It does not change the plugin's default executable, mint task success, or attest source semantics; source_semantics_attested stays false."
+  },
+  "evidence_labels": "SOURCE / UNIT / FIXTURE / REAL / BENCHMARK / BLOCKED / NOT_RUN per row; all sweeps are REAL; no BENCHMARK rows"
+}
