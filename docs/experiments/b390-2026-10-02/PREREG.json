@@ -1,0 +1,102 @@
+{
+  "schema": "bend_native.prereg.v1",
+  "id": "B390",
+  "title": "Hub dependency provenance and replayable receipts on the packaged bend-native plugin",
+  "registered_at": "2026-10-02",
+  "issue": "kvnloo/hermes-agent#390 (parent kvnloo/hermes-agent#324; 2026-10-01 meta triage: no broad semantic matrix, only trust-boundary questions; this lane is item 3, remote/BendHub dependency provenance and replayable receipts)",
+  "branch": "kvnloo/bend-native exp/b390-20261002 (base e85e65e5d2e11caba8412d6dbd19aad03fd785ad)",
+  "plugin_behaviour_change": "none. The harness drives the plugin as installed in the isolated Hermes profile; plugin defects are reported as findings, not patched.",
+
+  "identities": {
+    "plugin": "kvnloo/bend-native e85e65e5d2e11caba8412d6dbd19aad03fd785ad (installed via hermes plugins install --ref; installed checkout HEAD recorded per phase with per-file sha256)",
+    "hermes": "kvnloo/hermes-agent exp/bend-stack-integration-20261002 @ ad31bbf079f0ee559ce1b61c5f85178c4c3d9396 (base 50a6abca7cff83afb0ebfe930a77c67311aa1044), dedicated uv venv, Python 3.14.7",
+    "bend_official": {"release": "bendlang/bend v2.0.34 linux-x64, tarball sha256 78106a97af242429dcc057258eb8d10f69cddebcd5e263022185a52d003e09bf", "bin_bend": "7fafb749dd33df446a0cb5839c5694df237312a8e8048d2e9420480164ff5934", "base_bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt_lean": "61e0d2d9f4ddd7dd8bb1497fa612fb49a7274fcac647bf70702ba22321d7c292", "expected_kernel": "a7e5203de58d989b97e759c014d2347d4355ebc652d696012c7552db0716bfca"},
+    "bend_patched": {"source": "kvnloo/bend@17db447a8b8c17b51517de42b35d3216e563f40f (kvnloo/bend#2)", "bin_bend": "b8473e168c200d676440a4079479d16d6e8583610d3447a97c1d8be9108ad981", "base_bend": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661", "bendtt_lean": "e15042434e73aab07ab05cea4b77b5619082c00a6d4924ea2d4a2cdec05facce", "expected_kernel": "72e11a86f44563e9decb26fe1c586ed7d5465e98ca282ada5ae8753b1156cad5"},
+    "lean": "4.34.0 linux, tarball sha256 caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b",
+    "launcher": "bend-stack run-hermes.sh sha256 4252f75927cd123c6e05dbf0a26e385fc5853208eafdc2e5ce2380f834fc26d0 (hostless sha256 367388956f01a7327421dccd3cfbfddaec98730cb9a8790328f0ba60b878ed6b)",
+    "models_and_services": "none. No model, no z0 service, no GPU in this lane."
+  },
+
+  "question": "Can a receipt from the packaged plugin prove which Hub dependencies were verified, and can it be replayed offline without silently resolving a different package?",
+
+  "implementation_under_test_SOURCE": {
+    "capture": "dependencies.py Dependencies.include/_package: a named import reads <cache>/names/<name>@<version> (no network), requires 0x+32 hex, then captures every file of the package directory, recomputes Bend's publication manifest (sorted 'sha256 path' lines) and requires '0x'+sha256(manifest)[:32] == package id; transitive hub imports are followed. No download path exists.",
+    "verdict": "verify_core.verify: the captured project + dependency bytes are materialized into a private temp root; the Bend child gets BEND_LIB=<private copy>, BEND_HUB=http://127.0.0.1:0 and a session-pinned BENDTT kernel. After the verdict the project and cache are recaptured and the private BEND_LIB is re-hashed; any change makes the verdict 'unstable'.",
+    "receipt": "dependency_packages {id: full sha256 of the publication manifest}, dependency_names {name@version: id}, dependency_manifest_sha256, and input_manifest_sha256 over project/ + dependencies/ bytes.",
+    "replay": "receipts.replay: recapture from the configured cache, require input_manifest_sha256 and runtime_identity equal (else receipt_stale), re-verify, then compare input manifest, runtime identity, kernel sha and execution verdict (else replay_mismatch, success false).",
+    "issue_strategy_mapping": "Of the four strategies in #390 the plugin combines (2) content-hash identity in the receipt, (3) named import resolved to an immutable hash before verification (from the locally cached binding only), and (4) snapshot of the resolved closure into the private verification root. (1) fail-closed-on-all-Hub-imports is not a mode of this plugin (an empty dependency_cache setting defaults to the profile user's .bend/lib)."
+  },
+
+  "fixtures": {
+    "packages": "harness/fixtures.py builds five packages with Bend's publication identity rule: P_ok (2 files + LICENSE, Main imports ./Util.bend, zero = 0n), P_bad (same, zero = 1n), Q_ok (named payload importing P_ok by content hash), Q_alt (different bytes, zero = 0n), Q_bad (zero = 1n).",
+    "hub": "Private static BendHub on 127.0.0.1 (random port) serving <pkg>/manifest, <pkg>/<file> and name/<name>@<version>; it logs every request. Bend's own fetch (bend PROOF.bend --check-only with BEND_LIB=<private cache>, BEND_HUB=<private hub>) populates caches; Bend verifies every fetched byte against the hashes, which independently confirms the fixture identities. The public hub.bend-lang.com is not contacted (NOT_RUN). The host's ~/.bend/lib is never used.",
+    "projects": "H: LAWS imports 0x<P_ok>/Main.bend (passes). HF: imports 0x<P_bad>/Main.bend (fails). N: imports sample@1.0.0.0/Main.bend bound to Q_ok (passes; transitive closure Q_ok + P_ok). NF: imports bad@1.0.0.0/Main.bend bound to Q_bad (fails). PROOF.bend proves the law by {==}.",
+    "kinds": "Every cell runs for both import kinds: H (content-hash) and N (named), with forging cells using HF/NF."
+  },
+
+  "conditions": {
+    "online": "Harness process and verifier share a network namespace in which the private hub is reachable (Bend fetches succeed). Every plugin verify/replay is bracketed by the hub request counter.",
+    "offline": "The whole harness (and therefore the verifier child) runs under bwrap --dev-bind / / --unshare-net inside the launcher; only an unconfigured lo exists. The hub keeps running in the outer namespace and its request log must not grow during the inner run; the inner process records a refused connect to the hub port.",
+    "cold_cache": "Empty private dependency cache.",
+    "warm_cache": "Copy of a cache populated by Bend's own fetch in the online phase (golden cache, one per kind; byte-compared to the fixture layout).",
+    "kernel": "Each process bootstraps its session-pinned kernel once on a dependency-free project (row X0_bootstrap, not a matrix cell)."
+  },
+
+  "cells": [
+    {"id": "O1_cold_missing", "condition": "online, cold", "action": "verify", "expect": {"H": "error:dependency_missing", "N": "error:input_capture_failed (SOURCE prediction: a missing name binding raises inside _read_stable before the dependency_missing branch; either code accepted as fail-closed)"}, "hub_requests_during_plugin_call": 0},
+    {"id": "O2_cold_fetch_verify", "condition": "online, cold -> Bend fetch -> warm", "action": "Bend fetch then verify", "expect": "pass with exact identities; fetch hub requests > 0; plugin hub requests 0; fetched cache byte-identical to fixture layout. Run 0 produces the golden cache and golden receipt."},
+    {"id": "O3_warm_present", "condition": "online, warm", "action": "verify", "expect": "pass, exact identities, single input manifest across runs, hub requests 0"},
+    {"id": "O4_mutated_benign", "condition": "online, warm, one package file edited (comment appended)", "action": "verify + raw Bend control", "expect": "plugin error:dependency_integrity; raw Bend --verdict on the same cache passes (shows Bend alone accepts unrecorded bytes)"},
+    {"id": "O5_mutated_forging", "condition": "online, HF/NF fetched, failing package edited in place to pass", "action": "verify before mutation, raw Bend control, verify", "expect": "before: fail; raw Bend after mutation: pass (forged); plugin after mutation: error:dependency_integrity"},
+    {"id": "O6_extra_file", "condition": "online, warm, extra file inside a captured package", "action": "verify", "expect": "error:dependency_integrity"},
+    {"id": "O7_partial_package", "condition": "online, warm, one package file removed", "action": "verify", "expect": "error:dependency_integrity"},
+    {"id": "O8a_binding_missing", "kind": "N", "action": "verify", "expect": "error:input_capture_failed (predicted) or error:dependency_missing"},
+    {"id": "O8b_binding_garbage", "kind": "N", "action": "verify", "expect": "error:dependency_integrity"},
+    {"id": "O8c_binding_absent_package", "kind": "N", "action": "verify", "expect": "error:dependency_missing"},
+    {"id": "O8d_binding_rebound_fresh_verify", "kind": "N", "condition": "local binding re-pointed to Q_alt (present)", "action": "fresh verify", "expect": "pass, receipt names Q_alt (identity re-derived for the Q_alt closure)"},
+    {"id": "O9_replay_same_cache", "action": "replay golden receipt", "expect": "pass, replay_match true, hub requests 0"},
+    {"id": "O10_replay_cache_missing", "action": "replay", "expect": "H error:dependency_missing; N error:input_capture_failed or error:dependency_missing; never a pass"},
+    {"id": "O11_replay_cache_mutated", "action": "replay", "expect": "error:dependency_integrity"},
+    {"id": "O12_replay_after_refetch", "condition": "cache lost, refetched by Bend from the hub (binding unchanged)", "action": "replay", "expect": "pass, replay_match"},
+    {"id": "O13a_replay_hub_rebound_refetch", "kind": "N", "condition": "hub re-points sample@1.0.0.0 to Q_alt; cache refetched", "action": "replay + fresh verify control", "expect": "replay error:receipt_stale; fresh verify pass naming Q_alt"},
+    {"id": "O13b_replay_local_rebound", "kind": "N", "action": "replay", "expect": "error:receipt_stale"},
+    {"id": "O13c_replay_hub_rebound_cache_warm", "kind": "N", "condition": "hub re-pointed, local golden cache intact", "action": "replay", "expect": "pass, replay_match, hub requests 0 (replay never consults the hub)"},
+    {"id": "O14_replay_race_injected", "condition": "FIXTURE interposition: the harness wraps service.verify so the cache changes after replay's identity precheck and before re-verification", "action": "replay", "expect": "N (rebind to Q_alt): replay_mismatch with success false; H (content edit): error:dependency_integrity"},
+    {"id": "O15_mutate_cache_during_verdict", "condition": "cache changed while the plugin's Bend --verdict child is alive (H content edit; N rebind to Q_alt)", "action": "verify", "expect": "unstable, success false; 'landed' flag records that the child was alive after the mutation"},
+    {"id": "O16_mutate_snapshot_during_verdict", "condition": "private materialized BEND_LIB edited while the child is alive", "action": "verify", "expect": "unstable (dependency_snapshot_changed)"},
+    {"id": "O17_concurrent_bend_fetch", "condition": "4 concurrent Bend fetches into one cold cache", "action": "verify after", "expect": "pass with exact identities; cache equals golden"},
+    {"id": "O18_verify_racing_fetch", "condition": "plugin verifies back-to-back while 4 Bend fetches populate the same cold cache", "action": "repeated verify, then final verify", "expect": "every racing attempt is a fail-closed error or a verdict; any racing pass carries exact identities; final pass"},
+    {"id": "F1_cold_missing_offline", "expect": "as O1"},
+    {"id": "F2_cold_fetch_offline", "expect": "Bend fetch fails (no route); plugin verify as O1"},
+    {"id": "F3_warm_present_offline", "expect": "pass, exact identities, input manifest equal to the online golden receipt"},
+    {"id": "F4_mutated_benign_offline", "expect": "as O4"},
+    {"id": "F5_mutated_forging_offline", "expect": "as O5 (uses the online-fetched failing caches)"},
+    {"id": "F6_replay_offline", "expect": "replay of the online-captured golden receipt in a new process: pass, replay_match (kernel rebuilt in the new session must reproduce the recorded hash)"},
+    {"id": "F7_replay_offline_cache_missing", "expect": "as O10"},
+    {"id": "F8_replay_offline_local_rebound", "kind": "N", "expect": "error:receipt_stale"},
+    {"id": "F9_mutate_cache_during_verdict_offline", "expect": "as O15"},
+    {"id": "W1_concurrent_processes_shared_cache", "condition": "offline; 3 separate Hermes processes (own plugin load and session kernel) released together on one shared warm cache, 5 x (H, N) each", "expect": "all pass with exact identities; shared cache unchanged"},
+    {"id": "E1_patched_warm_present_offline", "condition": "offline, settings.executable = patched Bend", "expect": "pass, exact dependency identities, input manifest equal to the official golden receipt"},
+    {"id": "E2_patched_replay_official_receipt", "expect": "error:receipt_stale (installation differs)"},
+    {"id": "D_cli_verify", "condition": "real `hermes bend verify --receipt` CLI, new Hermes process per run, inside bwrap --unshare-net, golden cache copy", "expect": "exit 0, pass, exact identities"},
+    {"id": "D_cli_replay", "condition": "real `hermes bend replay <online golden receipt> --project --receipt` CLI, offline as above", "expect": "exit 0, pass, replay_match"}
+  ],
+  "runs_per_cell": "5 per cell per kind (W1: 3 processes x 5 per kind; D: 5 per mode per kind). O18 records every racing attempt in its counts.",
+
+  "acceptance_from_issue_390": {
+    "A1_successful_receipts_name_immutable_identities": "Every plugin receipt with success true (all phases, verify and replay) has dependency_packages, dependency_names, dependency_manifest_sha256 and input_manifest_sha256 equal to identities re-derived independently from the fixture bytes for the closure present at capture. Pass = 0 mismatches.",
+    "A2_replay_cannot_silently_resolve_a_different_package": "0 successes in O13a, O13b, O14, F8, E2; O13a/O13b/F8 return receipt_stale; O14-N returns replay_mismatch with success false.",
+    "A3_cache_mutation_never_yields_success_for_unrecorded_bytes": "0 plugin successes in O4, O5, O6, O7, O8b, O11, O15, O16, F4, F5, F9 (mutated step); the raw Bend controls in O4/O5/F4/F5 pass, so the mutations are ones Bend alone would accept.",
+    "A4_offline_replay_works_once_captured": "F6 and D_cli_replay: 5/5 pass with replay_match per kind.",
+    "A5_no_network_after_capture": "Hub request delta 0 for every plugin call in the online phase; outer hub log delta 0 during each offline inner run; the offline namespace has only lo; F3, F6, W1, E1, D pass offline."
+  },
+  "secondary": ["exact error codes vs the SOURCE predictions", "O17/O18/W1 concurrency outcome distributions", "E1/E2 patched-verifier behaviour", "O13c: replay does not consult the hub even when the hub binding changed"],
+
+  "analysis": "harness/analyze.py aggregates rows.jsonl from every phase plus the CLI run records into summary.json (per cell x kind: n, outcome histogram, as_expected count, identity mismatches) and evaluates A1-A5. verify_artifacts.py recomputes everything from the committed raw records and fixtures without importing the plugin.",
+  "denominators": "Every run is reported, including harness or toolchain errors; no exclusions. A row whose outcome is outside its expected set is a deviation and is reported as a finding with its receipt.",
+  "deviations_policy": "If a harness defect is found after this commit, it is fixed in a separate commit and the affected phase is rerun in full under a new tag; both runs are reported.",
+  "timing": "No latency is measured or reported. duration_ms fields in receipts and the worker t_start stamps (used only to show overlap) are not results.",
+  "pilot_disclosure": "Before this registration: one fixture prototype (b390-proto-01: Bend fetch of the four projects from the private hub, all identities confirmed by Bend) and n=1 pilots of the online, offline, workers and patched phases plus one CLI replay (b390-pilot-*), used only to debug the harness. All pilot rows matched the predictions above. Pilot data are excluded from results and kept in the lane mirror.",
+  "evidence_labels": {"REAL": "real Bend 2.0.34 / patched build, Lean 4.34.0 kernel, installed plugin inside the isolated Hermes profile, Bend's own fetch", "FIXTURE": "fixture packages and the private static hub; the O14 interposition", "NOT_RUN": "public hub.bend-lang.com; non-Linux hosts; GUI or model turns (not needed for this question)"},
+  "isolation": "All execution through the bend-stack launcher (hostless + bwrap masks of the live Hermes home, real home, /run/user and X11; env -i; HOME/HERMES_HOME in a per-run overlay; HTTP(S) proxied to a dead port except loopback). Offline phases add bwrap --unshare-net. Scratch under the lane tmp root on /mnt; nothing under /tmp."
+}
