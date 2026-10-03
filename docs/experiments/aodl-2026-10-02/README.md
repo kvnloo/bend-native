@@ -103,8 +103,12 @@ point.**
   21:35:03 to 22:20:01 local time, with the size unchanged.
 - That run had the live home masked by an empty tmpfs (`mask.inside`
   `live_hermes_home_entries=0`) and had no route off the host (netns with only `lo`). So it
-  could neither see nor refresh that file. The change is attributed to the owner's running
-  services, and it is listed rather than hidden.
+  could neither see nor refresh that file.
+- A stat-only watch after the last AODL run saw the same file's mtime move again, to
+  23:04:59 local (04:05Z), with no AODL run active (`raw/ambient-auth-mtime-watch.txt`).
+  The cadence of 21:35:03, 22:20:01 and 23:04:59 (about 45 min, size constant) is the
+  owner's own services refreshing it. The change is listed in the invariants rather than
+  hidden.
 
 ## Restated, not re-measured (SOURCE: z0intelligence `a0e95785`, `bend/aodl_gate/README.md`, `src/z0int/bend_gate.py`)
 
