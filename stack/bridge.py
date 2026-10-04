@@ -4,6 +4,8 @@ from __future__ import annotations
 import json
 import os
 import queue
+import re
+import subprocess
 import sys
 import tempfile
 import threading
@@ -16,6 +18,49 @@ from . import observer
 from .observer.shadow_api_failure import joined_examples
 from .observer.evaluate_shadow import evaluate
 from .observer.decision_hooks import classify, turn_behaviour
+
+
+_PATH_RE = re.compile(r"(?<![\w.~/-])((?:~|/)[^\s'\"`<>|;,)\]}]+)")
+_BROAD = {'/', '/tmp', '/mnt', '/workspace', '/home', '/usr', '/opt', '/var', '/etc'}
+
+
+def _repo_root(path):
+    """Git toplevel for a directory, else the directory itself; None if unusable."""
+    try:
+        path = Path(os.path.expanduser(str(path))).resolve()
+    except (OSError, RuntimeError):
+        return None
+    if path.is_file():
+        path = path.parent
+    if not path.is_dir() or str(path) in _BROAD or path == Path.home().resolve():
+        return None
+    try:
+        top = subprocess.run(['git', '-C', str(path), 'rev-parse', '--show-toplevel'], capture_output=True,
+                             text=True, timeout=5).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        top = ''
+    return Path(top).resolve() if top else path
+
+
+def resolve_task_repo(text, payload):
+    """Pick the repository the task is about, with the evidence for the choice.
+
+    Order: an explicit hook value, then an existing directory the user's request names, then the
+    process working directory. The process cwd is only a fallback because one Hermes process
+    serves many tasks. Returns (path, source)."""
+    for key in ('cwd', 'workdir', 'repo'):
+        found = _repo_root(payload.get(key)) if payload.get(key) else None
+        if found:
+            return str(found), 'hook:' + key
+    for match in _PATH_RE.findall(text or ''):
+        found = _repo_root(match.rstrip('.:?!'))
+        if found:
+            return str(found), 'request_path'
+    for source, value in (('TERMINAL_CWD', os.environ.get('TERMINAL_CWD')), ('process_cwd', os.getcwd())):
+        found = _repo_root(value) if value else None
+        if found:
+            return str(found), source
+    return os.getcwd(), 'process_cwd_unvalidated'
 
 
 class Stack:
@@ -65,7 +110,8 @@ class Stack:
                     if event == 'pre_llm_call' and self.ctx.get_config('stack_opportunities', False):
                         excluded, text = classify(payload.get('user_message'), payload.get('platform', ''))
                         if not excluded and text and len(text) <= 8192 and payload.get('turn_id'):
-                            projection = {'repo': payload.get('cwd') or os.environ.get('TERMINAL_CWD') or os.getcwd(),
+                            repo, repo_source = resolve_task_repo(text, payload)
+                            projection = {'repo': repo, 'repo_source': repo_source,
                                           'request': text, 'trace_id': row['identity']['trace_id']}
                     if event == 'post_llm_call':
                         row['behaviour'] = turn_behaviour(payload.get('conversation_history'))
@@ -94,10 +140,11 @@ class Stack:
                 with (home / 'events.jsonl').open('a') as stream:
                     stream.write(json.dumps(row) + '\n')
                 if projection:
+                    repo_source = projection.pop('repo_source', None)
                     result = self.project(**projection, home=home)
                     record = {'schema': 'z0int.hermes.opportunity_record.v0',
                               'session_id': row['identity']['session_id'],
-                              'repo': str(Path(projection['repo']).resolve()),
+                              'repo': str(Path(projection['repo']).resolve()), 'repo_source': repo_source,
                               'opportunity': result['opportunity'], 'gate': result['gate']}
                     with (home / 'opportunities.jsonl').open('a') as stream:
                         stream.write(json.dumps(record) + '\n')

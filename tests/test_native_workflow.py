@@ -256,3 +256,40 @@ def test_z0_runtime_uses_exact_contract_without_retries(installed):
         server.shutdown()
         server.server_close()
         thread.join(2)
+
+
+def test_z0_opportunity_uses_task_repository_not_process_cwd(installed, tmp_path, monkeypatch):
+    import importlib
+    import subprocess
+    import time
+    manager, module, home = installed
+    stack = manager._cli_commands['z0']['handler_fn'].__closure__[0].cell_contents
+    bridge = importlib.import_module(module.__name__ + '.stack.bridge')
+    process_repo, task_repo = tmp_path / 'process-cwd-repo', tmp_path / 'task-repo'
+    for repo in (process_repo, task_repo):
+        repo.mkdir()
+        subprocess.run(['git', 'init', str(repo)], check=True, capture_output=True)
+        (repo / 'README.md').write_text('# ' + repo.name + '\n')
+    (task_repo / 'sub').mkdir()
+    monkeypatch.chdir(process_repo)
+    monkeypatch.setenv('TERMINAL_CWD', str(process_repo))
+    # 1. a path in the request wins, and a subdirectory resolves to its git toplevel
+    assert bridge.resolve_task_repo('fix the bug in %s/sub please' % task_repo, {}) == (str(task_repo), 'request_path')
+    # 2. an explicit hook value wins over the request
+    assert bridge.resolve_task_repo('look at %s' % process_repo, {'cwd': str(task_repo)}) == (str(task_repo), 'hook:cwd')
+    # 3. no path anywhere: fall back to the process location and say so
+    assert bridge.resolve_task_repo('what is next?', {}) == (str(process_repo), 'TERMINAL_CWD')
+    # 4. broad or missing paths are never accepted as a repository
+    assert bridge.resolve_task_repo('see / and /tmp and /nonexistent/x', {})[1] == 'TERMINAL_CWD'
+    # end to end through the real hook: the recorded opportunity names the task repo
+    (home / 'config.yaml').write_text(yaml.safe_dump({'plugins': {'enabled': ['bend'], 'entries': {
+        'bend': {'settings': {'stack_mode': 'shadow', 'stack_opportunities': True}}}}}))
+    payload = dict(session_id='s', turn_id='t', platform='cli')
+    assert manager.invoke_hook('pre_llm_call', **payload, user_message='What is the branch of %s?' % task_repo) == []
+    deadline = time.monotonic() + 15
+    while stack.pending.unfinished_tasks and time.monotonic() < deadline:
+        time.sleep(0.02)
+    record = json.loads((stack.home() / 'opportunities.jsonl').read_text().splitlines()[-1])
+    assert record['repo'] == str(task_repo) and record['repo_source'] == 'request_path'
+    assert record['opportunity']['trace']['trace_id']
+    stack.close()
